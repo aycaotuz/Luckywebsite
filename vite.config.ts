@@ -6,9 +6,8 @@ import {defineConfig, loadEnv} from 'vite';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    // GitHub repo adını buraya ekliyoruz. 
-    // Büyük/küçük harf duyarlıdır, eğer repo adın tam olarak "Luckywebsite" değilse burayı ona göre güncelle lütfen.
-    base: '/Luckywebsite/', 
+    // Buradaki nokta, sitenin klasör adı ne olursa olsun çalışmasını sağlar!
+    base: './', 
     plugins: [react(), tailwindcss()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
