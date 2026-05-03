@@ -23,16 +23,25 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Workaround npm optional-deps/native-binding issue
+      - name: Workaround / ensure clean env (optional)
+        # Optional step: uncomment if you want to remove any cached artifacts in CI runner
         run: |
-          # Remove lockfile and node_modules as recommended by the error you saw
-          rm -f package-lock.json
-          rm -rf node_modules
+          rm -rf node_modules || true
+          # rm -f package-lock.json   # <-- uncomment only if you want to force a fresh install ignoring lockfile
 
-      - name: Install dependencies
-        run: npm install
-        # Alternative (skip optional deps) if you prefer:
-        # run: npm install --no-optional
+      - name: Install dependencies (skip optional deps)
+        # Setting NPM_CONFIG_OPTIONAL=false prevents npm from installing optional dependencies
+        # which avoids the "Cannot find native binding" error from optional native modules.
+        env:
+          NPM_CONFIG_OPTIONAL: 'false'
+        run: |
+          # Use npm ci for deterministic installs when package-lock.json exists.
+          # If you removed package-lock.json in the previous step, npm ci will fail — then use `npm install`.
+          if [ -f package-lock.json ]; then
+            npm ci --prefer-offline --no-audit
+          else
+            npm install --prefer-offline --no-audit
+          fi
 
       - name: Build
         run: npm run build
