@@ -1,147 +1,149 @@
 ---
-name: Nostalgic Storybook
+name: Istanbul Gastronomy Guide
 colors:
-  surface: '#fcf9f6'
-  surface-dim: '#dcd9d7'
-  surface-bright: '#fcf9f6'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f6f3f0'
-  surface-container: '#f0edea'
-  surface-container-high: '#eae8e5'
-  surface-container-highest: '#e5e2df'
-  on-surface: '#1c1c1a'
-  on-surface-variant: '#504441'
-  inverse-surface: '#31302f'
-  inverse-on-surface: '#f3f0ed'
-  outline: '#827470'
-  outline-variant: '#d4c3be'
-  surface-tint: '#77574d'
-  primary: '#442a22'
-  on-primary: '#ffffff'
-  primary-container: '#5d4037'
-  on-primary-container: '#d4ada1'
-  inverse-primary: '#e7bdb1'
-  secondary: '#5e5e5e'
-  on-secondary: '#ffffff'
-  secondary-container: '#e0dfdf'
-  on-secondary-container: '#626362'
-  tertiary: '#313131'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#474747'
-  on-tertiary-container: '#b7b5b5'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
-  primary-fixed: '#ffdbd0'
-  primary-fixed-dim: '#e7bdb1'
-  on-primary-fixed: '#2c160e'
-  on-primary-fixed-variant: '#5d4037'
-  secondary-fixed: '#e3e2e1'
-  secondary-fixed-dim: '#c7c6c5'
-  on-secondary-fixed: '#1a1c1c'
-  on-secondary-fixed-variant: '#464746'
-  tertiary-fixed: '#e5e2e1'
-  tertiary-fixed-dim: '#c8c6c5'
-  on-tertiary-fixed: '#1c1b1b'
-  on-tertiary-fixed-variant: '#474746'
-  background: '#fcf9f6'
-  on-background: '#1c1c1a'
-  surface-variant: '#e5e2df'
+  surface: '#16130b'
+  surface-dim: '#16130b'
+  surface-bright: '#3d392f'
+  surface-container-lowest: '#110e07'
+  surface-container-low: '#1f1b13'
+  surface-container: '#231f17'
+  surface-container-high: '#2d2a21'
+  surface-container-highest: '#38342b'
+  on-surface: '#eae1d4'
+  on-surface-variant: '#d0c5af'
+  inverse-surface: '#eae1d4'
+  inverse-on-surface: '#343027'
+  outline: '#99907c'
+  outline-variant: '#4d4635'
+  surface-tint: '#e9c349'
+  primary: '#f2ca50'
+  on-primary: '#3c2f00'
+  primary-container: '#d4af37'
+  on-primary-container: '#554300'
+  inverse-primary: '#735c00'
+  secondary: '#ffe2ab'
+  on-secondary: '#402d00'
+  secondary-container: '#ffbf00'
+  on-secondary-container: '#6d5000'
+  tertiary: '#bfcdff'
+  on-tertiary: '#082b72'
+  tertiary-container: '#97b0ff'
+  on-tertiary-container: '#254188'
+  error: '#ffb4ab'
+  on-error: '#690005'
+  error-container: '#93000a'
+  on-error-container: '#ffdad6'
+  primary-fixed: '#ffe088'
+  primary-fixed-dim: '#e9c349'
+  on-primary-fixed: '#241a00'
+  on-primary-fixed-variant: '#574500'
+  secondary-fixed: '#ffdfa0'
+  secondary-fixed-dim: '#fbbc00'
+  on-secondary-fixed: '#261a00'
+  on-secondary-fixed-variant: '#5c4300'
+  tertiary-fixed: '#dbe1ff'
+  tertiary-fixed-dim: '#b4c5ff'
+  on-tertiary-fixed: '#00174b'
+  on-tertiary-fixed-variant: '#27438a'
+  background: '#16130b'
+  on-background: '#eae1d4'
+  surface-variant: '#38342b'
 typography:
-  headline-xl:
-    fontFamily: Newsreader
-    fontSize: 48px
-    fontWeight: '600'
+  display-lg:
+    fontFamily: Playfair Display
+    fontSize: 4.5rem
+    fontWeight: '700'
     lineHeight: '1.1'
-  headline-lg:
-    fontFamily: Newsreader
-    fontSize: 32px
-    fontWeight: '500'
+    letterSpacing: -0.02em
+  h1:
+    fontFamily: Playfair Display
+    fontSize: 3rem
+    fontWeight: '600'
     lineHeight: '1.2'
-  headline-md:
-    fontFamily: Newsreader
-    fontSize: 24px
+  h2:
+    fontFamily: Playfair Display
+    fontSize: 2.25rem
     fontWeight: '500'
     lineHeight: '1.3'
-  body-lg:
-    fontFamily: Be Vietnam Pro
-    fontSize: 18px
-    fontWeight: '400'
-    lineHeight: '1.6'
-  body-md:
-    fontFamily: Be Vietnam Pro
-    fontSize: 16px
-    fontWeight: '400'
-    lineHeight: '1.6'
-  label-md:
-    fontFamily: Be Vietnam Pro
-    fontSize: 14px
-    fontWeight: '600'
+  h3:
+    fontFamily: Playfair Display
+    fontSize: 1.5rem
+    fontWeight: '500'
     lineHeight: '1.4'
-    letterSpacing: 0.02em
-rounded:
-  sm: 0.25rem
-  DEFAULT: 0.5rem
-  md: 0.75rem
-  lg: 1rem
-  xl: 1.5rem
-  full: 9999px
+  body-lg:
+    fontFamily: Inter
+    fontSize: 1.125rem
+    fontWeight: '400'
+    lineHeight: '1.7'
+  body-md:
+    fontFamily: Inter
+    fontSize: 1rem
+    fontWeight: '400'
+    lineHeight: '1.6'
+  label-caps:
+    fontFamily: Inter
+    fontSize: 0.75rem
+    fontWeight: '600'
+    lineHeight: '1'
+    letterSpacing: 0.15em
 spacing:
   unit: 8px
-  container-max: 1140px
-  gutter: 24px
-  margin: 32px
-  stack-sm: 16px
-  stack-md: 32px
-  stack-lg: 64px
+  container-max: 1280px
+  gutter: 32px
+  margin-page: 64px
+  section-gap: 128px
 ---
 
 ## Brand & Style
 
-This design system is built to evoke the warmth of a cherished family photo album and the timeless quality of a classic storybook. The target audience includes family, friends, and dog lovers who appreciate a personal, heart-warming narrative. 
+This design system embodies the "Old Money" aesthetic of Istanbul’s elite culinary scene. It is a digital concierge that feels like a heavy, gold-embossed leather menu from a Pera District institution. The brand personality is authoritative yet welcoming, sophisticated, and deeply rooted in heritage.
 
-The aesthetic blends **Minimalism** with **Tactile** warmth. It prioritizes heavy whitespace and refined typography to keep the interface clean, while utilizing soft textures and subtle depth to create a "cozy" atmosphere. The goal is to make the user feel like they are stepping into a sun-drenched living room, where every image and word is treated with the care of a handwritten letter.
+The style is **Minimalist-Luxurious**. It relies on vast amounts of negative space (luxury in digital form), razor-sharp typography, and cinematic imagery. We avoid modern gimmicks like heavy gradients or playful animations, opting instead for steady, deliberate transitions and high-contrast layouts that allow full-bleed photography of Bosphorus sunsets and gold-leafed desserts to take center stage.
 
 ## Colors
 
-The palette is rooted in nature and nostalgia. 
-- **Primary (Rich Brown):** Derived from the deep tones of fur, used for key actions and narrative headings to provide a grounded, organic feel.
-- **Secondary (Crisp White/Cream):** A warm, off-white background that prevents the clinical feel of pure white, providing a soft canvas for content.
-- **Tertiary (Deep Black):** A high-contrast charcoal used sparingly for body text and structural elements to maintain legibility and a classic editorial look.
-- **Neutral (Warm Sand):** Used for subtle backgrounds, dividers, and secondary surfaces to enhance the layered, cozy feel.
+The palette is strictly dark mode, utilizing the "Zinc" scale to provide a deep, charcoal-to-black foundation that feels more organic and expensive than pure black. 
+
+- **Primary Gold (#D4AF37):** Used exclusively for high-level branding, call-to-action borders, and signature iconography.
+- **Amber Accents (#FFBF00):** Reserved for interactive states, star ratings, and subtle "Editor's Choice" indicators.
+- **The Grays:** Zinc-950 serves as the canvas, with Zinc-900 used for surface elevation. Text is kept in Zinc-100 for maximum legibility without the harshness of pure white.
 
 ## Typography
 
-This design system utilizes a sophisticated typographic pairing to balance heritage with modern readability. 
+This design system uses a high-contrast typographic pairing to signal heritage and modernity.
 
-**Newsreader** serves as the primary serif for all headlines. Its literary qualities give the website a "storybook" feel, suggesting that every section is a chapter in the dog’s life.
-
-**Be Vietnam Pro** is used for all body text and interface labels. Its contemporary, friendly letterforms ensure that long-form stories remain accessible and easy to read, while its geometric clarity provides a functional counterpoint to the more ornate serif.
+- **Playfair Display:** Our serif typeface. It should be used for all headlines and editorial pull-quotes. Use the "italic" variant sparingly for emphasis or Turkish culinary terms (e.g., *Meyhane*).
+- **Inter:** Our sans-serif workhorse. It provides a clean, functional counterpoint to the decorative nature of the serif. Use it for body copy, technical details, and navigation. 
+- **Letter Spacing:** Headlines should have slightly tightened tracking, while labels and small caps should be tracked out significantly to evoke a sense of high-end fashion branding.
 
 ## Layout & Spacing
 
-The layout follows a **Fixed Grid** model to mirror the structured layout of a physical book or a framed gallery. A 12-column grid is used with generous margins and gutters to ensure the content never feels crowded.
+The layout philosophy is a **Fixed Grid** with an emphasis on "Luxurious Spacing." We use an 8px rhythmic scale, but we prefer larger increments (32px, 64px, 128px) to prevent the UI from feeling cluttered.
 
-Spacing is intentionally expansive. Larger vertical "stacks" (64px+) are used between sections to allow the user's eyes to rest, emphasizing a slow, nostalgic browsing experience. Elements should be grouped within soft containers with consistent internal padding of 24px to 32px to maintain a sense of protective "coziness."
+- **The Grid:** A 12-column grid with wide gutters (32px). This creates a stable, structural feel.
+- **Negative Space:** Content sections are separated by significant vertical gaps (128px). Whitespace is treated as a design element itself, not just a gap between components.
+- **Margins:** Page margins are generous (minimum 64px) to frame the content like a piece of art in a gallery.
 
 ## Elevation & Depth
 
-Visual hierarchy is achieved through **Ambient Shadows** and **Tonal Layers**. Instead of harsh, gray shadows, this design system uses soft, diffused shadows with a slight brown tint (`rgba(93, 64, 55, 0.08)`) to mimic the way light falls on paper or fabric.
+We eschew traditional shadows in favor of **Tonal Layers** and **Refined Borders**. 
 
-Lower elevation levels are used for cards and interactive components, while higher elevation is reserved for modals or "floating" photo memories. Subtle, low-contrast borders in a slightly darker cream are used to define boundaries without breaking the soft, unified feel of the interface.
+- **Surface Levels:** The background is Zinc-950. Cards or modals sit on Zinc-900.
+- **Borders:** Depth is defined by 1px solid borders in Zinc-800. For high-importance elements, a 1px border in Gold (#D4AF37) is used.
+- **Glassmorphism:** For mobile navigation or overlay headers, a high-intensity backdrop blur (20px+) with a 10% opacity Zinc-900 fill is used to maintain a sense of cinematic depth without losing the dark aesthetic.
+- **Imagery:** Depth is further created through "cinematic layering"—text often overlaps darkened, high-contrast imagery to create a 3D parallax effect.
 
 ## Shapes
 
-The shape language is defined by **Rounded** corners. Sharp edges are avoided to maintain the "heart-warming" and approachable personality of the site. 
+The shape language is **Sharp (0)**. 
 
-Standard components like buttons and input fields use a 0.5rem radius, while larger containers like cards and photo frames utilize a 1rem to 1.5rem radius. This creates a "squishy" and soft visual rhythm that feels safe and inviting, much like the soft features of a pet.
+To maintain the "Old Money" and architectural feel of Istanbul's historic stone buildings, we use 0px border radii for all primary buttons, input fields, and image containers. Circles are permitted only for profile avatars or specific icon backgrounds to provide a singular point of visual relief against the rigid, rectangular structure of the rest of the UI.
 
 ## Components
 
-- **Buttons:** Primary buttons are filled with the rich brown color and feature white text. They should have a slight lift on hover to enhance the tactile feel. Secondary buttons use a thick, soft-colored border.
-- **Cards (The "Memory" Card):** These are the core of the design system. They use a secondary white background, a 1rem corner radius, and a subtle ambient shadow. Images within cards should have a slightly smaller corner radius (0.5rem) to create a framed effect.
-- **Chips & Tags:** Small, pill-shaped labels used for "moods" or "activities." These use a light brown tint with darker brown text to remain legible but understated.
-- **Input Fields:** Designed with a soft-gray background and a 0.5rem radius. The focus state should transition the border color to the primary brown with a soft outer glow.
-- **Interactive Photo Gallery:** A custom component where photos are slightly rotated at different angles (1-2 degrees) to mimic physical photos scattered on a table.
-- **Quotes:** Large-scale Newsreader text, often accompanied by a large, soft-colored opening quotation mark, used for "barks" or "thoughts" from the dog.
+- **Buttons:** Primary buttons are outlined in Gold (#D4AF37) with no fill, using uppercase Inter typography. On hover, they take a subtle Gold fill with black text.
+- **Cards:** Restaurant cards use full-bleed imagery with a sharp-edged Zinc-900 footer. Labels are placed in the top-right corner using the `label-caps` style on a semi-transparent black background.
+- **Inputs:** Simple bottom-border only ("Ghost" style). The label sits above in `label-caps`. Focus state changes the border from Zinc-700 to Gold.
+- **Chips:** Used for cuisine types (e.g., "Ottoman", "Seafood"). These are sharp-edged rectangles with a Zinc-800 background and Zinc-400 text.
+- **Signature Component - The 'Sommelier' Filter:** A specialized dropdown using high-serif typography that feels like selecting from a wine list.
+- **Cinematic Hero:** A full-height component with a background video or high-contrast photo, featuring a centered `display-lg` headline and a single gold-bordered CTA button.
