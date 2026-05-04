@@ -3,68 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İstanbul Gastronomi Rehberi</title>
+    <title>İstanbul Gastronomi & Lüks Rehberi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #f4f4f5; }
         .serif { font-family: 'Playfair Display', serif; }
+        .venue-card { display: none; }
+        .venue-card.active { display: block; }
     </style>
 </head>
 <body class="antialiased">
     <div class="max-w-md mx-auto min-h-screen border-x border-zinc-800 shadow-2xl relative bg-zinc-950">
-        <!-- Hero Image -->
-        <div class="relative h-96 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale-[20%]" alt="Sunset">
-            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
-            <button class="absolute top-8 left-6 bg-black/40 backdrop-blur-md p-3 rounded-full border border-white/10">←</button>
-        </div>
+        
+        <!-- ANA SAYFA (LİSTE) -->
+        <div id="main-page" class="venue-card active p-8">
+            <header class="mb-12">
+                <h1 class="serif text-5xl text-amber-500 mb-2">İstanbul</h1>
+                <p class="text-zinc-500 tracking-[0.2em] uppercase text-[10px] font-bold">Gastronomi & Lüks Rehberi</p>
+            </header>
 
-        <!-- Content -->
-        <div class="px-8 -mt-12 relative z-10">
-            <h1 class="serif text-4xl font-bold text-amber-500 mb-2">Sunset Grill & Bar</h1>
-            <div class="flex items-center gap-2 text-zinc-500 mb-8 uppercase tracking-widest text-[10px] font-bold">
-                <span class="text-amber-500">📍</span> Ulus, İstanbul
-            </div>
-
-            <div class="space-y-8 pb-24">
-                <div>
-                    <h3 class="text-amber-500 text-[10px] font-bold uppercase tracking-widest mb-3 italic">Küratörün Notu</h3>
-                    <p class="text-zinc-200 text-lg serif italic">"Boğaz'ın Zirvesinde Klasikleşmiş İhtişam"</p>
+            <div class="space-y-6">
+                <!-- Sunset Card -->
+                <div onclick="showVenue('sunset')" class="group relative bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800" class="w-full h-48 object-cover grayscale-[30%] group-hover:grayscale-0 transition-all">
+                    <div class="p-6">
+                        <h2 class="serif text-xl font-bold">Sunset Grill & Bar</h2>
+                        <p class="text-zinc-500 text-xs italic">Boğaz'ın Zirvesinde Klasikleşmiş İhtişam</p>
+                    </div>
                 </div>
 
-                <div>
-                    <h3 class="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-3">Ambiyans</h3>
-                    <p class="text-zinc-400 leading-relaxed text-sm">Ulus sırtlarından İstanbul Boğazı'nı tam karşıdan gören efsanevi teras. Şehrin en elit kitlesini ağırlayan büyüleyici bir mekan.</p>
+                <!-- Zuma Card -->
+                <div onclick="showVenue('zuma')" class="group relative bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b?q=80&w=800" class="w-full h-48 object-cover grayscale-[30%] group-hover:grayscale-0 transition-all">
+                    <div class="p-6">
+                        <h2 class="serif text-xl font-bold">Zuma Istanbul</h2>
+                        <p class="text-zinc-500 text-xs italic">Dinamik ve Sofistike Japon Şıklığı</p>
+                    </div>
                 </div>
 
-                <div>
-                    <h3 class="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-3">Neden Gidilmeli?</h3>
-                    <p class="text-zinc-300 leading-relaxed text-sm italic border-l-2 border-amber-500/30 pl-4">"Şehrin en ikonik ve ihtişamlı gün batımı yemeğini Boğaz'a karşı yemek için."</p>
-                </div>
-
-                <div>
-                    <h3 class="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-3">İmza Lezzetler</h3>
-                    <div class="grid gap-3">
-                        <div class="bg-zinc-900/50 p-4 rounded-2xl border border-zinc-800/50">
-                            <p class="text-sm font-bold text-zinc-100">Premium Sushi Tabağı</p>
-                            <p class="text-[11px] text-zinc-500">Dünyaca ünlü şeflerin taptaze seçimleri.</p>
-                        </div>
-                        <div class="bg-zinc-900/50 p-4 rounded-2xl border border-zinc-800/50">
-                            <p class="text-sm font-bold text-zinc-100">Siyah Kod Balığı</p>
-                            <p class="text-[11px] text-zinc-500">Miso marineli, ağızda dağılan imza balık.</p>
-                        </div>
+                <!-- Cipriani Card -->
+                <div onclick="showVenue('cipriani')" class="group relative bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1550966842-284d663312ce?q=80&w=800" class="w-full h-48 object-cover grayscale-[30%] group-hover:grayscale-0 transition-all">
+                    <div class="p-6">
+                        <h2 class="serif text-xl font-bold">Cipriani Istanbul</h2>
+                        <p class="text-zinc-500 text-xs italic">Zamansız İtalyan Lüksü</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- CTA Button -->
-            <div class="fixed bottom-8 left-1/2 -translate-x-1/2 w-full max-w-md px-8">
-                <button class="w-full bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold py-4 rounded-full transition-all shadow-xl shadow-amber-500/20 uppercase tracking-widest text-xs">
-                    Rezervasyon Yap
-                </button>
+        <!-- DETAY SAYFASI TASLAĞI (DİNAMİK) -->
+        <div id="detail-page" class="venue-card min-h-screen">
+            <div class="relative h-96 overflow-hidden">
+                <img id="detail-img" src="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+                <button onclick="showVenue('main')" class="absolute top-8 left-6 bg-black/40 backdrop-blur-md p-3 rounded-full border border-white/10">←</button>
+            </div>
+            <div class="px-8 -mt-12 relative z-10">
+                <h1 id="detail-title" class="serif text-4xl font-bold text-amber-500 mb-2"></h1>
+                <div id="detail-loc" class="text-zinc-500 mb-8 uppercase tracking-widest text-[10px] font-bold"></div>
+                <div class="space-y-8 pb-24 text-sm text-zinc-400" id="detail-content"></div>
             </div>
         </div>
     </div>
+
+    <script>
+        const data = {
+            sunset: {
+                title: "Sunset Grill & Bar",
+                loc: "📍 Ulus",
+                img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1200",
+                content: "<b>Ambiyans:</b> Ulus sırtlarından İstanbul Boğazı'nı tam karşıdan gören efsanevi teras.<br><br><b>Neden Gidilmeli:</b> Şehrin en ikonik gün batımı yemeği için."
+            },
+            zuma: {
+                title: "Zuma Istanbul",
+                loc: "📍 İstinyePark",
+                img: "https://images.unsplash.com/photo-1579027989536-b7b1f875659b?q=80&w=1200",
+                content: "<b>Ambiyans:</b> Modern, seksi ve inanılmaz havalı bir iç mimari.<br><br><b>Neden Gidilmeli:</b> Dinamik bir atmosferde premium Japon mutfağı için."
+            },
+            cipriani: {
+                title: "Cipriani Istanbul",
+                loc: "📍 Nişantaşı",
+                img: "https://images.unsplash.com/photo-1550966842-284d663312ce?q=80&w=1200",
+                content: "<b>Ambiyans:</b> Maçka Palas'ın içinde zamansız İtalyan asaleti.<br><br><b>Neden Gidilmeli:</b> Kusursuz servis ve dünyaca ünlü İtalyan lezzetleri için."
+            }
+        };
+
+        function showVenue(id) {
+            document.querySelectorAll('.venue-card').forEach(el => el.classList.remove('active'));
+            if(id === 'main') {
+                document.getElementById('main-page').classList.add('active');
+            } else {
+                const venue = data[id];
+                document.getElementById('detail-title').innerText = venue.title;
+                document.getElementById('detail-loc').innerText = venue.loc;
+                document.getElementById('detail-img').src = venue.img;
+                document.getElementById('detail-content').innerHTML = venue.content;
+                document.getElementById('detail-page').classList.add('active');
+            }
+            window.scrollTo(0,0);
+        }
+    </script>
 </body>
 </html>
