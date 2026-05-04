@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zuma - Venue Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#97b0ff",
+                      "on-background": "#eae1d4",
+                      "outline": "#99907c",
+                      "inverse-surface": "#eae1d4",
+                      "background": "#16130b",
+                      "primary-fixed": "#ffe088",
+                      "on-primary-fixed": "#241a00",
+                      "on-surface": "#eae1d4",
+                      "error": "#ffb4ab",
+                      "on-primary": "#3c2f00",
+                      "surface-container-lowest": "#110e07",
+                      "on-secondary-fixed": "#261a00",
+                      "on-secondary-container": "#6d5000",
+                      "inverse-on-surface": "#343027",
+                      "tertiary": "#bfcdff",
+                      "on-tertiary": "#082b72",
+                      "secondary-container": "#ffbf00",
+                      "on-error": "#690005",
+                      "inverse-primary": "#735c00",
+                      "on-tertiary-fixed-variant": "#27438a",
+                      "on-error-container": "#ffdad6",
+                      "surface-variant": "#38342b",
+                      "secondary": "#ffe2ab",
+                      "on-secondary-fixed-variant": "#5c4300",
+                      "on-primary-container": "#554300",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed": "#00174b",
+                      "outline-variant": "#4d4635",
+                      "primary-fixed-dim": "#e9c349",
+                      "primary": "#f2ca50",
+                      "on-surface-variant": "#d0c5af",
+                      "surface-dim": "#16130b",
+                      "secondary-fixed": "#ffdfa0",
+                      "tertiary-fixed": "#dbe1ff",
+                      "surface-bright": "#3d392f",
+                      "on-primary-fixed-variant": "#574500",
+                      "tertiary-fixed-dim": "#b4c5ff",
+                      "primary-container": "#d4af37",
+                      "on-secondary": "#402d00",
+                      "surface-container-highest": "#38342b",
+                      "surface": "#16130b",
+                      "secondary-fixed-dim": "#fbbc00",
+                      "surface-tint": "#e9c349",
+                      "surface-container-low": "#1f1b13",
+                      "surface-container-high": "#2d2a21",
+                      "surface-container": "#231f17",
+                      "on-tertiary-container": "#254188"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "container-max": "1280px",
+                      "gutter": "32px",
+                      "section-gap": "128px",
+                      "margin-page": "64px"
+              },
+              "fontFamily": {
+                      "h2": ["Playfair Display"],
+                      "display-lg": ["Playfair Display"],
+                      "body-md": ["Inter"],
+                      "h1": ["Playfair Display"],
+                      "label-caps": ["Inter"],
+                      "h3": ["Playfair Display"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "h2": ["2.25rem", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "display-lg": ["4.5rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["1rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h1": ["3rem", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-caps": ["0.75rem", {"lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                      "h3": ["1.5rem", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "body-lg": ["1.125rem", {"lineHeight": "1.7", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-8 py-6 w-full bg-zinc-950/80 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-zinc-800 flat no-shadows">
+<button class="flex items-center gap-2 text-zinc-400 hover:text-[#D4AF37] transition-colors duration-300">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-inter text-sm font-medium tracking-wide uppercase">Geri Dön</span>
+</button>
+<h1 class="font-playfair text-[#D4AF37] tracking-[0.2em] font-bold text-lg uppercase">ZUMA ISTANBUL</h1>
+<div class="flex items-center gap-4 text-[#D4AF37]">
+<button class="hover:text-zinc-400 transition-colors duration-300 active:opacity-70">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="hover:text-zinc-400 transition-colors duration-300 active:opacity-70">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+</header>
+<main class="pb-section-gap">
+<!-- Cinematic Hero Section -->
+<section class="relative h-[819px] w-full bg-surface-container-lowest flex items-end justify-center pb-24">
+<div class="absolute inset-0 z-0">
+<img alt="Zuma Interior" class="w-full h-full object-cover opacity-60" data-alt="A massive cinematic photograph of a high-end, modern Japanese restaurant interior in an 'Old Money' Istanbul style. The scene is incredibly dark and sophisticated, illuminated by strategically placed warm amber and gold spotlights that highlight natural wood textures and sleek stone surfaces. The atmosphere is sexy, dynamic, and exclusive, feeling like a premium nightlife destination. The high-contrast lighting creates a luxurious, dramatic mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzNyVpsXaVtA_3Kx5k9OjG9OetPRWJgvPlj6plBgrv9gTQI5ZjG69tHSys4viQ7JVA4AaHy2xLu2aht0fxeiRJcehXRfyUwRa6ucShqySWG0z0S63fdE3lisG8rdTCBsGHAqdQmTTz3e7IQEoty8v88BwvxX_QYfnq5ynxiUj8Cy87xopMvByHsr4lzeU1qIWqMmkysRK7Aj22io3mFzAJv0m-gH7EuEf_KttpodIDe4fLmhKLtwccvd6DwSfoIklnIOD_mp2WKSt4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-margin-page max-w-container-max w-full">
+<span class="font-label-caps text-label-caps text-primary-container tracking-[0.3em] uppercase block mb-4">İstinyePark</span>
+<h2 class="font-display-lg text-display-lg text-on-background mb-6">Zuma</h2>
+<div class="h-px w-24 bg-primary-container/50 mx-auto"></div>
+</div>
+</section>
+<!-- Content Section -->
+<section class="max-w-container-max mx-auto px-margin-page pt-32 pb-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="col-span-1 md:col-span-4 border-l border-primary-container/30 pl-8 h-fit sticky top-32">
+<h3 class="font-label-caps text-label-caps text-primary-container mb-4">Küratörün Notu</h3>
+<p class="font-h3 text-h3 text-on-surface-variant italic">"Dinamik ve Sofistike Japon Şıklığı"</p>
+</div>
+<div class="col-span-1 md:col-span-8 flex flex-col gap-16">
+<div>
+<h3 class="font-label-caps text-label-caps text-outline mb-6">Ambiyans</h3>
+<p class="font-body-lg text-body-lg text-on-background max-w-2xl">
+                            İstinyePark'ın en iddialı noktası. Karanlık, modern, inanılmaz seksi ve havalı bir iç mimari. Enerjisi en yüksek mekanlardan biri.
+                        </p>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps text-outline mb-6">Neden Gidilmeli?</h3>
+<p class="font-body-lg text-body-lg text-on-background max-w-2xl border-b border-surface-container-highest pb-8">
+                            Şehrin en havalı ve dinamik atmosferinde premium Asya mutfağına doymak için.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Fotoğraf Galerisi -->
+<section class="max-w-container-max mx-auto px-margin-page pb-section-gap">
+<div class="flex justify-between items-end mb-12">
+<h2 class="font-h2 text-h2 text-on-background">Fotoğraf Galerisi</h2>
+<div class="h-px flex-1 bg-surface-container-highest ml-8 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="aspect-[3/4] relative group overflow-hidden border border-surface-container-highest">
+<img alt="Gallery Image 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A close-up shot of an exclusive bar area in a sophisticated, dark-themed restaurant. The lighting is extremely moody, with glowing gold accents reflecting off polished glassware and dark marble surfaces. The aesthetic is purely minimalist-luxurious, fitting a high-end Istanbul venue with deep blacks and subtle amber highlights. The atmosphere feels energetic yet refined." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDDprhStnvkPTOTLDpsC4imdehLqBUJRx_4WU_AOkReJ_zsjnr6YZ-4fwFH3TIZ_ztpc8va6rAsHOH9O_97Gn_9RFvy6Api-ljBMJfVq0tkLRBqbB-U4KfP9Nm2VlEbG4SpKS6phDDCvjfhHa5N56dgRRqeBBa0DfCuivtpylP0cBnbiI50JdgiHAuRnHx10fcTQQLNK_Lj4ojTjfM-NCO73bayYND2gH2jYwZkvfs474_YavYDSsPWefPxjpCx52QgYsGy3VWVid8"/>
+</div>
+<div class="aspect-[3/4] relative group overflow-hidden border border-surface-container-highest mt-0 md:mt-12">
+<img alt="Gallery Image 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A wide architectural shot of a sleek, modern dining room steeped in 'Old Money' luxury. The scene features massive structural wooden elements, dark leather seating, and vast amounts of negative space. Strategic warm lighting casts dramatic shadows across the zinc-toned floor. The mood is authoritative and incredibly stylish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIx56XOqwzgU3C6OARFYTJFGezQJpt9kZ4Is8cGPAljdbJtwKlSKIUdmtPdJL3i3eiWWS_3E1yQxg88j1rv5yfOXm6kQPJ0WI7gw6PXB8A_nOzgNpxgcOa5Eu7PMT3vB9UudMJtD_Fc3GQYALEvTpUZlQHlYyQBNZzXYMGJkD_EjtZJggJcfE6HDhJh3bTgeNzxhQch-Ec4bbP6JFIMTHGacCQgFNDszTDJ58bNjB-4UOMT-z_-VA7DU3tQJ00v_MxFYILxmmjL4qF"/>
+</div>
+<div class="aspect-[3/4] relative group overflow-hidden border border-surface-container-highest mt-0 md:mt-24">
+<img alt="Gallery Image 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A moody, high-contrast detail shot of a dining table setting in an elite culinary establishment. Soft, golden spotlighting illuminates delicate ceramic tableware against a pitch-black background. The visual style relies on heavy shadows and sharp focal points, emphasizing the premium, cinematic quality of the dining experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ_8K53FdRzouBeNdnM1oSjQMLvNypJTQj7gw1HIPZDvy495XkRbhtjNZcWJMbhaAo_8aDqMyVC3fZEZUa6OaB93bxp-gFyGbiMYGhtVe-nVqCYq-B5Uw_M2RP6eFoyS08DCxUxuhkOm1O_DIxhzjDSJVCRpfzHMqW1RKm0cyUB8DsMiwZQI19zaG2b33x8Q2Nm7odeo8USjv01qJSgxz9F7-zC5aPiSGX-g6t7t-Nx1LN_JWAQnmlwTn3msvW1jh3KPYA70BCPK-L"/>
+</div>
+</div>
+</section>
+<!-- İmza Lezzetler -->
+<section class="max-w-container-max mx-auto px-margin-page pb-section-gap">
+<div class="text-center mb-16">
+<span class="font-label-caps text-label-caps text-primary-container tracking-[0.2em] block mb-4">ZUMA DENEYİMİ</span>
+<h2 class="font-h1 text-h1 text-on-background">İmza Lezzetler</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-500 bg-surface-container-lowest">
+<div class="aspect-square overflow-hidden relative">
+<img alt="Miso Black Cod" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic, top-down shot of a beautifully plated Miso Black Cod on a dark ceramic dish. The lighting is extremely focused, creating high contrast between the glossy, caramelized surface of the fish and the deep black background. Gold accents from the lighting emphasize the luxurious, minimalist presentation typical of an elite Asian fusion restaurant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6PErlLmK2FEJZK1lY2ns2oZByE4hf_qm20UZwdENoJHGkqjYpEFU13kDs_DNArYagNeOqKRaN0fmEHQwy__sxDv8ZI8cy16CU_T4vF_RVefGHyJlz_CLs7HCxhACMmPTcRo9lagD5EkJa0DqMCiQC12U0p8nxfubRGrDRXTu2YL9gTIXF2qLa5nDmYV35Uqm9FA2-bNeA0cvex3dErYGrwbu0gzlKX9I85e-oDC0jGcdNJhzuUhU48dZGyVvPw1k3CXKvLKTnM-v7"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur px-3 py-1 border border-surface-container-highest">
+<span class="font-label-caps text-label-caps text-on-surface">DENİZ MAHSULÜ</span>
+</div>
+</div>
+<div class="p-8">
+<h4 class="font-h3 text-h3 text-on-background mb-3">Miso Black Cod</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Zuma'nın ikonik, karamelize siyah kod balığı.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-500 bg-surface-container-lowest">
+<div class="aspect-square overflow-hidden relative">
+<img alt="Spicy Beef Tenderloin" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="A close-up, dramatic shot of perfectly seared Spicy Beef Tenderloin slices arranged elegantly on a textured dark plate. Vivid red accents from chili sauces contrast sharply against the moody, dark background. The lighting is sharp and cinematic, highlighting the rich texture of the meat in a highly sophisticated, luxurious aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb1dr5x7qPa6CTUHIlE-LGyMz49koV35s-STFGJnoo4bPlsyNw6zHunILm6FzdaY5bPn-jVmSepG3ErGJysOXoHB8XKhZ9k9mzDRc0DPXkDIZ_GcxDUdiZ80Td4jN5tUv-cQLLjRUSg4hpgJbu8AiUpV9R8bDeXahvy2VNmYGkpwbn3SaAJzr1gdSu079ttV__6mgIkiYjNXB-DT7rjSKsasoQ-MSQ0tvEFWgCPotHhbDDpgtritK6_hwHp1VE0Mn_g5Yinwc_oAaV"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur px-3 py-1 border border-surface-container-highest">
+<span class="font-label-caps text-label-caps text-on-surface">ET</span>
+</div>
+</div>
+<div class="p-8">
+<h4 class="font-h3 text-h3 text-on-background mb-3">Spicy Beef Tenderloin</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Acı soslu, ince dilimlenmiş bonfile dilimleri.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-500 bg-surface-container-lowest">
+<div class="aspect-square overflow-hidden relative">
+<img alt="Premium Sashimi" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="An exquisite, minimalist presentation of Premium Sashimi on a bed of crushed ice within a heavy, dark stone bowl. The incredibly fresh, vibrant cuts of fish stand out against the vast negative space of the dark zinc table setting. High-key spotlights create a gleaming, expensive look that screams 'Old Money' culinary luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPLL4obC9-ks3aeKCP0CIQVBzMSlHc0xsoM96bixFKZpxpmMfOgSnHg8KyzAOTlHn8uu3IVGdXPFHxloT9v0p-UiJtqovRMTBd2kGvhg2yFnJ73rVyrLvY2Zlvo_NONh3QZe0VJFEemsPn_JxUIywX1SSGN3BqMBX1WanN5DSkvGS1rJgHaW44PT067HuTwPD4WQEoH99lB8xEQyPQelzJNjPNwRe81zsm1PMiWnWGK9vr2dPz5_P1VkJOI9kqGPaUuVGiWCI8Qjn7"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur px-3 py-1 border border-surface-container-highest">
+<span class="font-label-caps text-label-caps text-on-surface">ÇİĞ</span>
+</div>
+</div>
+<div class="p-8">
+<h4 class="font-h3 text-h3 text-on-background mb-3">Premium Sashimi</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Günün en taze ve özel balık kesimleri.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-container-max mx-auto px-margin-page pb-32 flex justify-center">
+<button class="border border-primary-container text-primary-container font-label-caps text-label-caps uppercase px-12 py-6 tracking-[0.2em] hover:bg-primary-container hover:text-on-primary transition-all duration-500 shadow-[0_0_15px_rgba(212,175,55,0.1)] hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                Rezervasyon Yap
+            </button>
+</section>
+</main>
+</body></html>

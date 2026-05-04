@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arkestra - Etiler | PERA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1f1b13",
+                        "surface-tint": "#e9c349",
+                        "on-tertiary-fixed": "#00174b",
+                        "outline": "#99907c",
+                        "on-primary-container": "#554300",
+                        "error-container": "#93000a",
+                        "on-surface": "#eae1d4",
+                        "secondary": "#ffe2ab",
+                        "on-surface-variant": "#d0c5af",
+                        "tertiary-fixed": "#dbe1ff",
+                        "inverse-surface": "#eae1d4",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "on-tertiary": "#082b72",
+                        "on-secondary-container": "#6d5000",
+                        "on-primary": "#3c2f00",
+                        "on-primary-fixed": "#241a00",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#ffe088",
+                        "surface-container-high": "#2d2a21",
+                        "background": "#16130b",
+                        "on-primary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#343027",
+                        "tertiary": "#bfcdff",
+                        "primary": "#f2ca50",
+                        "surface-container": "#231f17",
+                        "primary-container": "#d4af37",
+                        "outline-variant": "#4d4635",
+                        "surface-container-lowest": "#110e07",
+                        "tertiary-container": "#97b0ff",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#e9c349",
+                        "surface-variant": "#38342b",
+                        "secondary-container": "#ffbf00",
+                        "inverse-primary": "#735c00",
+                        "surface-container-highest": "#38342b",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-background": "#eae1d4",
+                        "secondary-fixed": "#ffdfa0",
+                        "on-tertiary-fixed-variant": "#27438a",
+                        "on-secondary": "#402d00",
+                        "surface-dim": "#16130b",
+                        "surface": "#16130b",
+                        "surface-bright": "#3d392f",
+                        "on-tertiary-container": "#254188",
+                        "on-secondary-fixed": "#261a00",
+                        "tertiary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "gutter": "32px",
+                        "margin-page": "64px",
+                        "section-gap": "128px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h3": ["Playfair Display"],
+                        "h2": ["Playfair Display"],
+                        "label-caps": ["Inter"],
+                        "h1": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["4.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["1.125rem", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "body-md": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["1.5rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h2": ["2.25rem", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "h1": ["3rem", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Suppressed TopAppBar and BottomNavBar as this is a focused detail/transactional view with a 'Back' action -->
+<!-- Navigation Header -->
+<header class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-zinc-950/20 backdrop-blur-md">
+<button class="flex items-center gap-2 group text-on-background hover:text-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+<span class="font-label-caps uppercase text-label-caps">Geri Dön</span>
+</button>
+</header>
+<main>
+<!-- Cinematic Hero -->
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-zinc-800">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="A highly atmospheric, cinematic wide shot of a luxurious listening room and dining space in an old restored villa in Istanbul. The scene is bathed in dim, warm amber lighting. Rich emerald green velvet banquettes, dark mahogany wood paneling, and subtle gleams of gold brass details define the space. A high-end vintage record player is subtly visible. The overall aesthetic is 'old money', deeply sophisticated, moody, and deeply luxurious." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAVqETu0ApKGLD9KQnSAOhaBB-v_AnhjExGJNw9VpRWSLSKR719TqkBrgL5QjmrthV4Yal-kaNV0oRjxt0i4htBFSqHsDb6TKiCDXxJeQgLC_sHy9ipfd4vA1ovt4vXWvxsiyUqZsazl8Zaiyb2y_2Q-6KlPYt6wTHOzActmK3b_RxRKQmPhLHfRyMIeYfX0lV33__JYfrtufbg12Fv9dScO9LDRwt4hATDKYQOjCsGxYv-VjNOv6akJpbkXO0OexyCwe_JfXJMnBVF');">
+</div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 z-10 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="relative z-20 text-center flex flex-col items-center gap-6 mt-32">
+<span class="font-label-caps text-label-caps text-primary-container uppercase tracking-[0.2em] border border-primary-container/30 px-4 py-2 rounded-full bg-background/50 backdrop-blur-sm">Etiler, İstanbul</span>
+<h1 class="font-display-lg text-display-lg text-on-background drop-shadow-2xl">Arkestra</h1>
+</div>
+</section>
+<div class="max-w-container-max mx-auto px-margin-page pb-section-gap">
+<!-- Ambiance Section -->
+<section class="mt-section-gap max-w-3xl mx-auto text-center">
+<h2 class="font-h2 text-h2 text-primary-container mb-8">Ambiyans</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    1960'lardan kalma restore edilmiş bir villada, Michelin yıldızlı bir gastronomi yolculuğu. Loş ışıklar, kadife detaylar ve özel 'Listening Room' ile İstanbul'un en sofistike noktası.
+                </p>
+</section>
+<!-- Photo Gallery Bento Grid -->
+<section class="mt-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-unit h-[600px]">
+<!-- Main Interior (Spans 8 cols) -->
+<div class="md:col-span-8 relative group overflow-hidden border border-zinc-800 bg-surface-container-low rounded-DEFAULT">
+<img alt="Gallery Interior" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 opacity-80" data-alt="A detailed interior shot of a sophisticated dining area in a 1960s villa. The lighting is low and intimate. Features include dark wood tables, plush velvet seating in rich jewel tones, and vintage mid-century modern lighting fixtures casting warm pools of light. The atmosphere is quiet luxury and refined elegance, adhering to a dark, moody 'old money' aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhSM0KexoNlS-Y9g0_uIYh5ovOnDcdTp-afT909dJXYiV3oRHicMZdT28C2qItoGy8ZnSvgXqKTV5icKzFXkMEJA0cnR7Lf7erQBKvdPrHPumJV-fiKhNzA8uY3oxt6VEsyYjVRLraHXv09YVL5GQkoFFRViZj76YK-VCEQIdLz8_ELt0HommhmPwfgqY9UfUK3JNeCrfpkIIDOf6tFj60-A489Z5NX2e4hJPZzJSeSyhdShXa4zY8DwcSpK8tEJMPmodn5KjpUSFl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+</div>
+<!-- Right Column (Spans 4 cols, 2 rows) -->
+<div class="md:col-span-4 grid grid-rows-2 gap-unit">
+<!-- Dining Table -->
+<div class="relative group overflow-hidden border border-zinc-800 bg-surface-container-low rounded-DEFAULT">
+<img alt="Dining Table Setup" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 opacity-80" data-alt="A close-up of a meticulously set dining table in a high-end restaurant. Crisp white linen napkins, heavy silver cutlery, and delicate crystal wine glasses catching a subtle amber glow. A small, elegant floral arrangement sits in the center. The background is softly blurred, emphasizing the premium quality of the table setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh_2VFcroT9owVpWAwy-soIG0re1XJpRi19ybAtFJhB5O6XNFtBY3VUNUZFecB7UUPoMVWWh6XqkuuTSzM5j0bbVfZV_pfp9t1C9T6ULuScszb2WfaN9THIYX7IAg-sqtng4Il6BAhYGZ2bCPRVmsm60BDiC5kIEoiqeyLzk8H6TVj8xlmMHoOZzjn20IhD-h5WOmMuAvBYruxZi2Ys7cgqFWh1j4XytvjmKx1_ghpglbpvz1iI1i3q2M6IDYWrTEvDGZgreMAKckY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+</div>
+<!-- Bar Area -->
+<div class="relative group overflow-hidden border border-zinc-800 bg-surface-container-low rounded-DEFAULT">
+<img alt="The Bar" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 opacity-80" data-alt="A sophisticated cocktail bar bathed in low-key lighting. The bar top is dark marble. Behind it, shelves lined with premium spirits glow softly. A bartender's tools are neatly arranged. The mood is intimate and exclusive, perfectly matching the dark, luxurious aesthetic of a Michelin-starred venue in Istanbul." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP6_phB0GBpDfK-raTIPRaP6TRxIHsNdQc9cpZziGI5TqxgFUB4caeBCQm1hYKerhsK4U0GGbsZQdhLwRTOBHZAfTjbrjnEOlfwVLfDQI2fULJGokpL23iCl_LOX8BWizaARfShM0mBOH9xjd49rCg8-bAWWPi9u09KA7QFCc_XeQDDiEUJHU2a_dpYXtHZWIdNL-vYHoN9LVuw8lABjyhLCIyf92TUlsJSOeS5jCguJIfRg-yEuvL3V2_0fbekLX760Yjn7KnTon4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Dishes -->
+<section class="mt-section-gap">
+<div class="flex items-center justify-between mb-16 border-b border-zinc-800 pb-8">
+<h2 class="font-h2 text-h2 text-primary-container">İmza Lezzetler</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Dish 1 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative h-[400px] mb-6 overflow-hidden border border-zinc-800 bg-surface-container-lowest">
+<img alt="Kılıç Balığı Sashimi" class="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105 opacity-90" data-alt="A beautifully plated dish of fresh Swordfish Sashimi viewed from slightly above. The translucent slices of fish are elegantly arranged on a dark, artisanal ceramic plate. Vibrant drops of yellow citrus sauce and tiny microgreens garnish the fish. The lighting is focused and dramatic, highlighting the freshness and texture of the dish against the dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEh0gMht51CSpXx78NVtFmIMbepkMxBRywW1a66ygtB0pMw1wF0YYjCtkm49E8vokZo7LHpInoOOBraX8cgC24sNVM8-aB-75rP9Q-xhIcRLM5BMmF9DCszjmGHUvfOfs3VzQwpIOsmLDShLH79q5eL-i1l0BtdkJpnxx9wY00REwWDxT6EaHWytzgCE5B5m6thpv-JPthLWZJLDIh4XPLqihjpPBu5TTPB35Kw4-d7AFfrCfH82xAA2L-j8r8mRaKiAjGaLUVMHnv"/>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-3 group-hover:text-primary-container transition-colors duration-300">Kılıç Balığı Sashimi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Taze kılıç balığı, özel turunçgil sosu ile.</p>
+</article>
+<!-- Dish 2 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative h-[400px] mb-6 overflow-hidden border border-zinc-800 bg-surface-container-lowest">
+<img alt="Beef Wellington" class="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105 opacity-90" data-alt="A perfect slice of Beef Wellington revealing a rare, ruby-red center, enveloped in dark mushroom duxelles and golden, flaky puff pastry. It rests on a pool of rich, dark demi-glace sauce on an elegant dark plate. The setting is luxurious and moody, emphasizing the classic, rich nature of the dish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8VvGZJXPVq5zPfhNzm-0J8jFH5wT4qg7WmNmaG0jZKQelA5N-zmdL9BVRA6hihOXyOBTMl_Oa8D81CLpXWcT9OFBt2sqcCvBEO8Gz37OlC4GCGExi2PUoJUr19Ti7dgwZF-mSdt4gIULkmRfDcHuS6g4R73qzG_TXmDRKunwYwPxsA1CSSY61H3Y9P3R6_XZVgvh_YqmlzO_pdFW85ISVer26tE-PRyaBPmgDFzAOMcNrILltPCPDGUeCC4aph05fKwHWbzV2XyEK"/>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-3 group-hover:text-primary-container transition-colors duration-300">Beef Wellington</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Geleneksel reçete, mantar duxelles ve çıtır milföy.</p>
+</article>
+<!-- Dish 3 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative h-[400px] mb-6 overflow-hidden border border-zinc-800 bg-surface-container-lowest">
+<img alt="Trüf Mantarlı Risotto" class="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105 opacity-90" data-alt="A comforting, shallow bowl of creamy Truffle Risotto. Shavings of fresh black truffle are scattered generously over the top, alongside delicate aged parmesan curls. The risotto has a rich, glossy sheen. The lighting is warm and directional, capturing the earthy luxury of the dish in a sophisticated dining environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQk3-5cK2w4gfNRyMROMew9EjZWdTQHfI5ZKdlve-jUpptm2vffis4iRPmrnaXlSlRddGWxqWkxCBKQe13t91fVu_Qg6H5DH56VWcQ10V_9WL3R7dzZHknnkrokgUHLnxvT1OCYgee8qx_YUAxLexgIMnAFu100umzcI4mN9ZPgVkugpPTHMANfk_OKTrE300wkUatGIHC4RSGCoVwQsevWTguU0Rp0baYLmb3O0xOW6fmzBj74AW-lLNbGdVOHS1jx5LcEUfypLKr"/>
+</div>
+<h3 class="font-h3 text-h3 text-on-background mb-3 group-hover:text-primary-container transition-colors duration-300">Trüf Mantarlı Risotto</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Siyah trüf ve 24 aylık parmesan ile.</p>
+</article>
+</div>
+</section>
+</div>
+</main>
+<!-- Fixed Bottom CTA -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-gradient-to-t from-background via-background/90 to-transparent pb-8 pt-24 px-8 pointer-events-none flex justify-center">
+<button class="pointer-events-auto border border-primary-container text-primary-container hover:bg-primary-container hover:text-on-primary-container transition-all duration-500 px-12 py-5 font-label-caps text-label-caps uppercase tracking-[0.2em] shadow-[0_0_30px_-5px_rgba(212,175,55,0.3)] backdrop-blur-md bg-zinc-950/50">
+            Rezervasyon Yap
+        </button>
+</div>
+</body></html>

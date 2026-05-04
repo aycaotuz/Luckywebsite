@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PAPERMOON - Venue Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#e9c349",
+                        "outline-variant": "#4d4635",
+                        "on-secondary-fixed": "#261a00",
+                        "surface-bright": "#3d392f",
+                        "background": "#16130b",
+                        "tertiary": "#bfcdff",
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-dim": "#16130b",
+                        "on-secondary-container": "#6d5000",
+                        "on-primary-fixed": "#241a00",
+                        "on-primary": "#3c2f00",
+                        "secondary-container": "#ffbf00",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#254188",
+                        "on-secondary": "#402d00",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed": "#ffdfa0",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "primary-fixed": "#ffe088",
+                        "surface": "#16130b",
+                        "on-tertiary-fixed-variant": "#27438a",
+                        "on-primary-fixed-variant": "#574500",
+                        "tertiary-container": "#97b0ff",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "on-primary-container": "#554300",
+                        "on-tertiary": "#082b72",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "inverse-surface": "#eae1d4",
+                        "surface-container-lowest": "#110e07",
+                        "primary": "#f2ca50",
+                        "error-container": "#93000a",
+                        "on-background": "#eae1d4",
+                        "surface-variant": "#38342b",
+                        "surface-container-low": "#1f1b13",
+                        "primary-container": "#d4af37",
+                        "inverse-on-surface": "#343027",
+                        "secondary": "#ffe2ab",
+                        "surface-container-high": "#2d2a21",
+                        "surface-container": "#231f17",
+                        "outline": "#99907c",
+                        "on-tertiary-fixed": "#00174b",
+                        "surface-container-highest": "#38342b",
+                        "on-surface": "#eae1d4",
+                        "on-surface-variant": "#d0c5af",
+                        "inverse-primary": "#735c00",
+                        "surface-tint": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "64px",
+                        "section-gap": "128px",
+                        "unit": "8px",
+                        "gutter": "32px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h2": ["Playfair Display"],
+                        "h3": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["0.75rem", {"lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "body-md": ["1rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h2": ["2.25rem", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "h3": ["1.5rem", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "display-lg": ["4.5rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["1.125rem", {"lineHeight": "1.7", "fontWeight": "400"}],
+                        "h1": ["3rem", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container pb-24">
+<!-- Header / Nav -->
+<header class="fixed top-0 w-full flex justify-between items-center px-8 py-6 bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800 z-50 transition-all duration-300">
+<button class="flex items-center gap-2 text-zinc-400 hover:text-primary-container transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+<span class="font-label-caps text-label-caps">Geri Dön</span>
+</button>
+<div class="text-xl font-serif text-[#D4AF37] tracking-[0.2em] uppercase">PAPERMOON</div>
+<div class="flex gap-4 text-zinc-400">
+<button class="hover:text-primary-container transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+<button class="hover:text-primary-container transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative h-[819px] min-h-[600px] w-full mt-[80px]">
+<div class="absolute inset-0 bg-zinc-900">
+<img alt="Papermoon Interior" class="w-full h-full object-cover opacity-60" data-alt="A cinematic, wide-angle shot of a classic, elegant Italian fine-dining interior. The space exudes an 'Old Money' sophisticated dark aesthetic. Rich mahogany wood panels, soft amber lighting from exquisite crystal chandeliers, and crisply set tables with white linens. The mood is noble, exclusive, and timelessly luxurious, designed to appeal to high-society patrons. Deep shadows contrast with warm golden highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDelpe8eMuZTfjrEpXpQGShg77Ub3BG1KN76qAxjsFP9asYTt2eHvij7jQTWp51zAljurEeRSJu6VXOf6lZ2sV5i94KPMaRTYygxnetpNM074m7npZbaCdjh1fNMOa4jijlL_0BxkQLa817q0_zzsoxAxQVNkrbybWwXqflM7W4bJmyviPjRE7nRWMrr767AWN_E2S7DjA0TNUMGVJlVdNqV0uU8puB93yzOXcqF8fP-ymb4sySOQVHZIxKRIHXiW7ST-TsMq7_RuhL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-8 md:p-margin-page max-w-container-max mx-auto flex flex-col justify-end">
+<div class="inline-flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="location_on">location_on</span>
+<span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase">Etiler</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-background mb-4">Papermoon</h1>
+<p class="font-body-lg text-body-lg text-zinc-300 max-w-2xl border-l-2 border-primary-container pl-6 py-2 italic">
+                "İş ve Cemiyet Hayatının İtalyan Klasiği"
+            </p>
+</div>
+</section>
+<!-- Main Content Container -->
+<main class="max-w-container-max mx-auto px-8 md:px-margin-page pt-section-gap pb-section-gap flex flex-col gap-section-gap">
+<!-- Info Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex flex-col gap-6">
+<div>
+<h2 class="font-h3 text-h3 text-primary-container mb-4">Ambiyans</h2>
+<p class="font-body-md text-body-md text-zinc-400 leading-relaxed">
+                        Etiler'de yıllardır kalitesinden ödün vermeyen, sade, asil ve sofistike mekan. İş yemekleri ve şık akşamların garanti adresi. İçeri adım attığınız andan itibaren sizi saran o asil atmosfer, İstanbul'un elit tabakasının neden burayı tercih ettiğini kanıtlıyor.
+                    </p>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div>
+<h2 class="font-h3 text-h3 text-primary-container mb-4">Neden Gidilmeli?</h2>
+<p class="font-body-md text-body-md text-zinc-400 leading-relaxed">
+                        İş çıkışı şık bir yemek veya garantili bir premium İtalyan klasiği aradığınızda. Kusursuz servis anlayışı ve yıllara meydan okuyan tutarlı lezzet kalitesiyle, risk almak istemediğiniz o önemli akşamlarda güvenebileceğiniz yegane liman.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Gallery Section -->
+<section class="flex flex-col gap-12">
+<div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+<h2 class="font-h2 text-h2 text-on-background">Fotoğraf Galerisi</h2>
+<span class="font-label-caps text-label-caps text-zinc-500 uppercase tracking-widest">3 Görsel</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Gallery Item 1 -->
+<div class="aspect-[4/5] relative group overflow-hidden border border-zinc-800">
+<img alt="Dining Area" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A close-up architectural detail shot of an upscale restaurant table setting. Crisp white tablecloth, polished silver cutlery, and a sparkling crystal wine glass catching warm amber light. The background is a deeply shadowed, sophisticated dining room, emphasizing a moody, expensive 'Old Money' dark aesthetic with subtle gold reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAexbOHAWHLFfnS3Nngad1LBW3ioxKNWgjtMQWQz9c0RcqSgLpN2GdHxbjP_TjV6yLb-e4ZRYquHpJpmA94ftZZXQe3mAMcUCMplzmMrbTckRphRmU_ng6QDTQgCcl6UK5vPA-P0oUAN4EUYQtlvWFSQ-hRJMYgVQ4JXA1uBsIj0JNXZzcMjW6q_POZgd7k95qady0RbHDX_NjrqCagSlyc2jO7ijac7ABbNFbY5iWk6jVqAxyQOQYzSa-HSt1B68PGrqI3NzGyHDZ"/>
+</div>
+<!-- Gallery Item 2 -->
+<div class="aspect-[4/5] relative group overflow-hidden border border-zinc-800 md:mt-12">
+<img alt="Wine Selection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="An imposing, dimly lit wine cellar in a luxury restaurant. Rows of premium vintage wine bottles rest on dark mahogany racks. Soft, dramatic spotlighting highlights the glass curves and golden labels. The overall mood is hushed, exclusive, and undeniably expensive, perfectly aligning with a sophisticated dark UI theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD7CGAvTzD3fvuKrLuRf6p5zJl0uhfDcLdmFA4d66XGkDz0Pbk4WTMpf8aJKznOUvieyJjq61Mc1OpUeAGiU4MSwWQqgjXvz0kp2y1o-u85yaVYz_pkIyaeiBvK2OW76iGCi4D69n9nAiZ99bGr8ONO29YRSqOz0OfSQVvkmMLx5wwLKtdoD4R5pOOxQ8S7RaRSRxLVK1elGkLHV4Jazidfm_adBZydkGmJGFePDJ8sbXgPKOxkSz4mnv415RPm2kQdKByF0B_lj1J"/>
+</div>
+<!-- Gallery Item 3 -->
+<div class="aspect-[4/5] relative group overflow-hidden border border-zinc-800">
+<img alt="Bar Area" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A sophisticated classic cocktail bar in an elite Italian restaurant. The bartop is dark marble, surrounded by low-slung leather stools. A smartly dressed bartender is subtly visible in the background. The lighting is moody, relying on warm amber sconces that create deep shadows and a luxurious, intimate evening atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVAVAA6XatDz98Aw6LFVZ-68w6SThSGn9mW4042uyhHMYR58Zs7323G8y0tJ1OtSXQEvIkPQ6Gyy3NG-PpqK4ucTeutf5D3iG-Lj0qdT6ITPSR_YUCa8RC5DePQ9sPGcVTnMCA1ZWiLVy_4aYEV6yXHxG7Ho61Sb0lNf90C3k3I-23HTAwPmIMcx_kAdXVEjjvx8AptT_DPvbyzg8MzldVBY1m5BuA6OMuaMUR5cTrELZHnL8pmYks8ttqpOq2Q3nKJfWQD55TRQCB"/>
+</div>
+</div>
+</section>
+<!-- Signature Dishes -->
+<section class="flex flex-col gap-12">
+<div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+<h2 class="font-h2 text-h2 text-on-background">İmza Lezzetler</h2>
+<span class="font-label-caps text-label-caps text-zinc-500 uppercase tracking-widest">Seçkiler</span>
+</div>
+<div class="flex flex-col gap-8">
+<!-- Dish 1 -->
+<div class="group flex flex-col md:flex-row gap-8 items-center bg-surface-container-low border border-zinc-800 p-6 hover:border-zinc-700 transition-colors">
+<div class="w-full md:w-1/3 aspect-square overflow-hidden border border-zinc-800">
+<img alt="Bresaola &amp; Parmesan" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" data-alt="A high-end culinary presentation of Bresaola and Parmesan. Thin, ruby-red slices of cured beef are artfully arranged on a dark slate plate, topped with fresh, vibrant green arugula and generous shavings of aged parmesan cheese. Shot from directly above with dramatic, moody lighting that highlights the textures and rich colors against a dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr9Ny2tNdWJ2L4bvQjuzXc6h1mRj96Afwjy2U0gl7TNYn8XnYPfXULAixydCauVxcgyOl17PfK9QDHS-_sT1KWqNfAb0XJv_DfhOgeCXICI-rK4FVYMNosbY2dOLm6PkwAa3UMVVIW8YId-ygiVY9bFg68e3BR-OamsDbijwKRk_BEyhSstBudd2e5uKckwk6nYx1xbXn5lrCDSQl_30kIIXVP6WWBmX5zNaEBmv4gf7Dz8YIEBP31wucdo9ueE1X55LF2mJyz5R7B"/>
+</div>
+<div class="w-full md:w-2/3 flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-background group-hover:text-primary-container transition-colors">Bresaola &amp; Parmesan</h3>
+<p class="font-body-md text-body-md text-zinc-400">İncecik dilimlenmiş dana eti ve roka.</p>
+</div>
+</div>
+<!-- Dish 2 -->
+<div class="group flex flex-col md:flex-row gap-8 items-center bg-surface-container-low border border-zinc-800 p-6 hover:border-zinc-700 transition-colors">
+<div class="w-full md:w-1/3 aspect-square overflow-hidden border border-zinc-800 order-1 md:order-2">
+<img alt="Trüflü Taze Makarna" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" data-alt="A close-up, mouth-watering shot of fresh homemade pasta twirled elegantly in a shallow dark ceramic bowl. Generous shavings of fresh black truffle are scattered over the top. The lighting is low and sophisticated, emphasizing the golden hue of the pasta and the dark, earthy texture of the truffles. A truly luxurious fine-dining aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW7TfAtPNcadfm-2G4NMVRe4YfpcinuzUFk042R4XnR3aoxp2wrbDUEyLmAmKu5JUFUfck_A3-oF60bJc3IKzHC1aPq6174LaKs-DZXWUHoOghMcUmFNdrWd_T-eQIBIsz7ko52I8Jkcs20LeJGIFqsxQO8H1X64PcqlPVmjIqk9mWUucsi-R0V7lIe3nxbSk-duySzWQyi_d5zPh8eZTiPIln-BSQlkjvQbXDasIjg_uV8BXjDXlFB_ezW-qifSvgTvOhWL8Y2znT"/>
+</div>
+<div class="w-full md:w-2/3 flex flex-col gap-4 order-2 md:order-1 md:text-right">
+<h3 class="font-h3 text-h3 text-on-background group-hover:text-primary-container transition-colors">Trüflü Taze Makarna</h3>
+<p class="font-body-md text-body-md text-zinc-400">Ev yapımı makarna ve taze trüf mantarı.</p>
+</div>
+</div>
+<!-- Dish 3 -->
+<div class="group flex flex-col md:flex-row gap-8 items-center bg-surface-container-low border border-zinc-800 p-6 hover:border-zinc-700 transition-colors">
+<div class="w-full md:w-1/3 aspect-square overflow-hidden border border-zinc-800">
+<img alt="Klasik Tiramisu" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" data-alt="A perfectly plated slice of classic Italian Tiramisu on an elegant, minimalist dark plate. The dessert features distinct layers of espresso-soaked ladyfingers and rich mascarpone cream, heavily dusted with dark cocoa powder. The shot is moody and cinematic, capturing the soft, velvety texture of the cream and the rich, dark tones of the cocoa." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVJsgTwYDS6an6NyMflvJ1HEQnw4yem7cQSAPIZrLKiR-efAjpgNl6GVeflhbrnLevEJ_zAqIckQJyIYHul7KWw6Mpb8n_17rIVQCX0ilZGAR3SfrLpEInDPucKFw0wNPQBU8SZRS2l_SysEXN8xY96oUq18geDNbAPwfYsgGE5aaPHWiNEXkY-E74DBnfguTKZcHnOorRI-O2joUiMmeh9Op8SVkk8JS3FatvILjtbtzkbEjuq1Cgi1C5-1yYt2OZE7SG6X6MyS5x"/>
+</div>
+<div class="w-full md:w-2/3 flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-background group-hover:text-primary-container transition-colors">Klasik Tiramisu</h3>
+<p class="font-body-md text-body-md text-zinc-400">Orijinal reçeteyle hazırlanan efsane kapanış.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom CTA Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-zinc-950/90 backdrop-blur-2xl border-t border-zinc-800 p-6 z-40 flex justify-center items-center pb-safe">
+<button class="w-full max-w-md bg-transparent border border-primary-container text-primary-container hover:bg-primary-container hover:text-on-primary-container font-label-caps text-label-caps uppercase tracking-widest py-4 px-8 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.1)] hover:shadow-[0_0_25px_rgba(212,175,55,0.3)]">
+            Rezervasyon Yap
+        </button>
+</div>
+</body></html>

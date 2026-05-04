@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PERA - İstanbul Gastronomi Rehberi | Keşfet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#254188",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#38342b",
+                        "error": "#ffb4ab",
+                        "on-surface": "#eae1d4",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-container-low": "#1f1b13",
+                        "on-surface-variant": "#d0c5af",
+                        "secondary": "#ffe2ab",
+                        "surface-bright": "#3d392f",
+                        "primary-container": "#d4af37",
+                        "error-container": "#93000a",
+                        "on-primary": "#3c2f00",
+                        "inverse-on-surface": "#343027",
+                        "tertiary": "#bfcdff",
+                        "surface-container-highest": "#38342b",
+                        "background": "#16130b",
+                        "outline-variant": "#4d4635",
+                        "on-tertiary-fixed-variant": "#27438a",
+                        "on-primary-fixed": "#241a00",
+                        "secondary-fixed": "#ffdfa0",
+                        "secondary-container": "#ffbf00",
+                        "primary-fixed": "#ffe088",
+                        "on-error": "#690005",
+                        "on-background": "#eae1d4",
+                        "primary": "#f2ca50",
+                        "tertiary-container": "#97b0ff",
+                        "surface-container": "#231f17",
+                        "on-primary-container": "#554300",
+                        "on-tertiary": "#082b72",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "inverse-primary": "#735c00",
+                        "primary-fixed-dim": "#e9c349",
+                        "surface": "#16130b",
+                        "surface-container-high": "#2d2a21",
+                        "on-secondary-fixed": "#261a00",
+                        "inverse-surface": "#eae1d4",
+                        "on-secondary": "#402d00",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-secondary-container": "#6d5000",
+                        "on-tertiary-fixed": "#00174b",
+                        "surface-tint": "#e9c349",
+                        "outline": "#99907c",
+                        "surface-dim": "#16130b",
+                        "surface-container-lowest": "#110e07"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "64px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "section-gap": "128px",
+                        "gutter": "32px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Playfair Display"],
+                        "h2": ["Playfair Display"],
+                        "h1": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h3": ["1.5rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h2": ["2.25rem", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "h1": ["3rem", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["1.125rem", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "display-lg": ["4.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "body-md": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopAppBar (Web) -->
+<header class="hidden md:flex fixed top-0 left-0 w-full justify-between items-center px-8 py-6 bg-zinc-950/80 backdrop-blur-2xl z-50 text-zinc-100 font-serif tracking-widest text-sm uppercase">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-serif text-[#D4AF37] tracking-[0.3em] font-light">PERA</span>
+<nav class="flex gap-6 items-center">
+<a class="text-[#D4AF37] border-b border-[#D4AF37] pb-1 opacity-70 transition-opacity" href="#">Keşfet</a>
+<a class="text-zinc-400 hover:text-[#D4AF37] transition-colors duration-500" href="#">Koleksiyonlar</a>
+<a class="text-zinc-400 hover:text-[#D4AF37] transition-colors duration-500" href="#">Rehber</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button aria-label="Notifications" class="hover:text-[#D4AF37] transition-colors duration-500">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="Account" class="hover:text-[#D4AF37] transition-colors duration-500">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 py-4 bg-zinc-950/90 backdrop-blur-xl border-t border-zinc-800 text-[#D4AF37] font-serif text-[10px] tracking-widest uppercase">
+<a class="flex flex-col items-center justify-center text-[#D4AF37] space-y-1 scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span>Discovery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 space-y-1 hover:text-zinc-200 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span>Curated</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 space-y-1 hover:text-zinc-200 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span>Reservations</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 space-y-1 hover:text-zinc-200 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+</nav>
+<main class="flex-grow pt-0 md:pt-0 pb-24 md:pb-0">
+<!-- Cinematic Hero -->
+<section class="relative min-h-[819px] flex items-center justify-center text-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Bosphorus Night" class="w-full h-full object-cover" data-alt="A cinematic, high-contrast night time photography of the Bosphorus bridge in Istanbul. The water reflects deep obsidian blacks and scattered golden lights from luxury waterfront mansions. The mood is sophisticated, elite, and mysterious, embodying an 'old money' aesthetic. Soft glowing ambient lights highlight architectural details in the background. The visual style relies on vast negative space and a dark palette with striking warm gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKS3UVgeEtZvm_6VzcGZP0LgOHwqdUhhD5Iqyluwr_sskPXS9l8mxnhSv3gJufaaL_qjYEn8E9zbVW4I1uGjO-9OaJ1-HINnL0bkKkz8154Y-hV0cLXMwaMIdbI__IDa8ukl5ipb3wK3nGLUdXfqbKKIqSfIu-8WPyW8p2E5EE6RjTH8o45QQ-TBsafdZdA_Ih7lPjVqcRU0UV_awUuEgQOGHBQHUv75jn9VRpd1Pte9dn7eub-RVjgbjZEjOn3XrPbEQYWk40LH-n"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-page flex flex-col items-center gap-8 mt-24">
+<h1 class="font-display-lg text-display-lg text-on-surface max-w-4xl drop-shadow-2xl">İstanbul'un Seçkin Lezzet Durakları</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Şehrin en prestijli mekanlarını ve michelin yıldızlı deneyimlerini keşfedin.</p>
+<div class="mt-8">
+<button class="border border-primary-container text-primary-container font-label-caps text-label-caps uppercase px-12 py-4 tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all duration-300">
+                        Hemen Keşfet
+                    </button>
+</div>
+</div>
+</section>
+<!-- Venue Grid -->
+<section class="max-w-container-max mx-auto px-margin-page py-section-gap">
+<div class="flex justify-between items-end mb-16 border-b border-surface-container-high pb-8">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">Öne Çıkan Seçkiler</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Küratörlerimiz tarafından özenle seçilmiş mekanlar</p>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-container transition-colors uppercase tracking-widest flex items-center gap-2">
+                        Tümünü Gör <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<article class="group relative flex flex-col h-[480px] overflow-hidden border border-surface-container-high bg-surface-container-low hover:border-primary-container transition-colors duration-500 cursor-pointer">
+<div class="relative flex-grow overflow-hidden">
+<img alt="Arkestra" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A luxurious restaurant interior featuring dark mahogany wood panels, dim warm lighting, and white tablecloths set with gleaming silverware. The atmosphere is highly exclusive and sophisticated, capturing an 'old money' aesthetic. Deep shadows contrast with carefully placed spotlights illuminating a central dining table. A perfectly plated gourmet dish sits in the foreground, styled elegantly. The color palette relies on deep zinc blacks, rich woods, and subtle gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnF3HbnCSeL0bA3FN2D94PYYHpyPY0ICkw7Xockz860V4dpDFxEGD59ykRnWZv2Icu4Y-PZ24lz_RM4R4tOiFh5iQ6yOcNzje_wyDePj1IhbNXjIOrYSOKAHduYDudbuQDt3GXngWum7_oJwDitkA-eRCrzaOZD5ejXizWdN3EWEBHIfYJmkNQW6jQFonQEThPKTiiKIpHLq1KYpxxuh931rULPU7KGyro65RI4WyU15RkY5z3xvUDqenz_8ZODxqtqTPKqwtqfZBk"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 font-label-caps text-label-caps text-on-surface tracking-widest uppercase border border-surface-container-highest">Etiler</div>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-surface-container-highest flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary-container transition-colors">Arkestra</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Michelin Yıldızlı</span>
+<button class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1">
+                                Keşfet <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group relative flex flex-col h-[480px] overflow-hidden border border-surface-container-high bg-surface-container-low hover:border-primary-container transition-colors duration-500 cursor-pointer">
+<div class="relative flex-grow overflow-hidden">
+<img alt="Cipriani Istanbul" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="An opulent classic Italian restaurant dining room exuding heritage and luxury. Glossy dark wood tables are surrounded by plush, deep-toned leather seating. The lighting is low and warm, casting sophisticated shadows across the scene. Crystal glassware catches subtle glints of light. The composition uses generous negative space, focusing on the refined geometry of the table setting. Colors are muted with strong contrasts between deep blacks, warm amber, and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxnJ81rcS3PhvV5SdNIXFrKwI2GYtI9NK1tfCe4Xy4-CskXxclr2pxAi0vuYQfzDVLeS3S19teZzV2Pssjtt1CPAtMWuIVmB_rroIpkLtT9GIsBlCtn-YXAB6FhpDHDkVwLBLlOCuxiwz3jxZ794hYxBVivbeD0YG1XPhEqn921664lH8Z9yPTrz8Slw5IvlA5SraZ4w7jzdR4MNZT5ugG0HlhQ55RY8akr0XE-nQKqrbMdfPpeHZfoD3OE3MCGo9S5Hq7mTv_dwRy"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 font-label-caps text-label-caps text-on-surface tracking-widest uppercase border border-surface-container-highest">Nişantaşı</div>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-surface-container-highest flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary-container transition-colors">Cipriani Istanbul</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">İtalyan Klasikleri</span>
+<button class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1">
+                                Keşfet <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group relative flex flex-col h-[480px] overflow-hidden border border-surface-container-high bg-surface-container-low hover:border-primary-container transition-colors duration-500 cursor-pointer">
+<div class="relative flex-grow overflow-hidden">
+<img alt="Fiko Yeniköy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A modern, high-end grill restaurant focusing on premium meats. The scene is dimly lit with dramatic, cinematic lighting highlighting a perfectly seared steak on a minimalist, dark slate plate. A glass of deep red wine sits adjacently. The background is plunged into dark zinc tones, creating intense focus on the culinary subject. The aesthetic is raw yet incredibly refined, utilizing luxurious textures and a moody atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ6PoESogFC51a-vLxlSifkqyi0rZHrs2GpecnJ8aRoLqc8U-NqMihhe9rHg2uTssMpgS_W2_5ANd5MHvQdt0CaDBgXYY4417hlsNqOn4ygqMFpKssrD2A6xoU7SVaW2XEtbhJwe-CJ5w56nFte47Yv7WzN6tMPJb4U_LR4Ak-lOyjWfYe3z2K2dnJOq4ATFgv_VoNcHA5XqlDi2MH1OutVthyt6HLTRZ-rEoOGdpB8FyMMLhgrK2rIWfHbVM1MCnOXb079k6spqDT"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 font-label-caps text-label-caps text-on-surface tracking-widest uppercase border border-surface-container-highest">Yeniköy</div>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-surface-container-highest flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary-container transition-colors">Fiko Yeniköy</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Premium Izgara</span>
+<button class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1">
+                                Keşfet <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="group relative flex flex-col h-[480px] overflow-hidden border border-surface-container-high bg-surface-container-low hover:border-primary-container transition-colors duration-500 cursor-pointer">
+<div class="relative flex-grow overflow-hidden">
+<img alt="Kebapçı Beko" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="An artisanal presentation of traditional Turkish kebab, elevated to fine dining standards. The dish rests on a bespoke dark ceramic plate, surrounded by stark negative space. Lighting is sharp and focused, highlighting the rich textures and charred edges of the meat. The background is a velvety black, giving the scene an authoritative, premium feel. Subtle smoke curls elegantly, adding a sense of dynamic heat and authenticity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRvChZJSbUqFTLdZlmw3NSaVjK7y-7K5bh8ueH5K6HEMRVVePAIqMwEvBkCkW-2QYOtYtebzyb8mwLwUeFzD-ZDeQfdfbNlz_W08lu5EGcl0tR5UczYjeP3VCjt_SQfQFltKJfVTe44nRAd_nfqud2Vd0hH8PAzKnKVfPsQNg8ic8tX6pevFpPifXEWWvY4kKTfff1h1HXBJWG54GHKEu6WqFfwR_Mm9nqGA8ow2u9qGIoNyKJpm8WTAn-f7txfs_k6yijNrjIOCbX"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 font-label-caps text-label-caps text-on-surface tracking-widest uppercase border border-surface-container-highest">Yeniköy</div>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-surface-container-highest flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary-container transition-colors">Kebapçı Beko</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Geleneksel Modern</span>
+<button class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1">
+                                Keşfet <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="group relative flex flex-col h-[480px] overflow-hidden border border-surface-container-high bg-surface-container-low hover:border-primary-container transition-colors duration-500 cursor-pointer">
+<div class="relative flex-grow overflow-hidden">
+<img alt="Sunset Grill &amp; Bar" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A sweeping, breathtaking view of the Bosphorus at sunset viewed from a sophisticated outdoor terrace. The sky is painted in deep violet and gold hues. In the foreground, a beautifully arranged platter of high-end sushi and a perfect steak sit on a sleek table. The atmosphere is incredibly exclusive and serene. The composition balances the dark silhouettes of the terrace furniture against the luminous twilight sky, emphasizing an opulent lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp8SXO0iQipo8uMM85Oq6JW5xcXGs98rC9-r_OK80lUs0gVOuilfqirqFBoBhRkUruFuKrXPNQaacpJqIvJbI2xYBfmRrJXN-0LZXP4bkuHb2FSVgXTtZRbugV-R2LRpW6mUJyn4yXdfskCXjb-y3f06SgsdPX8zyO2LXc8XcGObOtisNhmXMeOA8QIwkTaBFHZJ1i2e4KrYaCoclojbL6RB9yxPyLQyqz2HWjVwRXO2HH3mDemqXlBWfQQcmpdzztiuqakk6nHQ8r"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 font-label-caps text-label-caps text-on-surface tracking-widest uppercase border border-surface-container-highest">Ulus</div>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-surface-container-highest flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary-container transition-colors">Sunset Grill &amp; Bar</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Sushi &amp; Steak Focus</span>
+<button class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1">
+                                Keşfet <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="group relative flex flex-col h-[480px] overflow-hidden border border-surface-container-high bg-surface-container-low hover:border-primary-container transition-colors duration-500 cursor-pointer">
+<div class="relative flex-grow overflow-hidden">
+<img alt="Zuma" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A high-energy, modern Japanese izakaya dining environment. The scene captures a beautifully crafted sushi roll on a stark black slate slab. Lighting is dramatic and moody, with vibrant accents of neon reflecting off polished surfaces in the blurred background. The overall aesthetic is sleek, contemporary, and distinctly premium. Dark zinc tones dominate, punctuated by the vibrant colors of fresh sashimi and delicate gold leaf garnishes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeiOIUWqUhZvAZbJCQEQNfyTDGl_odSyqtZmvRC_bRyklU-xH-b4l2JGHfh4YwE3AQ3KD2f24dXguSwYA5U6INQE6Xt_m3Xyz-5CfBcIvhEKvPIrdgK0M7QP-WkdpoOqpw71E8fgzE51Z_6k3oykXhOMFFTJ7PlsZul_ZOmUDl399bys006FFWEB_VckFrGM-I_w-sOGkW9S-sJnsHppCySJLSt1LF6cxrMbtcFf5DJmtyMLqjBKqljytCAC5m5kxYBo0KvsG5OVzj"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 font-label-caps text-label-caps text-on-surface tracking-widest uppercase border border-surface-container-highest">İstinyePark</div>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-surface-container-highest flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary-container transition-colors">Zuma</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Modern Japanese</span>
+<button class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1">
+                                Keşfet <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 7 -->
+<article class="group relative flex flex-col h-[480px] overflow-hidden border border-surface-container-high bg-surface-container-low hover:border-primary-container transition-colors duration-500 cursor-pointer">
+<div class="relative flex-grow overflow-hidden">
+<img alt="Momo Bebeköy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="An exclusive, lush Mediterranean courtyard dining setting. Surrounded by dense, manicured greenery, the scene features a beautifully set table beneath softly glowing string lights. The mood is intimate, elegant, and decidedly 'old money'. A light Mediterranean dish is presented on fine china. The color palette relies on deep shadows interspersed with vibrant emerald greens and warm golden light, maintaining a cohesive, cinematic dark aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBogUt71rOEuHsLDOnH69jrb-yylWd6LfHyYHMAWZbEwpHRDr2Awqq3GCsIIL0WsINNbUWtLJ_lT_E_XATgT3cpH6aAjBAy3XXXymnt7W96qh6y8-eKEBDZRWb5DTETNJZj2dv_ViEfIrcrfxD5K1AHoT7kg1dpxko8cGzzhz51ZExFkA_WT4CmKgmM4dL9f_ZczCc9pdo_Y2qW4t4BeoV96pMVvqY9SL6xJKLtCF9eVWDC15jILgbzMBZEM_vFQTGr6hpW-PCoO25I"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 font-label-caps text-label-caps text-on-surface tracking-widest uppercase border border-surface-container-highest">Bebeköy</div>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-surface-container-highest flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary-container transition-colors">Momo Bebeköy</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Akdeniz Esintisi</span>
+<button class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1">
+                                Keşfet <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 8 -->
+<article class="group relative flex flex-col h-[480px] overflow-hidden border border-surface-container-high bg-surface-container-low hover:border-primary-container transition-colors duration-500 cursor-pointer">
+<div class="relative flex-grow overflow-hidden">
+<img alt="Papermoon" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A classic, highly polished Italian restaurant tailored for the business elite. The setting is formal with crisp white linens contrasting against dark, heavy wood paneling. The lighting is low and authoritative, focusing on a beautifully executed plate of pasta and a fine vintage wine. The image relies heavily on negative space and deep zinc blacks to convey a sense of prestige, heritage, and quiet luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzpPOE-PMjyEfOja_cfsB4b7UhSdRGe46IXfDwY5VAYH7cxMCue87lsow4nVzV9wROx9Bowjqbspi_20Kn6gwomH2WXCu9WkNELeB8Y2ha638GJ0mUUtz_wM8tgNu3YBrpcnQuAGONDBlZVMay5mZfga7dTdOXDx3dIrJYR-1IXL2Sx_eBwXJOCkbv7CKZ6E_M-IEgqzbnPYRhm-FLVSLr0WlhqNZLPlapD60AoXdO4nbTku5pojboGMSkp3Ahv7iovw2oPWRBcKUj"/>
+<div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 font-label-caps text-label-caps text-on-surface tracking-widest uppercase border border-surface-container-highest">Etiler</div>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-surface-container-highest flex flex-col gap-4">
+<h3 class="font-h3 text-h3 text-on-surface group-hover:text-primary-container transition-colors">Papermoon</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Business Elite</span>
+<button class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1">
+                                Keşfet <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+</body></html>
