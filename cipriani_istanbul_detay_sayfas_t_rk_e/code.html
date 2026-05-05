@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="tr"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -7,7 +6,6 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -99,10 +97,11 @@
     </script>
 </head>
 <body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
-<!-- Top Navigation (Shared Component Integration) -->
+<!-- Top Navigation -->
 <header class="fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-2xl border-b border-zinc-800">
 <div class="flex justify-between items-center w-full px-8 py-6">
-<button class="flex items-center gap-2 text-zinc-400 hover:text-[#D4AF37] transition-colors duration-300">
+<!-- Geri Dön Butonu -->
+<button onclick="history.back()" class="flex items-center gap-2 text-zinc-400 hover:text-[#D4AF37] transition-colors duration-300 cursor-pointer">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
 <span class="font-label-caps text-label-caps uppercase">Geri Dön</span>
 </button>
@@ -110,14 +109,15 @@
 <div class="flex items-center gap-4 text-zinc-400">
 <button class="hover:text-[#D4AF37] transition-colors duration-300"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">share</span></button>
 <button class="hover:text-[#D4AF37] transition-colors duration-300"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span></button>
-<button class="font-serif tracking-[0.2em] uppercase text-sm text-[#D4AF37] ml-4 hover:opacity-70 transition-opacity">REZERVASYON</button>
+<!-- Üst Rezervasyon Butonu -->
+<a href="https://www.cipriani.com/restaurant/cipriani-istanbul" target="_blank" class="font-serif tracking-[0.2em] uppercase text-sm text-[#D4AF37] ml-4 hover:opacity-70 transition-opacity">REZERVASYON</a>
 </div>
 </div>
 </header>
 <main class="flex-grow pt-[88px]">
 <!-- Hero Section -->
 <section class="relative h-[819px] min-h-[600px] w-full bg-surface-container-lowest overflow-hidden">
-<img alt="Cipriani Istanbul" class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A cinematic, ultra-wide photograph of a luxurious, old-money style fine dining restaurant interior in Istanbul. The scene features polished dark wood paneling, crisp white linen tablecloths, and subtle gold accents. The lighting is moody and sophisticated, with warm ambient glow highlighting the pristine table settings against deep black shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAzFqYGhKMa8fcmVQxafJpCfAE7GuEHZg86zLWx0UzRkjH-M-PpDhYbcnLtusULNypmy7MJ-UX0FUz80dB-FQYhgaMw9JDfJfJXydddE7czkG3yqMkzfmMy-Eyho59hG-pKLcKNymNzW9-NmwkO7LLPAqhLTfp-xPMzWiPbU-5OZK-e1FwtGySeu1rmZotstm5XEjdnKsTgfKAQSHIJXHmU8O_Ig-MCnfu7wIJugRU2wlv1T7VkydwsI2m5ewJkq_drzeOk-2xP_Ew"/>
+<img alt="Cipriani Istanbul" class="absolute inset-0 w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAzFqYGhKMa8fcmVQxafJpCfAE7GuEHZg86zLWx0UzRkjH-M-PpDhYbcnLtusULNypmy7MJ-UX0FUz80dB-FQYhgaMw9JDfJfJXydddE7czkG3yqMkzfmMy-Eyho59hG-pKLcKNymNzW9-NmwkO7LLPAqhLTfp-xPMzWiPbU-5OZK-e1FwtGySeu1rmZotstm5XEjdnKsTgfKAQSHIJXHmU8O_Ig-MCnfu7wIJugRU2wlv1T7VkydwsI2m5ewJkq_drzeOk-2xP_Ew"/>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
 <div class="absolute bottom-0 left-0 w-full p-margin-page flex flex-col justify-end">
 <div class="max-w-container-max mx-auto w-full">
@@ -128,7 +128,6 @@
 </section>
 <!-- Content Section -->
 <section class="py-section-gap px-margin-page max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Left Column: Details -->
 <div class="col-span-1 md:col-span-8 flex flex-col gap-16">
 <div>
 <h2 class="font-h2 text-h2 text-primary-container mb-6 border-b border-zinc-800 pb-4">Küratörün Notu</h2>
@@ -137,17 +136,16 @@
 <div>
 <h2 class="font-h2 text-h2 text-on-surface mb-6">Ambiyans</h2>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl leading-relaxed">
-                        Park Hyatt Maçka Palas'ın içinde. Parlak ahşap detayları, bembeyaz masa örtüleri ve kusursuz servis kalitesiyle şehrin en prestijli buluşma noktalarından.
-                    </p>
+                    Park Hyatt Maçka Palas'ın içinde. Parlak ahşap detayları, bembeyaz masa örtüleri ve kusursuz servis kalitesiyle şehrin en prestijli buluşma noktalarından.
+                </p>
 </div>
 <div>
 <h2 class="font-h2 text-h2 text-on-surface mb-6">Neden Gidilmeli?</h2>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl leading-relaxed">
-                        Zamansız bir İtalyan asaletini ve kusursuz servis kalitesini deneyimlemek için.
-                    </p>
+                    Zamansız bir İtalyan asaletini ve kusursuz servis kalitesini deneyimlemek için.
+                </p>
 </div>
 </div>
-<!-- Right Column: Info Panel -->
 <div class="col-span-1 md:col-span-4">
 <div class="border border-zinc-800 bg-surface-container-low p-8 rounded-lg shadow-2xl">
 <h3 class="font-h3 text-h3 text-on-surface mb-6 border-b border-zinc-800 pb-4">Detaylar</h3>
@@ -178,13 +176,13 @@
 <h2 class="font-h2 text-h2 text-on-surface mb-12 text-center">Fotoğraf Galerisi</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="aspect-square relative overflow-hidden rounded-lg group border border-zinc-800">
-<img alt="Interior Detail 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A close-up shot of a meticulously set dining table in a high-end Italian restaurant. Focus on the crisp white linen, gleaming silver cutlery, and a sparkling crystal wine glass reflecting soft, warm light against a dark, moody background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-YoEssMVFIyIW5mdl_ndzfiqvzjEl-AG-itUHF3g3RxiozPAqom7Z54yVGQQI3ioZQT7JEAi7zPw1p4ONkcnur8orDCvKHMXLHcG5MBIi_tx4nzDDEpnI4KBQ8gFSCVqNGl-qPT8u93QEg7ezK2gwvwOP6E7BNi-Amc-AirHSt4o_9vA-QpIelh06lZOO9XrjCQSUe0-4th6bn2b7CRFRi7y4Evrp2EOTS_Z-Tn5FWCvg7f3TYMNwvJpVrWblefZAx-CZgl2WEeRG"/>
+<img alt="Interior Detail 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-YoEssMVFIyIW5mdl_ndzfiqvzjEl-AG-itUHF3g3RxiozPAqom7Z54yVGQQI3ioZQT7JEAi7zPw1p4ONkcnur8orDCvKHMXLHcG5MBIi_tx4nzDDEpnI4KBQ8gFSCVqNGl-qPT8u93QEg7ezK2gwvwOP6E7BNi-Amc-AirHSt4o_9vA-QpIelh06lZOO9XrjCQSUe0-4th6bn2b7CRFRi7y4Evrp2EOTS_Z-Tn5FWCvg7f3TYMNwvJpVrWblefZAx-CZgl2WEeRG"/>
 </div>
 <div class="aspect-square relative overflow-hidden rounded-lg group border border-zinc-800">
-<img alt="Interior Detail 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A sophisticated bar area within a luxury restaurant. Rich mahogany wood panels, glowing amber bottles lined up on glass shelves, and warm under-lighting creating an elegant, 'Old Money' cinematic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM28hs1B5_ggdBImtSOsf8BXVBSQ2wxprofk8hmKyG7p4WwjfSoKyl_dNDtJb5KEIGnOMc8q6Ru_x2SomkhuX_ewIGZojnpbnJkPIA2ploDNuYb_eq_X5FPU9zV3-LxF6bHMuW_DtSvHEmypAsuhHshz4qe9EzZcUyhbz3rFwvHwAHRhXWZ4qj21AY70Tuq9LuySRcy9UWbOPHZ2YGYt5NMzXzNmBqjKljb1IEYvm_CVXAK5EsqI17A6OYxjKWI9eTgPfCDe2eie2E"/>
+<img alt="Interior Detail 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM28hs1B5_ggdBImtSOsf8BXVBSQ2wxprofk8hmKyG7p4WwjfSoKyl_dNDtJb5KEIGnOMc8q6Ru_x2SomkhuX_ewIGZojnpbnJkPIA2ploDNuYb_eq_X5FPU9zV3-LxF6bHMuW_DtSvHEmypAsuhHshz4qe9EzZcUyhbz3rFwvHwAHRhXWZ4qj21AY70Tuq9LuySRcy9UWbOPHZ2YGYt5NMzXzNmBqjKljb1IEYvm_CVXAK5EsqI17A6OYxjKWI9eTgPfCDe2eie2E"/>
 </div>
 <div class="aspect-square relative overflow-hidden rounded-lg group border border-zinc-800">
-<img alt="Interior Detail 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A wide angle view of an elegant dining room. Polished hardwood floors, white-clothed tables spaced generously apart, and subtle gold accents in the decor. The lighting is soft and intimate, emphasizing luxury and calm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD04k-Kn3rClI396mIm_ixH5rYygMXn4AGoChQ2rIJ3L5m_X0xCuvqXCLG8NhKzjQJCLmNE4LnOS3P65j8LNF_PXGInA5LdoFU0wfuFWougYt05-iKccvJCng5h0Ii3D_EkVqVBUGiKidm95dwhFLAcbJi6fp6az8Xbn21ycD9uZGebtAmZ0Xe9QFqgDZq2nhwaf9eDKNFx6csI4iFStsrbXQwWWTBXaOhiFrXVlwC7ODhPKiCUOZssW02SjhyKqx1h_KSZ43CTUc0j"/>
+<img alt="Interior Detail 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD04k-Kn3rClI396mIm_ixH5rYygMXn4AGoChQ2rIJ3L5m_X0xCuvqXCLG8NhKzjQJCLmNE4LnOS3P65j8LNF_PXGInA5LdoFU0wfuFWougYt05-iKccvJCng5h0Ii3D_EkVqVBUGiKidm95dwhFLAcbJi6fp6az8Xbn21ycD9uZGebtAmZ0Xe9QFqgDZq2nhwaf9eDKNFx6csI4iFStsrbXQwWWTBXaOhiFrXVlwC7ODhPKiCUOZssW02SjhyKqx1h_KSZ43CTUc0j"/>
 </div>
 </div>
 </div>
@@ -193,30 +191,27 @@
 <section class="py-section-gap px-margin-page max-w-container-max mx-auto">
 <h2 class="font-h2 text-h2 text-on-surface mb-12 text-center">İmza Lezzetler</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Card 1 -->
 <div class="bg-surface-container-low border border-zinc-800 rounded-lg overflow-hidden flex flex-col group">
 <div class="h-64 relative overflow-hidden border-b border-zinc-800">
-<img alt="Beef Carpaccio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A top-down, high-end food photography shot of Beef Carpaccio on a pristine white plate. Paper-thin slices of raw beef arranged beautifully, drizzled with olive oil and garnished with delicate parmesan shavings. Dark, moody lighting accentuates the textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOEh9UQtPpZ8Pj6GK9KzkxyTbiYo0jxs0R4Yjf6OGggE_5IygRD2SPbDFQb5yAhb4XpQQzDRWfWRbYPY4GSnXmX93SHWcj2OXTsCZBycSC7vcf_9ztsOGis9foDkTj_0Hb1gsir4tCjwH0S2jEPk0fsebIbuFZa8Co_yoK3HYXCbavmPtVF0D6ZHjTue8KyALCmrBcvmnffU9x2pXSPgsN13eS7RDIK7vGkB9lr0alyKcjEIxrblNblzACHmrzKtAUV--lTXAR1Ogo"/>
+<img alt="Beef Carpaccio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOEh9UQtPpZ8Pj6GK9KzkxyTbiYo0jxs0R4Yjf6OGggE_5IygRD2SPbDFQb5yAhb4XpQQzDRWfWRbYPY4GSnXmX93SHWcj2OXTsCZBycSC7vcf_9ztsOGis9foDkTj_0Hb1gsir4tCjwH0S2jEPk0fsebIbuFZa8Co_yoK3HYXCbavmPtVF0D6ZHjTue8KyALCmrBcvmnffU9x2pXSPgsN13eS7RDIK7vGkB9lr0alyKcjEIxrblNblzACHmrzKtAUV--lTXAR1Ogo"/>
 </div>
 <div class="p-8 flex-grow flex flex-col">
 <h3 class="font-h3 text-h3 text-primary-container mb-3">Beef Carpaccio</h3>
 <p class="font-body-md text-body-md text-on-surface-variant flex-grow">Kağıt inceliğinde dünyaca ünlü imza başlangıç.</p>
 </div>
 </div>
-<!-- Card 2 -->
 <div class="bg-surface-container-low border border-zinc-800 rounded-lg overflow-hidden flex flex-col group">
 <div class="h-64 relative overflow-hidden border-b border-zinc-800">
-<img alt="Vanilla Meringue" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A sophisticated dessert shot of a tall, fluffy Vanilla Meringue pie slice on an elegant ceramic plate. The meringue peaks are perfectly torched. The setting is dark and moody, highlighting the crisp white texture of the dessert with warm spotlighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuGYqojixIZ8qqk6xKwz46xA-_yg64e9_JVZC3iQkCVoacTb67aq6_5rUYXVjmIilo1mYqCbduduGvVUaQUqYwItip74eXAvp1xs2TZeduE0EeaU-S3zSurIJcBUMxx4SwQ6q-aBau1ZGBFsRiSJ1Iw781-G9SFsg10rXNoVweDo9NW2GUX8jBlG7vxWhcTPizlO-FBXUgWR6b5wlUvxLSTiAeGm-XiGX_7fxsaJ4e2FoD3X8HJPicwZgysnFK1tDxz0N0diAcYHpl"/>
+<img alt="Vanilla Meringue" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuGYqojixIZ8qqk6xKwz46xA-_yg64e9_JVZC3iQkCVoacTb67aq6_5rUYXVjmIilo1mYqCbduduGvVUaQUqYwItip74eXAvp1xs2TZeduE0EeaU-S3zSurIJcBUMxx4SwQ6q-aBau1ZGBFsRiSJ1Iw781-G9SFsg10rXNoVweDo9NW2GUX8jBlG7vxWhcTPizlO-FBXUgWR6b5wlUvxLSTiAeGm-XiGX_7fxsaJ4e2FoD3X8HJPicwZgysnFK1tDxz0N0diAcYHpl"/>
 </div>
 <div class="p-8 flex-grow flex flex-col">
 <h3 class="font-h3 text-h3 text-primary-container mb-3">Vanilla Meringue</h3>
 <p class="font-body-md text-body-md text-on-surface-variant flex-grow">Efsanevi vanilyalı mereng tatlısı.</p>
 </div>
 </div>
-<!-- Card 3 -->
 <div class="bg-surface-container-low border border-zinc-800 rounded-lg overflow-hidden flex flex-col group">
 <div class="h-64 relative overflow-hidden border-b border-zinc-800">
-<img alt="Orijinal Bellini" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A close-up cinematic shot of a classic Bellini cocktail in an elegant curved glass. The drink is a soft peachy-pink hue, resting on a polished dark wood bar top. Warm ambient lighting reflects off the glass in a sophisticated, luxurious atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtAUH14PGdHOgUmvzFSyH2HtHri0w5UlFY65pzBQYgJLhTQWmHSF7MJokT6R2_mT-VZIHE1KptFqe-qoLoMSoO1piBZAgQpxwivWkmAyW-7vsnH_vPhJmNYUF6ekXCWsbxKb74FVVDdPjw4FD5SGO-8EywqVW7Fb5TWIirRYsqVxgCuSRsqLqDNdc4MCSn0-9aYmrZAvi7x2GWj6Rsm1rTp-NMmoa-XJZEp16sw481jdhQ7XlHY1Ty-bIGhWUPNsHN55NsAA7vOnv5"/>
+<img alt="Orijinal Bellini" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtAUH14PGdHOgUmvzFSyH2HtHri0w5UlFY65pzBQYgJLhTQWmHSF7MJokT6R2_mT-VZIHE1KptFqe-qoLoMSoO1piBZAgQpxwivWkmAyW-7vsnH_vPhJmNYUF6ekXCWsbxKb74FVVDdPjw4FD5SGO-8EywqVW7Fb5TWIirRYsqVxgCuSRsqLqDNdc4MCSn0-9aYmrZAvi7x2GWj6Rsm1rTp-NMmoa-XJZEp16sw481jdhQ7XlHY1Ty-bIGhWUPNsHN55NsAA7vOnv5"/>
 </div>
 <div class="p-8 flex-grow flex flex-col">
 <h3 class="font-h3 text-h3 text-primary-container mb-3">Orijinal Bellini</h3>
@@ -227,9 +222,10 @@
 </section>
 <!-- Bottom CTA -->
 <section class="py-section-gap px-margin-page flex justify-center border-t border-zinc-800 bg-surface-container-lowest">
-<button class="font-label-caps text-label-caps uppercase border border-[#D4AF37] text-[#D4AF37] px-12 py-4 rounded-sm hover:bg-[#D4AF37] hover:text-black transition-colors duration-300 shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)]">
-                Rezervasyon Yap
-            </button>
+<!-- Alt Rezervasyon Butonu -->
+<a href="https://www.cipriani.com/restaurant/cipriani-istanbul" target="_blank" class="font-label-caps text-label-caps uppercase border border-[#D4AF37] text-[#D4AF37] px-12 py-4 rounded-sm hover:bg-[#D4AF37] hover:text-black transition-colors duration-300 shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] inline-block text-center">
+            Rezervasyon Yap
+        </a>
 </section>
 </main>
 </body></html>
