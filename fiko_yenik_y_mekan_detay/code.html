@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="tr"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Fiko Yeniköy - Detay</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
@@ -159,10 +157,12 @@
 <body class="bg-zinc-950 text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800 flat no shadows font-['Playfair_Display'] uppercase tracking-widest text-amber-500 scale-95 active:duration-150">
-<div class="flex items-center gap-4 hover:text-amber-400 transition-colors cursor-pointer">
+<!-- Geri Dön Butonu -->
+<button onclick="history.back()" class="flex items-center gap-4 hover:text-amber-400 transition-colors cursor-pointer bg-transparent border-none p-0 outline-none">
 <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
 <span class="font-h3 text-h3 hidden md:block">Geri Dön</span>
-</div>
+</button>
+
 <div class="text-xl font-bold text-amber-500">
             Fiko Yeniköy
         </div>
@@ -175,7 +175,7 @@
 <!-- Cinematic Hero -->
 <section class="relative h-[819px] w-full mt-20 flex items-center justify-center border-b border-zinc-800">
 <div class="absolute inset-0 z-0">
-<img alt="Fiko Yeniköy Interior" class="w-full h-full object-cover" data-alt="A highly cinematic shot of an extremely upscale, modern Turkish 'Ocakbaşı' grill restaurant interior. The scene is dominated by deep, luxurious shadows of a Zinc-950 aesthetic, with focused, warm amber light illuminating a magnificent copper grill hood. The atmosphere is sophisticated and moody, embodying an 'old money' aesthetic. The composition is wide and sweeping, emphasizing empty, negative space and high-end materials." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqfjSETOJHdw8zlHqZvrmGMl_3wlLkunQpkK41bK2NzTwmc-WjTJkgPhRxELaIscitJZ8Fix1QgWQ_m1A_icoLAkrwa64G3nIswPa3lHSAnTOwifuujwQrnNIwgnjoM4nF8tuXh2i6XoQ0C3nbD3aKjGACr3pY0ILwnTFLNJdPBZiYtZoTfH9KQjGcRGRJjU7OOwKMdfwZTT-LCw__Vpyjh3FS6r16EJiAj_9GPvxkoRvIJs4u0qc7abg2Apog7JHRevPnY9Oqvkwg"/>
+<img alt="Fiko Yeniköy Interior" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqfjSETOJHdw8zlHqZvrmGMl_3wlLkunQpkK41bK2NzTwmc-WjTJkgPhRxELaIscitJZ8Fix1QgWQ_m1A_icoLAkrwa64G3nIswPa3lHSAnTOwifuujwQrnNIwgnjoM4nF8tuXh2i6XoQ0C3nbD3aKjGACr3pY0ILwnTFLNJdPBZiYtZoTfH9KQjGcRGRJjU7OOwKMdfwZTT-LCw__Vpyjh3FS6r16EJiAj_9GPvxkoRvIJs4u0qc7abg2Apog7JHRevPnY9Oqvkwg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent"></div>
 </div>
 <div class="relative z-10 text-center px-gutter flex flex-col items-center">
@@ -185,7 +185,6 @@
 </section>
 <!-- Info Section -->
 <section class="max-w-container-max mx-auto px-gutter mt-section-gap grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Details Column -->
 <div class="md:col-span-8 flex flex-col gap-16">
 <div>
 <h2 class="font-h2 text-h2 text-amber-500 mb-6">Küratörün Notu</h2>
@@ -206,7 +205,6 @@
                     </p>
 </div>
 </div>
-<!-- Sidebar Elements -->
 <div class="md:col-span-4 mt-16 md:mt-0">
 <div class="bg-zinc-900 border border-zinc-800 p-8 sticky top-32">
 <div class="flex items-center gap-4 mb-6 pb-6 border-b border-zinc-800">
@@ -224,13 +222,13 @@
 <h2 class="font-h2 text-h2 text-amber-500 mb-12 text-center">Fotoğraf Galerisi</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="aspect-[3/4] border border-zinc-800 relative group overflow-hidden bg-zinc-900">
-<img alt="Gallery Image 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A close-up, highly detailed shot of an elegant cocktail resting on a dark marble bar top. The background is completely out of focus, revealing hints of deep mahogany and dim amber lighting, characteristic of a high-end luxury lounge. The color palette is strictly deep blacks, dark browns, and gold highlights, reinforcing a sophisticated, minimalist 'old money' design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjQVLAVuf5MivwLsV-Ga20ciCUQy16tAM4u_z3HL-gQrCsLG0AvTJRCIa4khB7-WbY5Fll1oqcUzsFQePj_jr2pVhOmCK7k-iFJiVptGPGJ9pKwz1xb3vT_Zb9k1oJwOIx2udQjKDxBxeChzN6VCsydS1VyUOcntRvT2QrIfuh5Sd1O8XWNRRgpmCXKfH4-aL-EQdwwyDpDDTdvnmGfIWYwJBkLRMAZVyT8FaOO2qn-7A3Q8eHN4toMAzG57w30hjCuBKkLObxKYex"/>
+<img alt="Gallery Image 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjQVLAVuf5MivwLsV-Ga20ciCUQy16tAM4u_z3HL-gQrCsLG0AvTJRCIa4khB7-WbY5Fll1oqcUzsFQePj_jr2pVhOmCK7k-iFJiVptGPGJ9pKwz1xb3vT_Zb9k1oJwOIx2udQjKDxBxeChzN6VCsydS1VyUOcntRvT2QrIfuh5Sd1O8XWNRRgpmCXKfH4-aL-EQdwwyDpDDTdvnmGfIWYwJBkLRMAZVyT8FaOO2qn-7A3Q8eHN4toMAzG57w30hjCuBKkLObxKYex"/>
 </div>
 <div class="aspect-[3/4] border border-zinc-800 relative group overflow-hidden bg-zinc-900">
-<img alt="Gallery Image 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A wide angle shot looking down a sleek, ultra-modern dining corridor. The walls are a textured, dark zinc color, illuminated solely by warm, low-level floor lights and small, focused spotlights on the tables. The atmosphere is quiet, exclusive, and expensive. The architectural lines are sharp and deliberate, fitting a luxury digital concierge aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmJM35TQQTWMaa5J7-wS0E6KPWUQMxDZiGTwkS_Nn2dh5i-AcV-jsDBEJaliTWlh2od45-0XOx-GXrRdxZyGZu910fYkbxJmCXFBoLLheKDBYhYhlbXgm6dAtQblPDvlB0RMzS-qdK_zv5NunOMRVrXmOU5zL0gNISpesxKvopwdZK7MEP7-trG5KvqfQIRlu8F4AeOgvKBWcQThPYsZTFaJ5mqFqb2NajGFq1QAJRBsZyff_zDlRf94w-9vxEYqJHFzGMxvPz4afZ"/>
+<img alt="Gallery Image 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmJM35TQQTWMaa5J7-wS0E6KPWUQMxDZiGTwkS_Nn2dh5i-AcV-jsDBEJaliTWlh2od45-0XOx-GXrRdxZyGZu910fYkbxJmCXFBoLLheKDBYhYhlbXgm6dAtQblPDvlB0RMzS-qdK_zv5NunOMRVrXmOU5zL0gNISpesxKvopwdZK7MEP7-trG5KvqfQIRlu8F4AeOgvKBWcQThPYsZTFaJ5mqFqb2NajGFq1QAJRBsZyff_zDlRf94w-9vxEYqJHFzGMxvPz4afZ"/>
 </div>
 <div class="aspect-[3/4] border border-zinc-800 relative group overflow-hidden bg-zinc-900">
-<img alt="Gallery Image 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A macro shot of a beautifully plated dish on a matte black ceramic plate. The lighting is dramatic and directional, creating deep shadows that emphasize the texture of the food and the plate. The setting implies a dark, refined restaurant interior, utilizing vast negative space and high contrast to convey premium culinary artistry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBytiLUKphsTvG_6S0E7BRX5VCUgEqrNIJ3SQgD_8I7Y5Q8W9UGsO4uWridf37ukCJzVApjolVSbwjz48iguO3VvWXPWMwk1TpGMcm5oXnD3pB32ErTwy2mLFUElbaqvP-8bnCSm5ESvjf3eyiesBaUi1ej5myGy1hcnLCnYqvMR1ypwviXDxILS_nfBac8I5mj_gzWGW4gLKSemihG3b5KAV05k8SJ_UranV3ZG0xdc9azO7NhFWGRzVwRYfj_17Z7IMpKrb4ii-Lj"/>
+<img alt="Gallery Image 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBytiLUKphsTvG_6S0E7BRX5VCUgEqrNIJ3SQgD_8I7Y5Q8W9UGsO4uWridf37ukCJzVApjolVSbwjz48iguO3VvWXPWMwk1TpGMcm5oXnD3pB32ErTwy2mLFUElbaqvP-8bnCSm5ESvjf3eyiesBaUi1ej5myGy1hcnLCnYqvMR1ypwviXDxILS_nfBac8I5mj_gzWGW4gLKSemihG3b5KAV05k8SJ_UranV3ZG0xdc9azO7NhFWGRzVwRYfj_17Z7IMpKrb4ii-Lj"/>
 </div>
 </div>
 </section>
@@ -238,10 +236,9 @@
 <section class="max-w-container-max mx-auto px-gutter mt-section-gap">
 <h2 class="font-h2 text-h2 text-amber-500 mb-12 text-center border-t border-zinc-800 pt-16">İmza Lezzetler</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Card 1 -->
 <div class="bg-zinc-900 border border-zinc-800 flex flex-col group">
 <div class="h-64 overflow-hidden relative">
-<img alt="İmza Fiko Kanat" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="A dramatic top-down view of premium grilled chicken wings served on a dark slate board. The lighting is cinematic, highlighting the glossy marinade and char marks against a pitch-black background. A subtle hint of amber light catches the edges, reflecting the luxurious, dark-mode restaurant theme with absolute minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtayJ-cyRcdng4uDJtAv43hZrJkrhZFfv9KEuFedOB6ALg5eavvHHs0h6hnCJOMxmE5li3rvDLsbjXpF-LKq283czz1n-cH9e-rdFucRoA9lL2xEus2iVnIPaTwlcUI8-pbmYi__Bol5Pu-warLdAPlzL1yX3GRK4bO3NlwQSzJXeK3I6RQH3RIhRGssSU6WKAYqj5EWX2K0vejHShR_NrHEwSa85HEXzRzVCRPJRBGS4T1GyZe2GMGDgWZqoBF-8yZE01VM0u3YzJ"/>
+<img alt="İmza Fiko Kanat" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtayJ-cyRcdng4uDJtAv43hZrJkrhZFfv9KEuFedOB6ALg5eavvHHs0h6hnCJOMxmE5li3rvDLsbjXpF-LKq283czz1n-cH9e-rdFucRoA9lL2xEus2iVnIPaTwlcUI8-pbmYi__Bol5Pu-warLdAPlzL1yX3GRK4bO3NlwQSzJXeK3I6RQH3RIhRGssSU6WKAYqj5EWX2K0vejHShR_NrHEwSa85HEXzRzVCRPJRBGS4T1GyZe2GMGDgWZqoBF-8yZE01VM0u3YzJ"/>
 <div class="absolute top-4 right-4 bg-zinc-950/80 px-3 py-1 border border-zinc-700">
 <span class="font-label-caps text-label-caps text-zinc-300">Özel Marinasyon</span>
 </div>
@@ -251,10 +248,9 @@
 <p class="font-body-md text-body-md text-zinc-400">Gizli reçeteyle marine edilmiş özel kanatlar.</p>
 </div>
 </div>
-<!-- Card 2 -->
 <div class="bg-zinc-900 border border-zinc-800 flex flex-col group">
 <div class="h-64 overflow-hidden relative">
-<img alt="Lokum Bonfile" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="A tight, high-contrast shot of a perfectly seared premium beef tenderloin. The meat is resting on a coarse dark plate, surrounded by deep shadows and negative space. A single, focused warm spotlight illuminates the crust, conveying an 'old money' steakhouse vibe. The overall aesthetic is dark, rich, and highly refined." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6WutAf9XDTpek5wq-nA3Nc1WEIVmnTNI04tJt7jyOeOfC_EKkQ6p6a7diN4jzQSWuHtWZSp4VfpqrBUEKuvGVd8lBrIfJgwMpXI3BOoigl6TOcXL5Q2SjiMyZBphKYdHJjOBSxgCdHZuGZKjEySelE1Co-Cl4NZIf8mmlCeyHb-oLTSyqBOIXJ-FQyoyE69G29uPEhb12IcpiMUs_WXbNFurbQC7OxtCWTqGw36wI3H3Jd8GvCsKiBKUM4JmLlqE7DeNTEUMazT_i"/>
+<img alt="Lokum Bonfile" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6WutAf9XDTpek5wq-nA3Nc1WEIVmnTNI04tJt7jyOeOfC_EKkQ6p6a7diN4jzQSWuHtWZSp4VfpqrBUEKuvGVd8lBrIfJgwMpXI3BOoigl6TOcXL5Q2SjiMyZBphKYdHJjOBSxgCdHZuGZKjEySelE1Co-Cl4NZIf8mmlCeyHb-oLTSyqBOIXJ-FQyoyE69G29uPEhb12IcpiMUs_WXbNFurbQC7OxtCWTqGw36wI3H3Jd8GvCsKiBKUM4JmLlqE7DeNTEUMazT_i"/>
 <div class="absolute top-4 right-4 bg-zinc-950/80 px-3 py-1 border border-zinc-700">
 <span class="font-label-caps text-label-caps text-zinc-300">Premium Kesim</span>
 </div>
@@ -264,10 +260,9 @@
 <p class="font-body-md text-body-md text-zinc-400">Ağızda dağılan, premium kesim mühürlü et.</p>
 </div>
 </div>
-<!-- Card 3 -->
 <div class="bg-zinc-900 border border-zinc-800 flex flex-col group">
 <div class="h-64 overflow-hidden relative">
-<img alt="Gurme Meze Tabağı" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="An elegant arrangement of traditional Turkish meze dishes presented in minimalist, dark ceramic bowls. The scene is shot on a deeply textured charcoal table surface. The lighting is soft but directional, creating subtle gradients of shadow that fit a high-end, sophisticated dark-mode UI. The colors of the meze provide the only vibrant accents in the otherwise monochromatic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxX5z6jULkKkUUxZmJ5tpmh1D6i2kRK8mSNKNdUEEF2K5d2bOGqUVhhmq7h3Bk8smolYn-HflmsQZoPnqemket6WLPonn61JVaksOV8RUDsxxC6ktzO9RoCLOQr-a3c-7QxsAyyW561q26oZlL5eGNzntouRQREXG_HylotVwmfxqz3cTrO4S_sVBk0Qmv3Qnug-x9Br6CBAgfde2P73vApWHlqG0_EK-1lD11g5htHhQ74ML3sz0RDPZyINYQMm2-SFXEZ2TVgSBQ"/>
+<img alt="Gurme Meze Tabağı" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxX5z6jULkKkUUxZmJ5tpmh1D6i2kRK8mSNKNdUEEF2K5d2bOGqUVhhmq7h3Bk8smolYn-HflmsQZoPnqemket6WLPonn61JVaksOV8RUDsxxC6ktzO9RoCLOQr-a3c-7QxsAyyW561q26oZlL5eGNzntouRQREXG_HylotVwmfxqz3cTrO4S_sVBk0Qmv3Qnug-x9Br6CBAgfde2P73vApWHlqG0_EK-1lD11g5htHhQ74ML3sz0RDPZyINYQMm2-SFXEZ2TVgSBQ"/>
 <div class="absolute top-4 right-4 bg-zinc-950/80 px-3 py-1 border border-zinc-700">
 <span class="font-label-caps text-label-caps text-zinc-300">Taze &amp; Hafif</span>
 </div>
@@ -281,9 +276,10 @@
 </section>
 <!-- Bottom CTA -->
 <section class="max-w-container-max mx-auto px-gutter mt-section-gap flex justify-center mb-section-gap">
-<button class="border border-amber-500 text-amber-500 font-label-caps text-label-caps uppercase px-16 py-6 hover:bg-amber-500 hover:text-zinc-950 transition-colors duration-300 tracking-widest shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+<!-- Rezervasyon Butonu Düzeltildi -->
+<a href="https://fikoyenikoy.com/" target="_blank" class="inline-block border border-amber-500 text-amber-500 font-label-caps text-label-caps uppercase px-16 py-6 hover:bg-amber-500 hover:text-zinc-950 transition-colors duration-300 tracking-widest shadow-[0_0_15px_rgba(212,175,55,0.2)] text-center">
                 Rezervasyon Yap
-            </button>
+            </a>
 </section>
 </main>
 </body></html>
