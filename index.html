@@ -2,59 +2,299 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İstanbul Gastronomi Portalı</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Red Flag - Kaçış Oyunu</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #f4f4f5; }
-        .serif { font-family: 'Playfair Display', serif; }
+        body { margin: 0; overflow: hidden; background-color: #09090b; font-family: 'Inter', sans-serif; touch-action: none; user-select: none; -webkit-user-select: none; }
+        #gameCanvas { display: block; width: 100vw; height: 100vh; }
+        .ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .btn { pointer-events: auto; background: linear-gradient(135deg, #f43f5e, #be123c); color: white; padding: 16px 40px; border-radius: 50px; font-weight: 900; font-size: 1.2rem; cursor: pointer; border: none; box-shadow: 0 10px 30px rgba(225, 29, 72, 0.4); transition: all 0.2s; text-transform: uppercase; letter-spacing: 2px; }
+        .btn:active { transform: scale(0.95); }
+        .hidden { display: none !important; }
+        #scoreDisplay { position: absolute; top: 12%; width: 100%; text-align: center; font-size: 6rem; font-weight: 900; color: rgba(255, 255, 255, 0.05); pointer-events: none; z-index: 0; }
+        .glass-panel { background: rgba(24, 24, 27, 0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 30px; padding: 40px; }
     </style>
 </head>
-<body class="antialiased p-6">
-    <div class="max-w-md mx-auto text-center">
-        <header class="mb-12 pt-10">
-            <h1 class="serif text-4xl text-amber-500 mb-2">İstanbul</h1>
-            <p class="text-zinc-500 tracking-[0.2em] uppercase text-[10px] font-bold">Gastronomi & Lüks Rehberi</p>
-        </header>
-
-        <div class="grid gap-4">
-            <a href="sunset_grill_bar_detay_sayfas/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
-                <p class="text-sm font-bold group-hover:text-amber-500">Sunset Grill & Bar</p>
-            </a>
-            
-            <a href="zuma_mekan_detay_yenilenmi/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
-                <p class="text-sm font-bold group-hover:text-amber-500">Zuma Istanbul</p>
-            </a>
-
-            <a href="cipriani_istanbul_detay_sayfas_t_rk_e/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
-                <p class="text-sm font-bold group-hover:text-amber-500">Cipriani Istanbul</p>
-            </a>
-
-            <a href="fiko_yenik_y_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
-                <p class="text-sm font-bold group-hover:text-amber-500">Fiko Ocakbaşı</p>
-            </a>
-
-            <a href="kebap_beko_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
-                <p class="text-sm font-bold group-hover:text-amber-500">Kebap Beko</p>
-            </a>
-
-            <a href="arkestra_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
-                <p class="text-sm font-bold group-hover:text-amber-500">Arkestra</p>
-            </a>
-
-            <a href="papermoon_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
-                <p class="text-sm font-bold group-hover:text-amber-500">Papermoon</p>
-            </a>
-
-            <a href="momo_bebek_y_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
-                <p class="text-sm font-bold group-hover:text-amber-500">Momo Bebek</p>
-            </a>
+<body>
+    <div id="scoreDisplay">0</div>
+    <canvas id="gameCanvas"></canvas>
+    
+    <!-- Başlangıç Ekranı -->
+    <div id="startScreen" class="ui-layer">
+        <div class="glass-panel flex flex-col items-center pointer-events-auto">
+            <h1 class="text-6xl font-black text-white mb-2 tracking-tighter">RED<span class="text-rose-500">FLAG</span></h1>
+            <p class="text-zinc-400 mb-10 text-sm max-w-[250px]">Zehirli mesajlardan kaç, kalbini koru! Uçmak için ekrana dokun.</p>
+            <button class="btn" onclick="startGame()">OYNA</button>
         </div>
-        
-        <footer class="mt-20 pb-10">
-            <p class="text-zinc-600 text-[10px] uppercase tracking-widest">Premium Selection 2026</p>
-        </footer>
     </div>
+
+    <!-- Game Over Ekranı -->
+    <div id="gameOverScreen" class="ui-layer bg-zinc-950/90 backdrop-blur-xl hidden">
+        <div class="glass-panel flex flex-col items-center pointer-events-auto shadow-2xl shadow-rose-900/20">
+            <h2 class="text-5xl font-black text-rose-500 mb-2">GAME OVER</h2>
+            <div class="bg-zinc-900/50 rounded-2xl p-4 mb-6 w-full border border-zinc-800">
+                <p class="text-zinc-500 text-xs uppercase tracking-widest font-bold mb-1">Skorun</p>
+                <p id="finalScore" class="text-4xl text-white font-black">0</p>
+            </div>
+            <p id="gameOverMsg" class="text-zinc-300 mb-8 max-w-[280px] text-sm italic">Mesaj</p>
+            <button class="btn" onclick="resetGame()">TEKRAR DENE</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        const redFlags = [
+            "Şu an ciddi düşünmüyorum",
+            "Eski sevgilimle kankayız",
+            "Çok yoğundum görmemişim",
+            "Ben böyleyim işine gelirse",
+            "Sen çok kuruntu yapıyorsun",
+            "Hazır hissetmiyorum",
+            "Sorun sende değil bende",
+            "Sadece seni korumak istedim"
+        ];
+
+        let frames = 0;
+        let score = 0;
+        let isPlaying = false;
+        let bird, pipes;
+        let particleSystem = [];
+
+        function initGame() {
+            bird = {
+                x: width * 0.25,
+                y: height / 2,
+                velocity: 0,
+                gravity: 0.35,
+                jump: -7.5,
+                radius: 18
+            };
+            pipes = [];
+            particleSystem = [];
+            score = 0;
+            frames = 0;
+            document.getElementById('scoreDisplay').innerText = score;
+        }
+
+        function startGame() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('gameOverScreen').classList.add('hidden');
+            initGame();
+            isPlaying = true;
+            animate();
+        }
+
+        function resetGame() {
+            startGame();
+        }
+
+        function createParticles(x, y) {
+            for(let i=0; i<5; i++) {
+                particleSystem.push({
+                    x: x,
+                    y: y,
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: (Math.random() - 0.5) * 4,
+                    life: 1,
+                    size: Math.random() * 4 + 2
+                });
+            }
+        }
+
+        function drawHeart(x, y) {
+            ctx.save();
+            ctx.translate(x, y);
+            
+            // Nefes alma / Zıplama efekti
+            let scale = 1 + Math.sin(frames * 0.15) * 0.05;
+            if(bird.velocity < 0) scale = 1.1; // Zıplarken büyür
+            
+            ctx.scale(scale, scale);
+            
+            // Gölge ve Parlama
+            ctx.shadowColor = '#f43f5e';
+            ctx.shadowBlur = 20;
+            
+            ctx.font = "35px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("💖", 0, 0);
+            ctx.restore();
+        }
+
+        function drawPipe(pipe) {
+            ctx.fillStyle = '#18181b'; // Lüks Koyu Gri
+            ctx.strokeStyle = '#e11d48'; // Bordo/Kırmızı Çizgi
+            ctx.lineWidth = 2;
+            
+            // Üst Baloncuk
+            ctx.beginPath();
+            ctx.roundRect(pipe.x, 0, pipe.width, pipe.top, 15);
+            ctx.fill();
+            ctx.stroke();
+
+            // Alt Baloncuk
+            ctx.beginPath();
+            ctx.roundRect(pipe.x, height - pipe.bottom, pipe.width, pipe.bottom, 15);
+            ctx.fill();
+            ctx.stroke();
+
+            // Kırmızı Bayrak Metinleri
+            ctx.fillStyle = '#f43f5e';
+            ctx.font = "bold 13px Inter";
+            ctx.textAlign = "center";
+            
+            ctx.save();
+            ctx.clip(new Path2D(`M${pipe.x},0 h${pipe.width} v${pipe.top} h-${pipe.width} Z`));
+            ctx.fillText(pipe.text, pipe.x + pipe.width/2, pipe.top - 30);
+            ctx.restore();
+            
+            ctx.save();
+            ctx.clip(new Path2D(`M${pipe.x},${height - pipe.bottom} h${pipe.width} v${pipe.bottom} h-${pipe.width} Z`));
+            ctx.fillText(pipe.text, pipe.x + pipe.width/2, height - pipe.bottom + 40);
+            ctx.restore();
+        }
+
+        function gameOver() {
+            isPlaying = false;
+            document.getElementById('gameOverScreen').classList.remove('hidden');
+            
+            // Sayaç animasyonu
+            let currentScore = 0;
+            let scoreInterval = setInterval(() => {
+                if(currentScore < score) {
+                    currentScore++;
+                    document.getElementById('finalScore').innerText = currentScore;
+                } else {
+                    clearInterval(scoreInterval);
+                    document.getElementById('finalScore').innerText = score;
+                }
+            }, 50);
+            
+            let msg = "";
+            if(score < 5) msg = '"İlk red flag\'de vuruldun... Lovebombing\'e çok çabuk kanıyorsun!"';
+            else if(score < 15) msg = '"Fena değil ama hala toksik ilişki çekiyorsun, biraz daha kaçman lazım."';
+            else if(score < 30) msg = '"Kusursuz bir analizcisin! Kimse seni kandıramaz."';
+            else msg = '"Sen artık Nirvana\'ya ulaşmış, tamamen Green Flag bir insansın!"';
+            
+            document.getElementById('gameOverMsg').innerText = msg;
+        }
+
+        function update() {
+            bird.velocity += bird.gravity;
+            bird.y += bird.velocity;
+
+            // Zıpladıkça arkada partikül bırakır
+            if(frames % 5 === 0) createParticles(bird.x - 10, bird.y);
+
+            // Tavan ve Taban çarpışması
+            if (bird.y + bird.radius >= height || bird.y - bird.radius <= 0) {
+                gameOver();
+            }
+
+            // Engel (Red Flag) Üretimi
+            if (frames % 100 === 0) {
+                let gap = 200 - Math.min(score * 2.5, 70); // Giderek daralır
+                let minHeight = 80;
+                let maxPos = height - minHeight - gap;
+                let topHeight = Math.random() * (maxPos - minHeight) + minHeight;
+                
+                pipes.push({
+                    x: width,
+                    width: 180,
+                    top: topHeight,
+                    bottom: height - topHeight - gap,
+                    passed: false,
+                    text: redFlags[Math.floor(Math.random() * redFlags.length)]
+                });
+            }
+
+            for (let i = 0; i < pipes.length; i++) {
+                let p = pipes[i];
+                p.x -= 4 + Math.min(score * 0.15, 4); // Giderek hızlanır
+
+                // Hassas Çarpışma Testi
+                if (bird.x + bird.radius - 5 > p.x && bird.x - bird.radius + 5 < p.x + p.width) {
+                    if (bird.y - bird.radius + 5 < p.top || bird.y + bird.radius - 5 > height - p.bottom) {
+                        gameOver();
+                    }
+                }
+
+                // Skor kazanımı
+                if (p.x + p.width < bird.x && !p.passed) {
+                    score++;
+                    p.passed = true;
+                    document.getElementById('scoreDisplay').innerText = score;
+                }
+
+                if (p.x + p.width < 0) {
+                    pipes.shift();
+                    i--;
+                }
+            }
+
+            // Partikül Güncellemesi
+            for(let i = 0; i < particleSystem.length; i++) {
+                let p = particleSystem[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life -= 0.05;
+                if(p.life <= 0) { particleSystem.splice(i, 1); i--; }
+            }
+        }
+
+        function draw() {
+            // Arka Plan Lüks Degradesi
+            let grad = ctx.createLinearGradient(0, 0, 0, height);
+            grad.addColorStop(0, "#09090b"); // Çok Koyu Antrasit
+            grad.addColorStop(1, "#18181b"); // Koyu Gri
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, width, height);
+
+            // Yıldız/Şehir ışıkları efekti (Partiküller)
+            particleSystem.forEach(p => {
+                ctx.fillStyle = `rgba(244, 63, 94, ${p.life})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            pipes.forEach(drawPipe);
+            drawHeart(bird.x, bird.y);
+        }
+
+        function animate() {
+            if (!isPlaying) return;
+            frames++;
+            update();
+            draw();
+            requestAnimationFrame(animate);
+        }
+
+        // Dokunmatik ve Klavye Kontrolleri
+        function jump(e) {
+            if(e) e.preventDefault();
+            if(isPlaying) bird.velocity = bird.jump;
+        }
+
+        window.addEventListener('touchstart', jump, {passive: false});
+        window.addEventListener('mousedown', jump);
+        window.addEventListener('keydown', (e) => { if(e.code === 'Space') jump(); });
+
+    </script>
 </body>
 </html>
