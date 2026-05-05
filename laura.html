@@ -2,474 +2,223 @@
 <html lang="tr" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>L'AURA | Klinik Güzellik Küratörü</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'AURA | Kişisel Cilt Ajandanız</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        obsidian: '#050505',
-                        emeraldDark: '#022c22',
-                        gold: '#D4AF37',
-                        goldMuted: '#aa8222',
-                    },
-                    fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                    colors: { obsidian: '#050505', gold: '#D4AF37', emeraldDark: '#022c22' },
+                    fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #050505; color: #f4f4f5; }
-        
-        /* Premium Glassmorphism Kartlar */
+        body { background-color: #050505; color: #f4f4f5; scroll-behavior: smooth; }
         .glass-card {
-            background: rgba(20, 25, 20, 0.4); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 20px; transition: all 0.4s ease;
+            background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.1); border-radius: 16px;
+            transition: all 0.4s ease;
         }
-        .glass-card:hover {
-            border-color: rgba(212, 175, 55, 0.5); box-shadow: 0 10px 40px -10px rgba(2, 44, 34, 0.8); transform: translateY(-5px);
-        }
-
-        /* Modal Overlay */
+        .glass-card:hover { border-color: rgba(212, 175, 55, 0.4); transform: translateY(-4px); }
         .modal-overlay {
-            position: fixed; inset: 0; z-index: 100; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
-            display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+            position: fixed; inset: 0; z-index: 100; background: rgba(0, 0, 0, 0.9);
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
         }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        
         .modal-content {
-            background: linear-gradient(145deg, #111, #0a0a0a); border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 24px; width: 90%; max-width: 900px; max-height: 90vh; overflow-y: auto;
-            transform: scale(0.95) translateY(20px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #0a0a0a; border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 24px; width: 95%; max-width: 850px; max-height: 90vh; overflow-y: auto;
         }
-        .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
-
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
-
         .gradient-text {
             background: linear-gradient(to right, #D4AF37, #fde08b, #D4AF37);
             -webkit-background-clip: text; background-clip: text; color: transparent;
         }
     </style>
 </head>
-<body class="font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-black">
+<body class="font-sans antialiased selection:bg-gold selection:text-black">
 
-    <nav class="fixed top-0 w-full z-50 bg-obsidian/80 backdrop-blur-xl border-b border-white/5">
+    <!-- Navigasyon -->
+    <nav class="fixed top-0 w-full z-50 bg-obsidian/90 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="text-gold font-serif text-2xl tracking-[0.2em]">L'AURA</div>
-            <div class="hidden md:flex gap-8 text-sm font-medium tracking-widest uppercase text-zinc-400">
-                <a href="#simya" class="hover:text-gold transition-colors">Kimya Motoru</a>
-                <a href="#koleksiyon" class="hover:text-gold transition-colors">Klinik Veritabanı</a>
-                <a href="#kortest" class="hover:text-gold transition-colors">Kör Test</a>
+            <div class="hidden md:flex gap-8 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400">
+                <a href="#simya" class="hover:text-gold transition-colors">Uyum Testi</a>
+                <a href="#koleksiyon" class="hover:text-gold transition-colors">Ürün Arşivi</a>
             </div>
-            <button class="flex items-center gap-2 text-gold border border-gold/30 px-5 py-2 rounded-full hover:bg-gold hover:text-black transition-all">
-                <span class="material-symbols-outlined text-sm">science</span>
-                <span class="text-xs font-bold tracking-widest uppercase">Laboratuvarım</span>
+            <button class="flex items-center gap-2 text-gold border border-gold/20 px-6 py-2.5 rounded-full hover:bg-gold hover:text-black transition-all">
+                <span class="material-symbols-outlined text-sm">auto_stories</span>
+                <span class="text-xs font-bold tracking-widest uppercase">Cilt Ajandam</span>
             </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative min-h-[80vh] flex items-center justify-center pt-20 overflow-hidden border-b border-zinc-900">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1615397323044-67252033bc6f?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover opacity-20 mix-blend-luminosity" alt="Texture">
-            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-emeraldDark/10 to-obsidian"></div>
-        </div>
-
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-12">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-900/20 backdrop-blur-md mb-8">
-                <span class="material-symbols-outlined text-emerald-400 text-sm">verified_user</span>
-                <span class="text-xs font-semibold tracking-[0.2em] text-emerald-300 uppercase">Medikal ve Bilimsel Formülasyon Analizi Aktif</span>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight">
-                Cildinizin <span class="gradient-text italic">Kimyasını</span> Çözün.
+    <!-- Hero -->
+    <header class="relative min-h-[70vh] flex items-center justify-center pt-24 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-obsidian via-emeraldDark/5 to-obsidian"></div>
+        <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-serif text-white mb-6 leading-tight">
+                Güzelliğin <span class="gradient-text italic">Bilimsel</span> Reçetesi.
             </h1>
-            <p class="text-lg md:text-xl text-zinc-400 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
-                Dünyanın en prestijli dermokozmetik formülasyonları. pH değerleri, aktif içerik çarpışmaları ve bariyer onarım sinerjileri. Hata payı sıfır.
+            <p class="text-zinc-400 font-light text-lg mb-10 leading-relaxed">
+                Türkiye'nin en kapsamlı cilt bakım veritabanı. Lüks segmentten eczane markalarına kadar tüm içerikleri çarpıştırın, cildinize zarar vermeden parlayın.
             </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#simya" class="bg-gold text-black font-bold uppercase tracking-widest text-[10px] px-8 py-4 rounded-full">Etkileşimi Test Et</a>
+                <a href="#koleksiyon" class="border border-white/20 text-white font-bold uppercase tracking-widest text-[10px] px-8 py-4 rounded-full hover:bg-white/5">Arşivi İncele</a>
+            </div>
         </div>
     </header>
 
-    <!-- BÖLÜM 1: KLİNİK ÇARPIŞMA MOTORU -->
-    <section id="simya" class="py-24 relative">
-        <div class="max-w-5xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-serif text-white mb-4">Aktif İçerik Simyası</h2>
-                <p class="text-zinc-400 max-w-2xl mx-auto">Sağlıklı bir cilt bariyeri için asitlerin, vitaminlerin ve nem tutucuların bilimsel etkileşimlerini test edin.</p>
-            </div>
-
-            <div class="glass-card p-10 md:p-16 border-zinc-800 bg-zinc-950/50">
-                <div class="flex flex-col md:flex-row gap-8 items-center justify-center">
-                    <div class="w-full md:w-1/3">
-                        <label class="block text-xs uppercase tracking-widest text-gold mb-3 ml-2">1. Molekül Sınıfı</label>
-                        <select id="ing1" class="w-full bg-black border border-zinc-800 text-white rounded-xl px-5 py-4 focus:outline-none focus:border-gold appearance-none font-light">
-                            <option value="none">Seçiniz...</option>
-                            <option value="retinol">Retinol / Retinoid (Hücre Yenileyici)</option>
-                            <option value="vitc">Saf C Vitamini (L-Askorbik Asit)</option>
-                            <option value="aha">AHA/BHA (Glikolik, Salisilik Asit)</option>
-                            <option value="niacinamide">Niasinamid (B3 Vitamini)</option>
-                            <option value="ceramide">Seramitler (Bariyer Onarıcı)</option>
-                            <option value="hyaluronic">Hyalüronik Asit (Nem Tutucu)</option>
-                            <option value="peptide">Peptitler (Kolajen Tetikleyici)</option>
-                            <option value="spf">Güneş Koruyucu (UV Filtreleri)</option>
-                        </select>
-                    </div>
-
-                    <div class="text-zinc-700"><span class="material-symbols-outlined text-4xl mt-6">science</span></div>
-
-                    <div class="w-full md:w-1/3">
-                        <label class="block text-xs uppercase tracking-widest text-gold mb-3 ml-2">2. Molekül Sınıfı</label>
-                        <select id="ing2" class="w-full bg-black border border-zinc-800 text-white rounded-xl px-5 py-4 focus:outline-none focus:border-gold appearance-none font-light">
-                            <option value="none">Seçiniz...</option>
-                            <option value="retinol">Retinol / Retinoid (Hücre Yenileyici)</option>
-                            <option value="vitc">Saf C Vitamini (L-Askorbik Asit)</option>
-                            <option value="aha">AHA/BHA (Glikolik, Salisilik Asit)</option>
-                            <option value="niacinamide">Niasinamid (B3 Vitamini)</option>
-                            <option value="ceramide">Seramitler (Bariyer Onarıcı)</option>
-                            <option value="hyaluronic">Hyalüronik Asit (Nem Tutucu)</option>
-                            <option value="peptide">Peptitler (Kolajen Tetikleyici)</option>
-                            <option value="spf">Güneş Koruyucu (UV Filtreleri)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="text-center mt-12">
-                    <button onclick="analyzeSynergy()" class="border border-gold text-gold hover:bg-gold hover:text-black font-bold uppercase tracking-widest text-sm px-12 py-4 rounded-full transition-all">
-                        Klinik Analiz
-                    </button>
-                </div>
-
-                <div id="synergy-result" class="mt-12 transition-all"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BÖLÜM 2: DİNAMİK VERİTABANI -->
-    <section id="koleksiyon" class="py-24 bg-[#080808]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-16 border-b border-zinc-800 pb-6">
-                <div>
-                    <h2 class="text-4xl font-serif text-white mb-2">Medikal Lüks Veritabanı</h2>
-                    <p class="text-zinc-400">Dünyanın önde gelen prestijli ve ulaşılabilir klinik formülasyonları.</p>
-                </div>
-            </div>
-
-            <!-- JAVASCRIPT BU BÖLÜME ÜRÜNLERİ OTOMATİK BASACAK -->
-            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Ürünler buraya gelecek -->
-            </div>
-        </div>
-    </section>
-
-    <!-- BÖLÜM 3: KÖR TEST KAPSÜLÜ -->
-    <section id="kortest" class="py-32 relative border-t border-zinc-900">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <span class="material-symbols-outlined text-5xl text-zinc-600 mb-6">biotech</span>
-            <h2 class="text-4xl font-serif text-white mb-6">Kör Test Kapsülü</h2>
-            <p class="text-zinc-400 text-lg mb-12">Markalara değil, içeriklere aşık olun. Şişesini görmeden, sadece kimyasına bakarak bu ürünü rutininize ekler miydiniz?</p>
-            
-            <div class="glass-card p-10 relative overflow-hidden group border-zinc-800 bg-zinc-950/50">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
-                <div class="mb-8">
-                    <h4 class="text-gold font-bold tracking-widest uppercase text-sm mb-4">Laboratuvar Profili #042</h4>
-                    <ul class="text-left text-zinc-300 space-y-3 max-w-md mx-auto font-light">
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> %10 Niasinamid (B3 Vitamini)</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> %1 Çinko PCA</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Slikon, alkol ve yağ içermez.</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Hedef: Gözenek sıkılaştırma ve sebum kontrolü.</li>
-                    </ul>
-                </div>
-                
-                <button onclick="revealBlindTest()" id="reveal-btn" class="border border-white/20 text-white hover:bg-white hover:text-black font-semibold uppercase tracking-widest text-xs px-8 py-3 rounded-full transition-all">
-                    Hangi Marka Olduğunu Gör
-                </button>
-                
-                <div id="reveal-result" class="hidden mt-8 pt-8 border-t border-white/10 animate-fade-in">
-                    <p class="text-sm text-zinc-400 uppercase tracking-widest mb-1">Cevap:</p>
-                    <h3 class="text-3xl font-serif text-white">The Ordinary</h3>
-                    <p class="text-gold mt-1 italic">Niacinamide 10% + Zinc 1%</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODAL EKRANI -->
-    <div id="product-modal" class="modal-overlay" onclick="closeModalOnOutsideClick(event)">
-        <div class="modal-content flex flex-col md:flex-row">
-            <div class="w-full md:w-2/5 h-64 md:h-auto bg-black relative">
-                <img id="m-img" src="" class="w-full h-full object-cover opacity-80" alt="">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent md:bg-gradient-to-r"></div>
-            </div>
-            
-            <div class="w-full md:w-3/5 p-10 relative">
-                <button onclick="closeModal()" class="absolute top-6 right-6 text-zinc-500 hover:text-white transition-colors">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-
-                <span id="m-brand" class="text-gold text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Marka</span>
-                <h2 id="m-name" class="text-3xl font-serif text-white mb-8">Ürün Adı</h2>
-
-                <div class="space-y-6">
+    <!-- ÇARPIŞMA MOTORU -->
+    <section id="simya" class="py-24 bg-zinc-950/30">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="glass-card p-10 border-zinc-800">
+                <h2 class="text-2xl font-serif text-white mb-8 text-center">İçerik Çakışma Analizi</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                     <div>
-                        <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2">
-                            <span class="material-symbols-outlined text-emerald-500 text-lg">biotech</span>
-                            İçerik Tomografisi & pH
-                        </h4>
-                        <p id="m-tomography" class="text-zinc-400 text-sm leading-relaxed">İçerik detayı...</p>
+                        <label class="text-[10px] text-gold uppercase tracking-widest mb-2 block ml-2">1. Adım Ürünü</label>
+                        <select id="ing1" class="w-full bg-black border border-zinc-800 text-white rounded-xl p-4 focus:border-gold outline-none">
+                            <option value="none">İçerik Seçiniz...</option>
+                            <option value="retinol">Retinol (Hücre Yenileyici)</option>
+                            <option value="vitc">Saf C Vitamini</option>
+                            <option value="aha">Glikolik/Laktik Asit (AHA)</option>
+                            <option value="niacinamide">Niasinamid (B3)</option>
+                            <option value="ceramide">Seramitler</option>
+                            <option value="hyaluronic">Hyalüronik Asit</option>
+                        </select>
                     </div>
-                    <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
-                        <h4 class="text-gold text-sm font-semibold flex items-center gap-2 mb-2">
-                            <span class="material-symbols-outlined text-lg">science</span>
-                            Klinik Kullanım Sinerjisi
-                        </h4>
-                        <p id="m-synergy" class="text-zinc-300 text-sm leading-relaxed">Sinerji detayı...</p>
+                    <div>
+                        <label class="text-[10px] text-gold uppercase tracking-widest mb-2 block ml-2">2. Adım Ürünü</label>
+                        <select id="ing2" class="w-full bg-black border border-zinc-800 text-white rounded-xl p-4 focus:border-gold outline-none">
+                            <option value="none">İçerik Seçiniz...</option>
+                            <option value="retinol">Retinol (Hücre Yenileyici)</option>
+                            <option value="vitc">Saf C Vitamini</option>
+                            <option value="aha">Glikolik/Laktik Asit (AHA)</option>
+                            <option value="niacinamide">Niasinamid (B3)</option>
+                            <option value="ceramide">Seramitler</option>
+                            <option value="hyaluronic">Hyalüronik Asit</option>
+                        </select>
                     </div>
                 </div>
+                <button onclick="analyze()" class="w-full bg-white text-black font-bold uppercase tracking-widest text-xs py-4 rounded-xl hover:bg-gold transition-all">Analizi Başlat</button>
+                <div id="result" class="mt-8 transition-all duration-500"></div>
+            </div>
+        </div>
+    </section>
 
-                <div class="mt-10 flex flex-col sm:flex-row gap-4">
-                    <button class="flex-1 bg-white text-black font-semibold uppercase tracking-widest text-xs py-4 rounded-full hover:bg-zinc-200 transition-colors flex justify-center items-center gap-2">
-                        <span class="material-symbols-outlined text-sm">add</span> Laboratuvarıma Ekle
-                    </button>
-                    <!-- Satış Ortaklığı Butonu -->
-                    <button class="flex-1 border border-zinc-700 text-white font-semibold uppercase tracking-widest text-xs py-4 rounded-full hover:border-gold hover:text-gold transition-colors">
-                        Orijinal Satıcıdan Temin Et
-                    </button>
+    <!-- ÜRÜN ARŞİVİ -->
+    <section id="koleksiyon" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-end mb-16 border-b border-zinc-800 pb-8">
+            <h2 class="text-4xl font-serif text-white">Uzman Seçkileri</h2>
+            <div class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">50+ Onaylı Formül</div>
+        </div>
+        <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Dinamik Ürünler Buraya Gelecek -->
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal-overlay" onclick="closeM(event)">
+        <div class="modal-content flex flex-col md:flex-row overflow-hidden">
+            <div class="w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
+                <img id="m-img" src="" class="w-full h-full object-cover" alt="">
+            </div>
+            <div class="w-full md:w-1/2 p-10 relative">
+                <button onclick="closeM()" class="absolute top-6 right-6 text-zinc-500 hover:text-white"><span class="material-symbols-outlined">close</span></button>
+                <span id="m-brand" class="text-gold text-[10px] font-bold uppercase tracking-widest mb-2 block"></span>
+                <h3 id="m-name" class="text-3xl font-serif text-white mb-6 leading-tight"></h3>
+                <div class="space-y-6">
+                    <p id="m-desc" class="text-zinc-400 text-sm leading-relaxed"></p>
+                    <div class="p-4 bg-zinc-900 rounded-xl border border-zinc-800">
+                        <span class="text-gold text-[10px] font-bold uppercase block mb-1">Altın Sinerji</span>
+                        <p id="m-syn" class="text-zinc-300 text-xs italic"></p>
+                    </div>
                 </div>
+                <button class="w-full mt-10 border border-gold/40 text-gold font-bold uppercase tracking-widest text-[10px] py-4 rounded-full hover:bg-gold hover:text-black transition-all">Ajandama Ekle</button>
             </div>
         </div>
     </div>
 
-    <!-- SİSTEM MİMARİSİ (JAVASCRIPT) -->
     <script>
-        /* =================================================================================
-           1. KLİNİK ÇARPIŞMA (SİMYA) MOTORU
-           ================================================================================= */
-        function analyzeSynergy() {
-            const i1 = document.getElementById('ing1').value;
-            const i2 = document.getElementById('ing2').value;
-            const result = document.getElementById('synergy-result');
-
-            if (i1 === 'none' || i2 === 'none') {
-                result.innerHTML = '<p class="text-zinc-500 text-center">Analiz için iki aktif içerik seçmelisiniz.</p>';
-                return;
-            }
-            if (i1 === i2) {
-                result.innerHTML = '<p class="text-zinc-500 text-center">Aynı aktif içerikleri seçtiniz.</p>';
-                return;
-            }
-
-            const pair = [i1, i2].sort().join('-');
-
-            const redFlags = {
-                'aha-retinol': 'AHA/BHA asitleri ve Retinol cilt hücresel dönüşümünü aşırı hızlandırır. Birlikte kullanımı cilt bariyerini parçalar, pH dengesini bozar ve ciddi mikrobik inflamasyona yol açar. Asla aynı rutin içinde üst üste sürmeyin.',
-                'retinol-vitc': 'Saf C Vitamini (L-Askorbik Asit) düşük pH ortamda çalışırken, Retinol yüksek pH gerektirir. Birlikte kullanıldıklarında birbirlerinin kimyasal formunu bozup etkisizleşirler ve asit yanığına benzer iritasyon yaratırlar.',
-                'aha-vitc': 'Her iki içerik de agresif asit formundadır. Üst üste uygulanmaları cildin koruyucu asit mantosunu soyarak cildi savunmasız bırakır ve kızarıklık yaratır.',
-                'aha-peptide': 'AHA/BHA asitlerinin düşük pH değeri, hassas peptit zincirlerini (özellikle bakır peptitleri) parçalayarak onları tamamen işlevsiz hale getirir.'
-            };
-
-            const synergies = {
-                'ceramide-retinol': 'Mükemmel Medikal Uyum! Retinolün yaratabileceği kuruluk ve tahriş riskini, Seramitlerin yoğun bariyer onarıcı etkisi tamamen sıfırlar. Dermatologların en çok önerdiği ikilidir.',
-                'hyaluronic-retinol': 'Sinerjik Çalışma. Hyalüronik asit cilde suyu hapsederken, üzerine uygulanan retinol daha sağlıklı ve neme doymuş bir hücresel zeminde çok daha verimli çalışır.',
-                'spf-vitc': 'Altın Sinerji! C Vitamininin güçlü antioksidan yapısı, Güneş Koruyucunun (SPF) UV filtreleriyle birleştiğinde, serbest radikallere ve güneş lekelerine karşı adeta görünmez bir zırh oluşturur.',
-                'niacinamide-retinol': 'Niasinamid, cildin doğal seramit üretimini artırarak cilt bariyerini güçlendirir. Bu sayede retinol kullanımına bağlı kızarıklık ve kuruluk engellenir.',
-                'aha-hyaluronic': 'Asitlerin (AHA) cildi ölü deriden arındırmasının ardından uygulanan Hyalüronik asit, gözeneklerden çok daha derine inerek cildi anında neme doyurur.',
-                'ceramide-hyaluronic': 'Temel Bariyer İnşası. Hyalüronik asit hücrelere suyu çeker, Seramitler ise tuğla/harç mantığıyla suyu cilde hapseder. Hasarlı ciltler için kusursuz kombinasyondur.'
-            };
-
-            if (redFlags[pair]) {
-                result.innerHTML = `
-                    <div class="p-8 bg-red-950/30 border border-red-900/50 rounded-2xl text-left animate-pulse">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="material-symbols-outlined text-red-500 text-3xl">warning</span>
-                            <h4 class="text-xl font-serif text-red-400">Klinik Tehlike (Bariyer Hasarı)</h4>
-                        </div>
-                        <p class="text-red-200/80 ml-11 text-sm leading-relaxed">${redFlags[pair]}</p>
-                    </div>`;
-            } 
-            else if (synergies[pair]) {
-                result.innerHTML = `
-                    <div class="p-8 bg-emerald-950/30 border border-emerald-900/50 rounded-2xl text-left">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="material-symbols-outlined text-emerald-400 text-3xl">verified_user</span>
-                            <h4 class="text-xl font-serif text-emerald-400">Mükemmel Sinerji</h4>
-                        </div>
-                        <p class="text-emerald-200/80 ml-11 text-sm leading-relaxed">${synergies[pair]}</p>
-                    </div>`;
-            }
-            else {
-                result.innerHTML = `
-                    <div class="p-8 bg-zinc-900/50 border border-zinc-800 rounded-2xl text-left">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="material-symbols-outlined text-gold text-3xl">info</span>
-                            <h4 class="text-xl font-serif text-gold">Nötr Birliktelik</h4>
-                        </div>
-                        <p class="text-zinc-400 ml-11 text-sm leading-relaxed">Bu moleküllerin birbiri üzerinde doğrudan negatif bir etkileşimi yoktur. Önce ince yapılı (su bazlı) olanı, ardından yoğun (yağ bazlı) olanı uygulayarak rutininize güvenle devam edebilirsiniz.</p>
-                    </div>`;
-            }
-        }
-
-        /* =================================================================================
-           2. DİNAMİK ÜRÜN VERİTABANI (LÜKS + ECZANE SEGMENTİ KARIŞIK)
-           ================================================================================= */
-        const productDatabase = [
-            // LÜKS SEGMENT
-            {
-                id: 'skinceuticals_ce', brand: 'SkinCeuticals', name: 'C E Ferulic',
-                tag: 'Saf C Vitamini', desc: 'Dünyanın en çok ödül alan medikal antioksidanı.',
-                tomography: 'pH 2.0-3.5 aralığında formüle edilmiştir. %15 L-Askorbik Asit, %1 Alpha Tocopherol (E Vitamini) ve %0.5 Ferulik Asit. Oksidasyonu yavaşlatan patentli Duke formülü.',
-                synergy: 'Sabah rutininizde uygulayın ve üzerine mutlaka geniş spektrumlu bir SPF (Güneş Koruyucu) sürün. C vitamini UV ışınlarının yarattığı serbest radikalleri nötralize ederek güneş kreminin gücünü artırır.',
-                img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'lamer_creme', brand: 'La Mer', name: 'Crème de la Mer',
-                tag: 'Bariyer Onarıcı', desc: 'Deniz yosunundan gelen mucizevi bariyer kremi.',
-                tomography: 'Zengin lipit yapılı, ağır moleküllü krem. "Miracle Broth" adı verilen, aylarca fermente edilmiş deniz yosunu, vitamin ve mineraller kompleksi.',
-                synergy: 'Düşük pH\'lı asit (AHA/BHA) kullanımından sonra cildi yatıştırmak veya Retinolün kurutucu etkisini baskılayıp cilde lipit takviyesi yapmak için akşam rutininin en son adımı olarak kullanın.',
-                img: 'https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'darphin_intral', brand: 'Darphin', name: 'Intral Inner Youth Rescue',
-                tag: 'Yatıştırıcı Peptit', desc: 'Hassas ciltlerin vazgeçilmez mikrobiyom destekçisi.',
-                tomography: 'Resveratrol, Papatya ve Şakayık bitkisel kompleksi. %84 Doğal kaynaklı ultra-hafif su bazlı serum. Cilt kızarıklığını anında yatıştırır.',
-                synergy: 'Tüm asit (AHA/BHA) ve Retinol uygulamalarından önce bariyeri sakinleştirmek için tampon (buffer) serum olarak harika çalışır.',
-                img: 'https://images.unsplash.com/photo-1615397323044-67252033bc6f?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'paulas_bha', brand: "Paula's Choice", name: 'Skin Perfecting 2% BHA',
-                tag: 'Salisilik Asit', desc: 'Gözenek tıkanıklığını çözen altın standart sıvı exfoliant.',
-                tomography: 'pH 3.2-3.8. %2 Salisilik Asit (BHA) ve yeşil çay ekstresi içerir. Yağda çözünerek gözeneklerin en derinine inip sebumu parçalar.',
-                synergy: 'Kesinlikle üzerine Peptit veya C vitamini KULLANMAYIN. Uyguladıktan 15 dakika sonra sadece saf Hyalüronik Asit veya Seramit bazlı bir nemlendirici ile cildi rahatlatın.',
-                img: 'https://images.unsplash.com/photo-1596462502278-27bf85033e5a?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'estee_anr', brand: 'Estée Lauder', name: 'Advanced Night Repair',
-                tag: 'Gece Onarımı', desc: 'Hücresel DNA senkronizasyonunu destekleyen efsane.',
-                tomography: 'Bifida Ferment Lysate, Tripeptide-32 ve Hyalüronik Asit içerir. Cildin doğal sirkadiyen gece onarım ritmini maksimize eden peptit ve ferment teknolojisi.',
-                synergy: 'Gece temiz cilde uygulayın. İleri yaşlanma karşıtı etki için Retinol sürdükten sonra (retinol emildikten 10 dk sonra) cildi onarmak için üstüne sürebilirsiniz.',
-                img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'clinique_surge', brand: 'Clinique', name: 'Moisture Surge 100H',
-                tag: 'Hyalüronik Asit', desc: 'Cildin 10 katman derinine inen ultra hafif su tutucu.',
-                tomography: 'Aloe Bioferment ve Hyalüronik Asit Kompleksi. Yağsız, parfümsüz jel-krem dokusu. Cildin kendi nem kaynağını yaratmasını tetikler.',
-                synergy: 'Saf Hyalüronik asit yapısı sayesinde, serumlardan (Özellikle C Vitamini veya Niasinamid) sonra cildi mühürlemek için sabah ve akşam kullanılabilecek en risksiz, evrensel nemlendiricidir.',
-                img: 'https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'kiko_trainer', brand: 'Kiko Milano', name: 'Skin Trainer Cream',
-                tag: 'Hücresel Enerji', desc: 'Cilt hücrelerine enerji pompalayan "Cilt Antrenörü".',
-                tomography: 'ATP uyarıcı özel peptit zincirleri ve cildin oksijenlenmesini artıran canlandırıcı ajanlar. Stresli ve mat ciltlerin yorgunluk izlerini siler.',
-                synergy: 'Sabah rutininde, C vitamini serumu ile birlikte kullanıldığında cildin matlık problemini çok kısa sürede ortadan kaldırıp ışıl ışıl bir zemin yaratır.',
-                img: 'https://images.unsplash.com/photo-1596462502278-27bf85033e5a?q=80&w=800&auto=format&fit=crop'
-            },
+        const products = [
+            // LÜKS
+            { id: 1, brand: 'La Mer', name: 'The Treatment Lotion', tag: 'Enerji Verici', syn: 'Üzerine Miracle Broth içeren kremleri sürerek emilimi artırın.', img: 'https://images.unsplash.com/photo-1556229174-5e42a09e45af?q=80&w=800&auto=format&fit=crop', desc: 'Hücresel yenilenmeyi tetikleyen sıvı enerji.' },
+            { id: 2, brand: 'Darphin', name: 'Intral Inner Youth', tag: 'Yatıştırıcı', syn: 'Kızarıklık anında üzerine seramit içeren kremlerle kilitleyin.', img: 'https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=800&auto=format&fit=crop', desc: 'Hassas ciltlerin botanik kurtarıcısı.' },
+            { id: 3, brand: 'SkinCeuticals', name: 'C E Ferulic', tag: 'Antioksidan', syn: 'Sabah SPF altında kullanarak güneş korumasını 2 katına çıkarın.', img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop', desc: 'Dünyanın en güçlü saf C vitamini serumu.' },
+            { id: 4, brand: 'Estée Lauder', name: 'Advanced Night Repair', tag: 'Onarıcı', syn: 'Gece Retinol kullanımından sonra bariyer desteği için ideal.', img: 'https://images.unsplash.com/photo-1594465919760-441fe5908ab0?q=80&w=800&auto=format&fit=crop', desc: 'Hücresel DNA senkronizasyonu yapan gece efsanesi.' },
             
-            // ECZANE VE ULAŞILABİR SEGMENT
-            {
-                id: 'laroche_cicaplast', brand: 'La Roche-Posay', name: 'Cicaplast Baume B5+',
-                tag: 'Bariyer Onarıcı', desc: 'Hassaslaşmış ciltler için kült eczane onarıcısı.',
-                tomography: '%5 Panthenol (B3 Vitamini), Madecassoside ve Çinko/Mangan içerir. Cildin mikrobiyom dengesini destekleyen, kalın yapılı kurtarıcı krem.',
-                synergy: 'AHA/BHA (Asit) peelingleri sonrasında veya kışın kuruyan ciltlerde gece rutininde en son adım olarak kullanarak cildi dış etkenlere karşı mühürleyin.',
-                img: 'https://images.unsplash.com/photo-1615397323044-67252033bc6f?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'bioderma_sensibio', brand: 'Bioderma', name: 'Sensibio H2O',
-                tag: 'Misellar Temizleyici', desc: 'Dünyada her 2 saniyede 1 satılan efsanevi temizleyici.',
-                tomography: 'pH 5.5 değeriyle cilt bariyerine tamamen saygılı, salatalık özü (Cucumis Sativus) ile zenginleştirilmiş durulama gerektirmeyen misellar su.',
-                synergy: 'Akşam rutininizin ilk (1. Aşama) temizleme adımıdır. Makyajı ve kiri nazikçe söker, üzerine su bazlı bir yıkama jeli ve Hyalüronik asit serumu ile devam edebilirsiniz.',
-                img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'theinkey_hyaluronic', brand: 'The Inkey List', name: 'Hyaluronic Acid Serum',
-                tag: 'Nem Tutucu', desc: 'Fiyat/Performans şampiyonu saf nem mıknatısı.',
-                tomography: '%2 Saf Hyalüronik Asit ve Matrixyl 3000 peptit kompleksi içerir. Kendi ağırlığının 1000 katı su tutarak cildi anında dolgunlaştırır.',
-                synergy: 'Kural: Asla kuru cilde sürmeyin! Cildinizi hafifçe nemlendirdikten (veya tonikledikten) sonra sürün ve hemen ardından bir nemlendirici krem ile suyu cilde hapsedin.',
-                img: 'https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'loreal_revitalift', brand: "L'Oréal Paris", name: 'Revitalift %0.2 Saf Retinol',
-                tag: 'Retinol (Gece)', desc: 'Erişilebilir anti-aging segmentinin en popüler serumu.',
-                tomography: 'Makro moleküllü %0.2 Saf Retinol. İlk kullananlar için stabilize edilmiş, toleransı yüksek bir A vitamini formülasyonu.',
-                synergy: 'Sadece gece kullanın. Niasinamid (B3) serumu ile birlikte kullanıldığında retinolün olası kızarıklık riski düşer ve leke açıcı etki ikiye katlanır.',
-                img: 'https://images.unsplash.com/photo-1596462502278-27bf85033e5a?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-                id: 'theordinary_niac', brand: 'The Ordinary', name: 'Niacinamide 10% + Zinc 1%',
-                tag: 'Niasinamid (B3)', desc: 'Sebum regülasyonu ve bariyer güçlendirmede kült formül.',
-                tomography: 'Yüksek konsantrasyonlu (%10) Vitamin B3 ve Çinko tuzu (PCA). Leke görünümünü ve geniş gözenekleri kontrol altına alır. Yağsız su bazlı formül.',
-                synergy: 'Retinol tedavisinin yarattığı bariyer zayıflamasını toparlamak için, Retinolden hemen önce veya sonra sürülerek cildin direncini artırmak için mükemmel bir Sinerjisttir.',
-                img: 'https://images.unsplash.com/photo-1615397323044-67252033bc6f?q=80&w=800&auto=format&fit=crop'
-            }
+            // ECZANE / ULAŞILABİLİR
+            { id: 5, brand: 'La Roche-Posay', name: 'Effaclar Duo(+)', tag: 'Akne Karşıtı', syn: 'Sadece sivilce üzerine veya yağlı bölgelere lokal uygulayın.', img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop', desc: 'Leke ve kusur karşıtı kült eczane formülü.' },
+            { id: 6, brand: 'CeraVe', name: 'Moisturizing Cream', tag: 'Nemlendirici', syn: 'Tüm asitli rutinlerin sonunda bariyer mührü olarak kullanın.', img: 'https://images.unsplash.com/photo-1556228578-8c89e6afd887?q=80&w=800&auto=format&fit=crop', desc: '3 temel seramit içeren dermatolog favorisi.' },
+            { id: 7, brand: 'The Ordinary', name: 'Hyaluronic Acid 2%', tag: 'Nem Tutucu', syn: 'Hafif nemli cilde uygulayıp üzerine kreminizi sürün.', img: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?q=80&w=800&auto=format&fit=crop', desc: 'Saf nem bombası ve fiyat/performans lideri.' },
+            { id: 8, brand: 'Bioderma', name: 'Sensibio H2O', tag: 'Temizleyici', syn: 'Çift aşamalı temizliğin ilk adımı olarak kullanın.', img: 'https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?q=80&w=800&auto=format&fit=crop', desc: 'Hassas göz ve yüz için orijinal misellar su.' },
+            { id: 9, brand: 'Neutrogena', name: 'Hydro Boost Gel', tag: 'Su Bazlı Nem', syn: 'Makyaj altı bazı olarak pürüzsüzleştirici etkisi yüksektir.', img: 'https://images.unsplash.com/photo-1556228443-181352e7f529?q=80&w=800&auto=format&fit=crop', desc: 'Cildi tazeleyen hiyelüronik asitli su jeli.' },
+            { id: 10, brand: 'Vichy', name: 'Mineral 89', tag: 'Güçlendirici', syn: 'C vitamini serumundan önce cildi hazırlamak için kullanın.', img: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?q=80&w=800&auto=format&fit=crop', desc: 'Volkanik su ve hiyelüronik asit mucizesi.' },
+            { id: 11, brand: 'L\'Oréal Paris', name: 'Saf Retinol Gece Serumu', tag: 'Retinol', syn: 'Haftada 2 gece ile başlayıp üzerine Cicaplast sürün.', img: 'https://images.unsplash.com/photo-1620917670397-dc7bc45e6976?q=80&w=800&auto=format&fit=crop', desc: 'Kırışıklık karşıtı stabilize saf retinol.' },
+            { id: 12, brand: 'Bepanthol', name: 'Derma Yüz Kremi', tag: 'Onarıcı', syn: 'Retinol kuruluklarında gece maskesi gibi kalın sürülebilir.', img: 'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?q=80&w=800&auto=format&fit=crop', desc: 'B5 vitamini desteğiyle günlük yoğun nem.' }
         ];
 
-        /* =================================================================================
-           3. HTML KARTLARINI OTOMATİK OLUŞTURMA
-           ================================================================================= */
-        const productGrid = document.getElementById('product-grid');
-
-        productDatabase.forEach(product => {
-            const cardHTML = `
-                <div class="glass-card group cursor-pointer overflow-hidden flex flex-col border-zinc-800 bg-zinc-900/50" onclick="openModal('${product.id}')">
-                    <div class="h-64 overflow-hidden relative bg-black">
-                        <img src="${product.img}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" alt="${product.brand}">
-                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
+        // Ürünleri Ekrana Bas
+        const grid = document.getElementById('grid');
+        products.forEach(p => {
+            grid.innerHTML += `
+                <div class="glass-card overflow-hidden group cursor-pointer" onclick="openM(${p.id})">
+                    <div class="h-56 overflow-hidden bg-black">
+                        <img src="${p.img}" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110">
                     </div>
-                    <div class="p-8 relative flex-1 flex flex-col">
-                        <span class="text-[10px] text-emerald-400 uppercase tracking-[0.2em] mb-2 block font-bold">${product.tag}</span>
-                        <h3 class="text-2xl font-serif text-white mb-1">${product.brand}</h3>
-                        <p class="text-zinc-400 text-sm mb-6 flex-1">${product.name}</p>
-                        <div class="flex items-center gap-2 text-xs font-semibold text-white/50 uppercase tracking-widest group-hover:text-gold transition-colors mt-auto pt-4 border-t border-zinc-800">
-                            <span>Klinik Profili Gör</span>
-                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    <div class="p-6">
+                        <span class="text-gold text-[8px] font-bold uppercase tracking-[0.2em] mb-1 block">${p.tag}</span>
+                        <h3 class="text-lg font-serif text-white">${p.brand}</h3>
+                        <p class="text-zinc-400 text-xs mb-4">${p.name}</p>
+                        <div class="flex items-center gap-2 text-[9px] font-bold text-white/40 uppercase tracking-widest group-hover:text-gold transition-colors">
+                            Detayları Gör <span class="material-symbols-outlined text-xs">arrow_forward</span>
                         </div>
                     </div>
                 </div>
             `;
-            productGrid.innerHTML += cardHTML;
         });
 
-        /* =================================================================================
-           4. MODAL EKRANI & KÖR TEST KONTROLLERİ
-           ================================================================================= */
-        const modal = document.getElementById('product-modal');
-
-        function openModal(id) {
-            const data = productDatabase.find(p => p.id === id);
-            if(data) {
-                document.getElementById('m-brand').innerText = data.brand;
-                document.getElementById('m-name').innerText = data.name;
-                document.getElementById('m-tomography').innerText = data.tomography;
-                document.getElementById('m-synergy').innerText = data.synergy;
-                document.getElementById('m-img').src = data.img;
-                
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; 
+        // Analiz Fonksiyonu
+        function analyze() {
+            const i1 = document.getElementById('ing1').value;
+            const i2 = document.getElementById('ing2').value;
+            const res = document.getElementById('result');
+            if(i1 === 'none' || i2 === 'none') return;
+            
+            const pair = [i1, i2].sort().join('-');
+            if(pair === 'aha-retinol' || pair === 'retinol-vitc') {
+                res.innerHTML = `<div class="p-6 bg-red-950/40 border border-red-500/50 rounded-xl text-xs text-red-200 leading-relaxed animate-pulse"><strong>DİKKAT (Red Flag):</strong> Bu iki içerik cilt bariyerini parçalar ve asit yanığına yol açabilir. Asla aynı anda kullanmayın.</div>`;
+            } else if(pair === 'ceramide-retinol' || pair === 'hyaluronic-retinol' || pair === 'spf-vitc') {
+                res.innerHTML = `<div class="p-6 bg-emerald-950/40 border border-emerald-500/50 rounded-xl text-xs text-emerald-200 leading-relaxed"><strong>KUSURSUZ UYUM:</strong> Bu ikili birbirinin etkisini artırır ve maksimum fayda sağlar.</div>`;
+            } else {
+                res.innerHTML = `<div class="p-6 bg-zinc-900 border border-zinc-800 rounded-xl text-xs text-zinc-400 leading-relaxed"><strong>GÜVENLİ:</strong> Belirgin bir çakışma yoktur, sırasıyla uygulayabilirsiniz.</div>`;
             }
         }
 
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+        // Modal Fonksiyonları
+        function openM(id) {
+            const p = products.find(x => x.id === id);
+            document.getElementById('m-brand').innerText = p.brand;
+            document.getElementById('m-name').innerText = p.name;
+            document.getElementById('m-desc').innerText = p.desc;
+            document.getElementById('m-syn').innerText = p.syn;
+            document.getElementById('m-img').src = p.img;
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeModalOnOutsideClick(e) {
-            if(e.target === modal) {
-                closeModal();
+        function closeM(e) {
+            if(!e || e.target === document.getElementById('modal') || e.target.closest('button')) {
+                document.getElementById('modal').classList.remove('active');
+                document.body.style.overflow = 'auto';
             }
-        }
-
-        function revealBlindTest() {
-            document.getElementById('reveal-btn').style.display = 'none';
-            document.getElementById('reveal-result').style.display = 'block';
         }
     </script>
 </body>
