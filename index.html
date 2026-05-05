@@ -1,301 +1,60 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Red Flag - Premium Edition v2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İstanbul Gastronomi Portalı</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;800&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #05050a; --brand-color: #ff2a5f; }
-        body, html {
-            margin: 0; padding: 0; width: 100%; height: 100%;
-            background-color: var(--bg-color);
-            font-family: 'Inter', -apple-system, sans-serif;
-            overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none;
-        }
-        #gameCanvas { display: block; width: 100vw; height: 100vh; }
-        .ui-layer {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center; z-index: 10;
-        }
-        .glass-panel {
-            background: rgba(20, 20, 25, 0.75);
-            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px; padding: 50px 40px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.15);
-        }
-        .btn-premium {
-            pointer-events: auto;
-            background: linear-gradient(135deg, #ff2a5f, #c0123c);
-            color: white; padding: 18px 45px; border-radius: 100px;
-            font-weight: 800; font-size: 1.2rem; cursor: pointer; border: none;
-            box-shadow: 0 10px 25px rgba(255, 42, 95, 0.4);
-            transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px;
-        }
-        .btn-premium:active { transform: scale(0.92); }
-        .hidden { display: none !important; }
-        #scoreDisplay {
-            position: absolute; top: 8%; width: 100%; text-align: center;
-            font-size: 5rem; font-weight: 900; color: rgba(255, 255, 255, 0.8);
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5); pointer-events: none; z-index: 5;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #f4f4f5; }
+        .serif { font-family: 'Playfair Display', serif; }
     </style>
 </head>
-<body>
+<body class="antialiased p-6">
+    <div class="max-w-md mx-auto text-center">
+        <header class="mb-12 pt-10">
+            <h1 class="serif text-4xl text-amber-500 mb-2">İstanbul</h1>
+            <p class="text-zinc-500 tracking-[0.2em] uppercase text-[10px] font-bold">Gastronomi & Lüks Rehberi</p>
+        </header>
 
-    <div id="scoreDisplay">0</div>
-    <canvas id="gameCanvas"></canvas>
-    
-    <div id="startScreen" class="ui-layer">
-        <div class="glass-panel flex flex-col items-center pointer-events-auto w-[90%] max-w-sm">
-            <div class="w-24 h-24 bg-gradient-to-br from-rose-400 to-rose-600 rounded-3xl mb-6 shadow-2xl flex items-center justify-center text-5xl">💔</div>
-            <h1 class="text-4xl font-black text-white mb-2">RED<span class="text-[#ff2a5f]">FLAG</span></h1>
-            <p class="text-zinc-400 mb-8 text-sm leading-relaxed">Toksik mesajlardan kaç! Uçmak için ekrana dokun.</p>
-            <button class="btn-premium w-full" onclick="startGame()">OYUNA BAŞLA</button>
+        <div class="grid gap-4">
+            <a href="sunset_grill_bar_detay_sayfas/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
+                <p class="text-sm font-bold group-hover:text-amber-500">Sunset Grill & Bar</p>
+            </a>
+            
+            <a href="zuma_mekan_detay_yenilenmi/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
+                <p class="text-sm font-bold group-hover:text-amber-500">Zuma Istanbul</p>
+            </a>
+
+            <a href="cipriani_istanbul_detay_sayfas_t_rk_e/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
+                <p class="text-sm font-bold group-hover:text-amber-500">Cipriani Istanbul</p>
+            </a>
+
+            <a href="fiko_yenik_y_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
+                <p class="text-sm font-bold group-hover:text-amber-500">Fiko Ocakbaşı</p>
+            </a>
+
+            <a href="kebap_beko_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
+                <p class="text-sm font-bold group-hover:text-amber-500">Kebapçı Beko</p>
+            </a>
+
+            <a href="arkestra_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
+                <p class="text-sm font-bold group-hover:text-amber-500">Arkestra</p>
+            </a>
+
+            <a href="papermoon_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
+                <p class="text-sm font-bold group-hover:text-amber-500">Papermoon</p>
+            </a>
+
+            <a href="momo_bebek_y_mekan_detay/code.html" class="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-amber-500/50 transition-all group">
+                <p class="text-sm font-bold group-hover:text-amber-500">Momo Bebeköy</p>
+            </a>
         </div>
+        
+        <footer class="mt-20 pb-10">
+            <p class="text-zinc-600 text-[10px] uppercase tracking-widest">Premium Selection 2026</p>
+        </footer>
     </div>
-
-    <div id="gameOverScreen" class="ui-layer bg-black/70 backdrop-blur-xl hidden transition-opacity duration-500">
-        <div class="glass-panel flex flex-col items-center pointer-events-auto w-[90%] max-w-sm border-rose-500/40">
-            <h2 class="text-3xl font-black text-[#ff2a5f] mb-6">GAME OVER</h2>
-            <div class="bg-black/50 rounded-3xl p-6 mb-6 w-full border border-white/10 flex flex-col items-center">
-                <p class="text-zinc-400 text-xs uppercase tracking-widest font-bold mb-2">Toplam Skor</p>
-                <p id="finalScore" class="text-7xl text-white font-black drop-shadow-lg">0</p>
-            </div>
-            <p id="gameOverMsg" class="text-zinc-300 mb-8 text-sm italic font-medium leading-relaxed px-4">Mesaj</p>
-            <button class="btn-premium w-full" onclick="resetGame()">YENİDEN DENE</button>
-        </div>
-    </div>
-
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let dpr = window.devicePixelRatio || 1;
-
-        function resize() {
-            width = window.innerWidth; height = window.innerHeight;
-            canvas.width = width * dpr; canvas.height = height * dpr;
-            ctx.scale(dpr, dpr);
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        // 16 Farklı Zengin Mesaj Veritabanı
-        const flagDatabase = [
-            { text: "Şu an ilişkiye hazır değilim.", visual: "🚧", avatar: "👤", name: "Bağlanma Sorunlu" },
-            { text: "Eski sevgilimle çok yakınız.", visual: "🐍", avatar: "👩‍❤️‍👨", name: "Eski Flört" },
-            { text: "Görmemişim, uyuyordum.", visual: "💤", avatar: "👻", name: "Ghosting Uzmanı" },
-            { text: "Ben böyleyim, değişemem.", visual: "🧱", avatar: "🤷‍♂️", name: "Narsist" },
-            { text: "Sen her şeyi çok abartıyorsun.", visual: "🎭", avatar: "🤡", name: "Gaslighter" },
-            { text: "Kıskanmıyorum, koruyorum.", visual: "⛓️", avatar: "🛡️", name: "Kontrol Delisi" },
-            { text: "Annem benim için bir numara.", visual: "🍼", avatar: "👼", name: "Ana Kuzusu" },
-            { text: "Kriptoya gir, parayı katla.", visual: "📉", avatar: "🚀", name: "Kripto Brosu" },
-            { text: "Burcum yüzünden böyleyim.", visual: "🔮", avatar: "✨", name: "Astroloji Bağımlısı" },
-            { text: "Cüzdanı yine arabada unutmuşum.", visual: "💳", avatar: "🏃", name: "Hesap Ödemeyen" },
-            { text: "Bakarız ya, söz vermeyeyim.", visual: "🕰️", avatar: "🏃", name: "Kaçak Göçek" },
-            { text: "Tüm ex'lerim deliydi zaten.", visual: "🚩", avatar: "🚑", name: "Kurban Rolü" },
-            { text: "Mesaja 3 gün sonra dönen tip.", visual: "🐢", avatar: "📱", name: "Meşgul İnsan" },
-            { text: "Dışarı çıkmayalım, evde takılalım.", visual: "🛋️", avatar: "🏠", name: "Minimum Efor" },
-            { text: "Arkadaşların beni sevmedi bence.", visual: "🧛", avatar: "👥", name: "İzole Eden" },
-            { text: "Sadece spontane yaşıyorum.", visual: "🌪️", avatar: "🏄", name: "Plansız" }
-        ];
-
-        let frames = 0; let score = 0; let isPlaying = false;
-        let bird, pipes, particles, bokehLights;
-        let usedMessages = []; // Hafıza sistemi
-
-        function getUniqueFlag() {
-            let available = flagDatabase.filter(f => !usedMessages.includes(f.text));
-            if(available.length < 2) { usedMessages = []; available = flagDatabase; } // Hafızayı sıfırla
-            let chosen = available[Math.floor(Math.random() * available.length)];
-            usedMessages.push(chosen.text);
-            if(usedMessages.length > 8) usedMessages.shift(); // Son 8 mesajı hatırla
-            return chosen;
-        }
-
-        function initBokeh() {
-            bokehLights = [];
-            for(let i=0; i<20; i++) {
-                bokehLights.push({
-                    x: Math.random() * width, y: Math.random() * height,
-                    radius: Math.random() * 40 + 10, speed: Math.random() * 0.5 + 0.1,
-                    alpha: Math.random() * 0.5 + 0.1, color: Math.random() > 0.5 ? '139, 92, 246' : '225, 29, 72'
-                });
-            }
-        }
-
-        function initGame() {
-            bird = { x: width * 0.25, y: height / 2, velocity: 0, gravity: 0.4, jump: -8.0, radius: 16, rotation: 0 };
-            pipes = []; particles = []; score = 0; frames = 0; usedMessages = [];
-            document.getElementById('scoreDisplay').innerText = score;
-        }
-
-        function startGame() {
-            document.getElementById('startScreen').classList.add('hidden');
-            document.getElementById('gameOverScreen').classList.add('hidden');
-            initGame();
-            isPlaying = true;
-        }
-
-        function resetGame() { startGame(); }
-
-        function explodeHeart() {
-            for(let i=0; i<30; i++) {
-                particles.push({
-                    x: bird.x, y: bird.y, vx: (Math.random() - 0.5) * 15, vy: (Math.random() - 0.5) * 15,
-                    life: 1, size: Math.random() * 6 + 2, color: '#ff2a5f'
-                });
-            }
-        }
-
-        function drawHeart(x, y, scale, rotation) {
-            ctx.save(); ctx.translate(x, y); ctx.rotate(rotation); ctx.scale(scale, scale);
-            ctx.shadowColor = '#ff2a5f'; ctx.shadowBlur = 25; ctx.fillStyle = '#ff2a5f';
-            ctx.beginPath(); ctx.moveTo(0, 5);
-            ctx.bezierCurveTo(0, -10, -20, -10, -20, 5); ctx.bezierCurveTo(-20, 20, 0, 30, 0, 40);
-            ctx.bezierCurveTo(0, 30, 20, 20, 20, 5); ctx.bezierCurveTo(20, -10, 0, -10, 0, 5); ctx.fill();
-            ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.beginPath();
-            ctx.ellipse(-8, -2, 4, 8, Math.PI / 4, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-        }
-
-        function wrapText(context, text, x, y, maxWidth, lineHeight) {
-            let words = text.split(' '); let line = ''; let lines = [];
-            for(let n = 0; n < words.length; n++) {
-                let testLine = line + words[n] + ' '; let metrics = context.measureText(testLine);
-                if (metrics.width > maxWidth && n > 0) { lines.push(line); line = words[n] + ' '; } 
-                else { line = testLine; }
-            }
-            lines.push(line);
-            lines.forEach((l, i) => { context.fillText(l.trim(), x, y + (i * lineHeight)); });
-        }
-
-        function drawRichChatBubble(x, y, w, h, data, isTop) {
-            ctx.save();
-            ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 25; ctx.shadowOffsetY = 15;
-            ctx.fillStyle = '#1c1c1e'; let r = 24;
-            ctx.beginPath(); ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y);
-            ctx.arcTo(x + w, y, x + w, y + r, r); ctx.lineTo(x + w, y + h - r);
-            ctx.arcTo(x + w, y + h, x + w - r, y + h, r); ctx.lineTo(x + r, y + h);
-            ctx.arcTo(x, y + h, x, y + h - r, r); ctx.lineTo(x, y + r); ctx.arcTo(x, y, x + r, y, r); ctx.fill();
-            ctx.shadowBlur = 0; 
-            
-            ctx.fillStyle = '#2c2c2e'; ctx.beginPath();
-            let avatarX = x + 35; let avatarY = y + 35;
-            ctx.arc(avatarX, avatarY, 18, 0, Math.PI * 2); ctx.fill();
-            ctx.fillStyle = '#ffffff'; ctx.font = '20px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-            ctx.fillText(data.avatar, avatarX, avatarY + 2);
-            
-            ctx.fillStyle = '#98989d'; ctx.font = '600 13px -apple-system, Inter'; ctx.textAlign = 'left';
-            ctx.fillText(data.name, x + 65, avatarY);
-            
-            ctx.font = '55px Arial'; ctx.textAlign = 'center';
-            ctx.fillText(data.visual, x + w/2, y + h/2 - 5);
-            
-            ctx.fillStyle = '#ffffff'; ctx.font = '500 15px -apple-system, Inter';
-            ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-            wrapText(ctx, `"${data.text}"`, x + w/2, y + h - 45, w - 30, 20);
-            ctx.restore();
-        }
-
-        function gameOver() {
-            isPlaying = false; explodeHeart();
-            document.getElementById('gameOverScreen').classList.remove('hidden');
-            let currentScore = 0;
-            let scoreInterval = setInterval(() => {
-                if(currentScore < score) { currentScore++; document.getElementById('finalScore').innerText = currentScore; } 
-                else { clearInterval(scoreInterval); document.getElementById('finalScore').innerText = score; }
-            }, 40);
-            let msg = score < 5 ? "Lovebombing kurbanı oldun... İlk mesaja kanma!" : 
-                      score < 15 ? "Hala toksik ilişkileri çekiyorsun, standartlarını yükselt!" : 
-                      score < 30 ? "İyi kaçtın! Kusursuz bir stalker ve analizcisin." : 
-                      "Kraliçe! Sen artık tamamen 'Green Flag' bir insansın.";
-            document.getElementById('gameOverMsg').innerText = msg;
-        }
-
-        function update() {
-            if(!isPlaying) return;
-            bird.velocity += bird.gravity; bird.y += bird.velocity;
-            bird.rotation = Math.min(Math.PI / 4, Math.max(-Math.PI / 4, (bird.velocity * 0.1)));
-
-            if(frames % 3 === 0) particles.push({ x: bird.x - 10, y: bird.y + (Math.random() - 0.5) * 10, vx: -2, vy: (Math.random() - 0.5) * 2, life: 1, size: Math.random() * 4 + 1, color: 'rgba(255, 150, 180, 0.8)' });
-
-            if (bird.y + bird.radius >= height || bird.y - bird.radius <= 0) gameOver();
-
-            if (frames % 120 === 0) {
-                let gap = 260 - Math.min(score * 3, 70); let bubbleH = 180;
-                let minPos = bubbleH + 20; let maxPos = height - bubbleH - gap - 20;
-                let topHeight = Math.random() * (maxPos - minPos) + minPos;
-                let pipeWidth = Math.min(width * 0.65, 300); 
-                
-                pipes.push({
-                    x: width + 50, width: pipeWidth, top: topHeight, bottom: height - topHeight - gap, bubbleHeight: bubbleH, passed: false,
-                    dataTop: getUniqueFlag(), dataBottom: getUniqueFlag()
-                });
-            }
-
-            for (let i = 0; i < pipes.length; i++) {
-                let p = pipes[i]; p.x -= 4.5 + Math.min(score * 0.2, 5); 
-                let hitMargin = 12;
-                if (bird.x + bird.radius - hitMargin > p.x && bird.x - bird.radius + hitMargin < p.x + p.width) {
-                    if (bird.y - bird.radius + hitMargin < p.top || bird.y + bird.radius - hitMargin > height - p.bottom) gameOver();
-                }
-                if (p.x + p.width < bird.x && !p.passed) { score++; p.passed = true; document.getElementById('scoreDisplay').innerText = score; }
-                if (p.x + p.width < -100) { pipes.shift(); i--; }
-            }
-        }
-
-        function draw() {
-            let grad = ctx.createLinearGradient(0, 0, 0, height);
-            grad.addColorStop(0, "#05050a"); grad.addColorStop(0.5, "#0a0a14"); grad.addColorStop(1, "#110b1a"); 
-            ctx.fillStyle = grad; ctx.fillRect(0, 0, width, height);
-
-            bokehLights.forEach(b => {
-                b.y -= b.speed; if(b.y < -50) { b.y = height + 50; b.x = Math.random() * width; }
-                ctx.beginPath(); let bGrad = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.radius);
-                bGrad.addColorStop(0, `rgba(${b.color}, ${b.alpha})`); bGrad.addColorStop(1, `rgba(${b.color}, 0)`);
-                ctx.fillStyle = bGrad; ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2); ctx.fill();
-            });
-
-            pipes.forEach(p => {
-                drawRichChatBubble(p.x, p.top - p.bubbleHeight, p.width, p.bubbleHeight, p.dataTop, true);
-                drawRichChatBubble(p.x, height - p.bottom, p.width, p.bubbleHeight, p.dataBottom, false); 
-            });
-
-            for(let i = 0; i < particles.length; i++) {
-                let p = particles[i]; p.x += p.vx; p.y += p.vy; p.life -= 0.03;
-                if(p.life <= 0) { particles.splice(i, 1); i--; continue; }
-                ctx.fillStyle = p.color; ctx.globalAlpha = p.life;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
-            }
-            ctx.globalAlpha = 1.0;
-
-            if(isPlaying) drawHeart(bird.x, bird.y, 1, bird.rotation);
-        }
-
-        function gameLoop() {
-            if (isPlaying) { frames++; update(); }
-            draw(); requestAnimationFrame(gameLoop);
-        }
-
-        function jump(e) {
-            if(e.target.tagName === 'BUTTON') return; 
-            e.preventDefault(); 
-            if(isPlaying) {
-                bird.velocity = bird.jump;
-                for(let i=0; i<5; i++) particles.push({ x: bird.x, y: bird.y + 10, vx: (Math.random()-0.5)*2, vy: Math.random()*3, life: 1, size: 2, color: 'white' });
-            }
-        }
-
-        canvas.addEventListener('touchstart', jump, {passive: false});
-        canvas.addEventListener('mousedown', jump);
-        window.addEventListener('keydown', (e) => { if(e.code === 'Space') jump(e); });
-
-        initBokeh(); initGame(); requestAnimationFrame(gameLoop); // Tek ve kusursuz döngü başlatıldı
-
-    </script>
 </body>
 </html>
