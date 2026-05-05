@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>CMO Kriz Masası - Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020617; /* Gece mavisi/siyah lüks arkaplan */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--bg-dark), #0f172a, #000000);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none;
+            color: white;
+        }
+
+        /* Glassmorphism Efektleri */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Üst Gösterge Barları */
+        .metric-container {
+            display: flex; flex-direction: column; gap: 4px; width: 22%;
+        }
+        .metric-icon { font-size: 1.5rem; text-align: center; margin-bottom: 2px; }
+        .progress-bg {
+            background: rgba(255, 255, 255, 0.1);
+            height: 8px; border-radius: 10px; overflow: hidden; position: relative;
+        }
+        .progress-fill {
+            height: 100%; border-radius: 10px; width: 50%;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Renkler */
+        .fill-rep { background: linear-gradient(90deg, #60a5fa, #3b82f6); box-shadow: 0 0 10px #3b82f6; }
+        .fill-bud { background: linear-gradient(90deg, #34d399, #10b981); box-shadow: 0 0 10px #10b981; }
+        .fill-sal { background: linear-gradient(90deg, #fbbf24, #f59e0b); box-shadow: 0 0 10px #f59e0b; }
+        .fill-team { background: linear-gradient(90deg, #f472b6, #ec4899); box-shadow: 0 0 10px #ec4899; }
+
+        /* Kart Alanı */
+        #card-stack {
+            position: relative; width: 100%; max-width: 380px; height: 60vh;
+            perspective: 1000px;
+        }
+        
+        .swipe-card {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 30px; text-align: center; transform-origin: 50% 100%;
+            will-change: transform; transition: transform 0.3s ease;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+            z-index: 2;
+        }
+        .swipe-card.next-card {
+            z-index: 1; transform: scale(0.95) translateY(20px); opacity: 0.6;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        /* Sağa/Sola Çekiş Göstergeleri (Görünmez Başlar) */
+        .action-label {
+            position: absolute; top: 40px; padding: 10px 20px; border-radius: 12px;
+            font-weight: 800; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px;
+            opacity: 0; transition: opacity 0.2s; border: 3px solid;
+        }
+        .label-left { right: 30px; color: #ef4444; border-color: #ef4444; transform: rotate(15deg); }
+        .label-right { left: 30px; color: #10b981; border-color: #10b981; transform: rotate(-15deg); }
+
+        /* Butonlar */
+        .btn-ceo {
+            background: linear-gradient(135deg, #f8fafc, #cbd5e1); color: #0f172a;
+            padding: 18px 50px; border-radius: 100px; font-weight: 800; font-size: 1.1rem;
+            cursor: pointer; border: none; box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+            text-transform: uppercase; letter-spacing: 1px; transition: transform 0.2s;
+        }
+        .btn-ceo:active { transform: scale(0.95); }
+
+        /* Arkaplan Işıkları */
+        .glow-circle {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; z-index: -1;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-between py-10 px-4">
+
+    <!-- Dinamik Arka Plan Işıkları -->
+    <div class="glow-circle w-96 h-96 bg-blue-900 top-[-100px] left-[-100px]"></div>
+    <div class="glow-circle w-96 h-96 bg-purple-900 bottom-[-100px] right-[-100px]"></div>
+
+    <!-- Üst HUD: Barlar -->
+    <header class="w-full max-w-md flex justify-between px-2 z-10">
+        <div class="metric-container">
+            <span class="metric-icon">💎</span>
+            <div class="progress-bg"><div id="bar-rep" class="progress-fill fill-rep"></div></div>
+        </div>
+        <div class="metric-container">
+            <span class="metric-icon">💰</span>
+            <div class="progress-bg"><div id="bar-bud" class="progress-fill fill-bud"></div></div>
+        </div>
+        <div class="metric-container">
+            <span class="metric-icon">📈</span>
+            <div class="progress-bg"><div id="bar-sal" class="progress-fill fill-sal"></div></div>
+        </div>
+        <div class="metric-container">
+            <span class="metric-icon">👥</span>
+            <div class="progress-bg"><div id="bar-team" class="progress-fill fill-team"></div></div>
+        </div>
+    </header>
+
+    <!-- Oyun Alanı -->
+    <main id="game-board" class="flex-1 flex flex-col items-center justify-center w-full z-10 relative">
+        <div class="text-zinc-500 font-bold tracking-widest text-sm mb-6 uppercase" id="quarter-display">Kurumsal Hayat Başlıyor</div>
+        
+        <div id="card-stack">
+            <!-- Kartlar JavaScript ile buraya basılacak -->
+        </div>
+    </main>
+
+    <!-- Alt UI -->
+    <footer class="w-full max-w-md flex justify-between px-6 z-10 text-xs text-zinc-600 font-bold uppercase tracking-widest">
+        <span>Sola Kaydır (Reddet)</span>
+        <span>Sağa Kaydır (Onayla)</span>
+    </footer>
+
+    <!-- Başlangıç Ekranı (Overlay) -->
+    <div id="startScreen" class="absolute inset-0 bg-black/80 backdrop-blur-xl z-50 flex flex-col items-center justify-center p-6">
+        <div class="glass-panel p-10 rounded-[40px] text-center w-full max-w-md">
+            <div class="w-20 h-20 bg-white/10 rounded-2xl mx-auto mb-6 flex items-center justify-center text-4xl shadow-2xl">💼</div>
+            <h1 class="text-3xl font-black text-white mb-2 tracking-tight">KRİZ MASASI</h1>
+            <p class="text-zinc-400 font-medium tracking-wide mb-6">Kurumsal Pazarlama Direktörü (CMO)</p>
+            <p class="text-zinc-300 text-sm leading-relaxed mb-10">Kararlarını vermek için kartı sağa veya sola kaydır. İtibarını, bütçeni, satışları ve ekibini dengede tut. Bar sıfırlanırsa kovulursun.</p>
+            <button class="btn-ceo w-full" onclick="startGame()">MASAYA OTUR</button>
+        </div>
+    </div>
+
+    <!-- Game Over Ekranı -->
+    <div id="gameOverScreen" class="absolute inset-0 bg-red-950/90 backdrop-blur-xl z-50 flex flex-col items-center justify-center p-6 hidden transition-opacity duration-500">
+        <div class="glass-panel p-10 rounded-[40px] text-center w-full max-w-md border-red-500/30">
+            <h2 class="text-4xl font-black text-red-500 mb-2">KOVULDUN</h2>
+            <p class="text-zinc-400 font-bold tracking-widest text-xs uppercase mb-8">Yönetim Kurulu Kararı</p>
+            
+            <div class="bg-black/50 rounded-2xl p-6 mb-8 border border-white/5">
+                <p id="gameOverReason" class="text-zinc-200 text-sm leading-relaxed font-medium">Nedeni...</p>
+            </div>
+            
+            <div class="flex justify-between items-center mb-8 px-4">
+                <div class="text-left">
+                    <p class="text-zinc-500 text-xs uppercase">Hayatta Kalınan</p>
+                    <p id="finalQuarter" class="text-2xl font-black text-white">Q0</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-zinc-500 text-xs uppercase">Çözülen Kriz</p>
+                    <p id="finalCards" class="text-2xl font-black text-white">0</p>
+                </div>
+            </div>
+
+            <button class="btn-ceo w-full bg-red-500 text-white" onclick="startGame()">YENİDEN BAŞVUR</button>
+        </div>
+    </div>
+
+    <script>
+        // Veritabanı: Kriz Senaryoları
+        const scenarios = [
+            {
+                id: 1, text: "Yeni lansman afişimizdeki slogan tamamen yanlış anlaşıldı. Twitter'da #MarkayıBoykotEt trend topic oldu!",
+                leftAction: "Görmezden gel.", rightAction: "Özür dile.",
+                leftImpact: { rep: -30, bud: +10, sal: -20, team: -10 },
+                rightImpact: { rep: +20, bud: -25, sal: +10, team: +10 }
+            },
+            {
+                id: 2, text: "Finans departmanı, şirketin yeni SAP S/4HANA altyapısı için kurumsal pazarlama bütçesinden devasa bir kesinti yapmak istiyor.",
+                leftAction: "Savaş, izin verme!", rightAction: "Kabul et.",
+                leftImpact: { rep: +5, bud: +20, sal: -15, team: +25 },
+                rightImpact: { rep: -5, bud: -30, sal: +10, team: -20 }
+            },
+            {
+                id: 3, text: "Çok ünlü ama skandallarıyla bilinen bir influencer, yeni lüks ürünümüzü tanıtmak için fahiş bir ücret istiyor.",
+                leftAction: "Reddet, lüksü koru.", rightAction: "Anlaş, parayı bas.",
+                leftImpact: { rep: +15, bud: +10, sal: -15, team: 0 },
+                rightImpact: { rep: -20, bud: -25, sal: +35, team: -10 }
+            },
+            {
+                id: 4, text: "Satış ekibi, ürünleri zararına da olsa 'Büyük İndirim' etiketiyle satıp ciroyu şişirmemiz için baskı yapıyor.",
+                leftAction: "Marka değerini koru.", rightAction: "İndirime gir.",
+                leftImpact: { rep: +15, bud: 0, sal: -25, team: -10 },
+                rightImpact: { rep: -25, bud: +10, sal: +30, team: +10 }
+            },
+            {
+                id: 5, text: "Rakibimiz çok agresif ve doğrudan bizi hedef alan komik bir reklam filmi yayınladı. Sosyal medya bizden cevap bekliyor.",
+                leftAction: "Sessiz kal.", rightAction: "Diss at!",
+                leftImpact: { rep: -15, bud: +5, sal: -10, team: -15 },
+                rightImpact: { rep: +20, bud: -20, sal: +15, team: +25 }
+            },
+            {
+                id: 6, text: "Pazarlama ekibi son çeyrekteki yoğun mesailerden dolayı tükenmişlik sendromu yaşıyor. Cuma günleri tatil istiyorlar.",
+                leftAction: "İşler bekleyemez.", rightAction: "Tatile onay ver.",
+                leftImpact: { rep: -5, bud: +10, sal: +15, team: -35 },
+                rightImpact: { rep: +10, bud: -15, sal: -20, team: +40 }
+            },
+            {
+                id: 7, text: "CEO'nun yeğeni ajansımıza yeni Kreatif Direktör olarak atandı. Tasarımları berbat ama onaylanmasını istiyor.",
+                leftAction: "Tasarımları çöpe at.", rightAction: "Onayla gitsin.",
+                leftImpact: { rep: +15, bud: 0, sal: +10, team: +20 },
+                rightImpact: { rep: -25, bud: 0, sal: -20, team: -30 }
+            }
+        ];
+
+        // Oyun Durumu
+        let stats = { rep: 50, bud: 50, sal: 50, team: 50 };
+        let currentCardIndex = 0;
+        let cardsSolved = 0;
+        let deck = [];
+        let isDragging = false;
+        let startX = 0, currentX = 0;
+        const SWIPE_THRESHOLD = 100;
+
+        // Barları Güncelleme
+        function updateBars() {
+            document.getElementById('bar-rep').style.width = stats.rep + '%';
+            document.getElementById('bar-bud').style.width = stats.bud + '%';
+            document.getElementById('bar-sal').style.width = stats.sal + '%';
+            document.getElementById('bar-team').style.width = stats.team + '%';
+            
+            let q = Math.floor(cardsSolved / 4) + 1;
+            document.getElementById('quarter-display').innerText = `ÇEYREK Q${q} - Bilanço Dönemi`;
+        }
+
+        // Güvenlik Kontrolü (Game Over)
+        function checkGameOver() {
+            let reason = "";
+            if (stats.rep <= 0) reason = "Hissedarlar markanın pazar yerinde ucuzlamasından çok rahatsız. İtibar yerle bir oldu. Yönetim kurulu kararıyla sözleşmeniz feshedildi.";
+            else if (stats.bud <= 0) reason = "Muhasebe departmanı iflas bayrağını çekti. Şirketin parasını fütursuzca havaya savurduğunuz için acilen işinize son verildi.";
+            else if (stats.sal <= 0) reason = "Aylardır ciro hedefleri tutmuyor. Şirket tarihinin en kötü satış grafiğini çizdiniz. Eşyalarınızı toplayın.";
+            else if (stats.team <= 0) reason = "Bütün pazarlama ekibi mobbing ve aşırı stresten dolayı topluca istifa etti. Departmanı yönetecek kimse kalmadı.";
+            
+            if (reason !== "") {
+                document.getElementById('gameOverReason').innerText = reason;
+                let q = Math.floor(cardsSolved / 4) + 1;
+                document.getElementById('finalQuarter').innerText = `Q${q}`;
+                document.getElementById('finalCards').innerText = cardsSolved;
+                document.getElementById('gameOverScreen').classList.remove('hidden');
+                return true;
+            }
+            return false;
+        }
+
+        function applyImpact(impactObj) {
+            stats.rep = Math.max(0, Math.min(100, stats.rep + impactObj.rep));
+            stats.bud = Math.max(0, Math.min(100, stats.bud + impactObj.bud));
+            stats.sal = Math.max(0, Math.min(100, stats.sal + impactObj.sal));
+            stats.team = Math.max(0, Math.min(100, stats.team + impactObj.team));
+        }
+
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex != 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        function createCardElement(cardData, isTop) {
+            const el = document.createElement('div');
+            el.className = `swipe-card ${isTop ? '' : 'next-card'}`;
+            el.innerHTML = `
+                <div class="action-label label-left">REDDET</div>
+                <div class="action-label label-right">ONAYLA</div>
+                <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-2xl mb-6 border border-white/10 shadow-lg">✉️</div>
+                <h3 class="text-zinc-400 text-xs font-bold tracking-widest uppercase mb-4">Gelen Kutusunda Acil</h3>
+                <p class="text-lg font-medium leading-relaxed text-white">${cardData.text}</p>
+                <div class="absolute bottom-10 w-full px-8 flex justify-between text-xs font-bold text-zinc-500 opacity-80 uppercase">
+                    <span>${cardData.leftAction}</span>
+                    <span>${cardData.rightAction}</span>
+                </div>
+            `;
+            return el;
+        }
+
+        function loadDeck() {
+            if (deck.length === 0) deck = shuffle([...scenarios]);
+            const stack = document.getElementById('card-stack');
+            stack.innerHTML = '';
+            
+            // Sonraki kartı alta ekle
+            if (deck.length > 1) {
+                stack.appendChild(createCardElement(deck[1], false));
+            } else {
+                stack.appendChild(createCardElement(scenarios[0], false)); // Yedek
+            }
+            // Aktif kartı üste ekle
+            const activeCard = createCardElement(deck[0], true);
+            stack.appendChild(activeCard);
+            
+            setupCardEvents(activeCard);
+        }
+
+        function setupCardEvents(card) {
+            const handleStart = (e) => {
+                isDragging = true;
+                startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                card.style.transition = 'none';
+            };
+
+            const handleMove = (e) => {
+                if (!isDragging) return;
+                currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                let deltaX = currentX - startX;
+                
+                // Rotasyon ve Hareket
+                let rotate = deltaX * 0.05;
+                card.style.transform = `translate(${deltaX}px, 0px) rotate(${rotate}deg)`;
+                
+                // Onay/Red yazılarının şeffaflığı
+                const labelLeft = card.querySelector('.label-left');
+                const labelRight = card.querySelector('.label-right');
+                
+                if (deltaX < 0) {
+                    labelLeft.style.opacity = Math.min(Math.abs(deltaX) / SWIPE_THRESHOLD, 1);
+                    labelRight.style.opacity = 0;
+                } else {
+                    labelRight.style.opacity = Math.min(deltaX / SWIPE_THRESHOLD, 1);
+                    labelLeft.style.opacity = 0;
+                }
+            };
+
+            const handleEnd = () => {
+                if (!isDragging) return;
+                isDragging = false;
+                let deltaX = currentX - startX;
+                
+                card.style.transition = 'transform 0.4s ease-out';
+                
+                if (deltaX > SWIPE_THRESHOLD) {
+                    // Sağa Çekti (Onayla)
+                    card.style.transform = `translate(${window.innerWidth}px, 0px) rotate(30deg)`;
+                    processDecision('right');
+                } else if (deltaX < -SWIPE_THRESHOLD) {
+                    // Sola Çekti (Reddet)
+                    card.style.transform = `translate(-${window.innerWidth}px, 0px) rotate(-30deg)`;
+                    processDecision('left');
+                } else {
+                    // Merkeze Dön
+                    card.style.transform = `translate(0px, 0px) rotate(0deg)`;
+                    card.querySelector('.label-left').style.opacity = 0;
+                    card.querySelector('.label-right').style.opacity = 0;
+                }
+                currentX = 0; startX = 0;
+            };
+
+            card.addEventListener('mousedown', handleStart);
+            window.addEventListener('mousemove', handleMove);
+            window.addEventListener('mouseup', handleEnd);
+            
+            card.addEventListener('touchstart', handleStart, {passive: true});
+            window.addEventListener('touchmove', handleMove, {passive: false});
+            window.addEventListener('touchend', handleEnd);
+        }
+
+        function processDecision(direction) {
+            let activeData = deck[0];
+            if (direction === 'right') applyImpact(activeData.rightImpact);
+            else applyImpact(activeData.leftImpact);
+            
+            cardsSolved++;
+            updateBars();
+            
+            if(!checkGameOver()) {
+                deck.shift(); // Kullanılan kartı at
+                setTimeout(() => { loadDeck(); }, 300); // Yeni kartı getir
+            }
+        }
+
+        function startGame() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('gameOverScreen').classList.add('hidden');
+            stats = { rep: 50, bud: 50, sal: 50, team: 50 };
+            cardsSolved = 0;
+            deck = [];
+            updateBars();
+            loadDeck();
+        }
+    </script>
+</body>
+</html>
