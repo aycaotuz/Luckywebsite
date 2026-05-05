@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="tr"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -7,7 +6,6 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -97,11 +95,17 @@
           }
         }
     </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
 <body class="bg-background text-on-background min-h-screen font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopAppBar -->
 <header class="flex justify-between items-center px-8 py-6 w-full bg-zinc-950/80 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-zinc-800 flat no-shadows">
-<button class="flex items-center gap-2 text-zinc-400 hover:text-[#D4AF37] transition-colors duration-300">
+<!-- Geri Dön Butonu Düzeltildi -->
+<button onclick="history.back()" class="flex items-center gap-2 text-zinc-400 hover:text-[#D4AF37] transition-colors duration-300 cursor-pointer bg-transparent border-none p-0 outline-none">
 <span class="material-symbols-outlined">arrow_back</span>
 <span class="font-inter text-sm font-medium tracking-wide uppercase">Geri Dön</span>
 </button>
@@ -119,7 +123,7 @@
 <!-- Cinematic Hero Section -->
 <section class="relative h-[819px] w-full bg-surface-container-lowest flex items-end justify-center pb-24">
 <div class="absolute inset-0 z-0">
-<img alt="Zuma Interior" class="w-full h-full object-cover opacity-60" data-alt="A massive cinematic photograph of a high-end, modern Japanese restaurant interior in an 'Old Money' Istanbul style. The scene is incredibly dark and sophisticated, illuminated by strategically placed warm amber and gold spotlights that highlight natural wood textures and sleek stone surfaces. The atmosphere is sexy, dynamic, and exclusive, feeling like a premium nightlife destination. The high-contrast lighting creates a luxurious, dramatic mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzNyVpsXaVtA_3Kx5k9OjG9OetPRWJgvPlj6plBgrv9gTQI5ZjG69tHSys4viQ7JVA4AaHy2xLu2aht0fxeiRJcehXRfyUwRa6ucShqySWG0z0S63fdE3lisG8rdTCBsGHAqdQmTTz3e7IQEoty8v88BwvxX_QYfnq5ynxiUj8Cy87xopMvByHsr4lzeU1qIWqMmkysRK7Aj22io3mFzAJv0m-gH7EuEf_KttpodIDe4fLmhKLtwccvd6DwSfoIklnIOD_mp2WKSt4"/>
+<img alt="Zuma Interior" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzNyVpsXaVtA_3Kx5k9OjG9OetPRWJgvPlj6plBgrv9gTQI5ZjG69tHSys4viQ7JVA4AaHy2xLu2aht0fxeiRJcehXRfyUwRa6ucShqySWG0z0S63fdE3lisG8rdTCBsGHAqdQmTTz3e7IQEoty8v88BwvxX_QYfnq5ynxiUj8Cy87xopMvByHsr4lzeU1qIWqMmkysRK7Aj22io3mFzAJv0m-gH7EuEf_KttpodIDe4fLmhKLtwccvd6DwSfoIklnIOD_mp2WKSt4"/>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
 </div>
 <div class="relative z-10 text-center px-margin-page max-w-container-max w-full">
@@ -159,13 +163,13 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="aspect-[3/4] relative group overflow-hidden border border-surface-container-highest">
-<img alt="Gallery Image 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A close-up shot of an exclusive bar area in a sophisticated, dark-themed restaurant. The lighting is extremely moody, with glowing gold accents reflecting off polished glassware and dark marble surfaces. The aesthetic is purely minimalist-luxurious, fitting a high-end Istanbul venue with deep blacks and subtle amber highlights. The atmosphere feels energetic yet refined." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDDprhStnvkPTOTLDpsC4imdehLqBUJRx_4WU_AOkReJ_zsjnr6YZ-4fwFH3TIZ_ztpc8va6rAsHOH9O_97Gn_9RFvy6Api-ljBMJfVq0tkLRBqbB-U4KfP9Nm2VlEbG4SpKS6phDDCvjfhHa5N56dgRRqeBBa0DfCuivtpylP0cBnbiI50JdgiHAuRnHx10fcTQQLNK_Lj4ojTjfM-NCO73bayYND2gH2jYwZkvfs474_YavYDSsPWefPxjpCx52QgYsGy3VWVid8"/>
+<img alt="Gallery Image 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDDprhStnvkPTOTLDpsC4imdehLqBUJRx_4WU_AOkReJ_zsjnr6YZ-4fwFH3TIZ_ztpc8va6rAsHOH9O_97Gn_9RFvy6Api-ljBMJfVq0tkLRBqbB-U4KfP9Nm2VlEbG4SpKS6phDDCvjfhHa5N56dgRRqeBBa0DfCuivtpylP0cBnbiI50JdgiHAuRnHx10fcTQQLNK_Lj4ojTjfM-NCO73bayYND2gH2jYwZkvfs474_YavYDSsPWefPxjpCx52QgYsGy3VWVid8"/>
 </div>
 <div class="aspect-[3/4] relative group overflow-hidden border border-surface-container-highest mt-0 md:mt-12">
-<img alt="Gallery Image 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A wide architectural shot of a sleek, modern dining room steeped in 'Old Money' luxury. The scene features massive structural wooden elements, dark leather seating, and vast amounts of negative space. Strategic warm lighting casts dramatic shadows across the zinc-toned floor. The mood is authoritative and incredibly stylish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIx56XOqwzgU3C6OARFYTJFGezQJpt9kZ4Is8cGPAljdbJtwKlSKIUdmtPdJL3i3eiWWS_3E1yQxg88j1rv5yfOXm6kQPJ0WI7gw6PXB8A_nOzgNpxgcOa5Eu7PMT3vB9UudMJtD_Fc3GQYALEvTpUZlQHlYyQBNZzXYMGJkD_EjtZJggJcfE6HDhJh3bTgeNzxhQch-Ec4bbP6JFIMTHGacCQgFNDszTDJ58bNjB-4UOMT-z_-VA7DU3tQJ00v_MxFYILxmmjL4qF"/>
+<img alt="Gallery Image 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIx56XOqwzgU3C6OARFYTJFGezQJpt9kZ4Is8cGPAljdbJtwKlSKIUdmtPdJL3i3eiWWS_3E1yQxg88j1rv5yfOXm6kQPJ0WI7gw6PXB8A_nOzgNpxgcOa5Eu7PMT3vB9UudMJtD_Fc3GQYALEvTpUZlQHlYyQBNZzXYMGJkD_EjtZJggJcfE6HDhJh3bTgeNzxhQch-Ec4bbP6JFIMTHGacCQgFNDszTDJ58bNjB-4UOMT-z_-VA7DU3tQJ00v_MxFYILxmmjL4qF"/>
 </div>
 <div class="aspect-[3/4] relative group overflow-hidden border border-surface-container-highest mt-0 md:mt-24">
-<img alt="Gallery Image 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="A moody, high-contrast detail shot of a dining table setting in an elite culinary establishment. Soft, golden spotlighting illuminates delicate ceramic tableware against a pitch-black background. The visual style relies on heavy shadows and sharp focal points, emphasizing the premium, cinematic quality of the dining experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ_8K53FdRzouBeNdnM1oSjQMLvNypJTQj7gw1HIPZDvy495XkRbhtjNZcWJMbhaAo_8aDqMyVC3fZEZUa6OaB93bxp-gFyGbiMYGhtVe-nVqCYq-B5Uw_M2RP6eFoyS08DCxUxuhkOm1O_DIxhzjDSJVCRpfzHMqW1RKm0cyUB8DsMiwZQI19zaG2b33x8Q2Nm7odeo8USjv01qJSgxz9F7-zC5aPiSGX-g6t7t-Nx1LN_JWAQnmlwTn3msvW1jh3KPYA70BCPK-L"/>
+<img alt="Gallery Image 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ_8K53FdRzouBeNdnM1oSjQMLvNypJTQj7gw1HIPZDvy495XkRbhtjNZcWJMbhaAo_8aDqMyVC3fZEZUa6OaB93bxp-gFyGbiMYGhtVe-nVqCYq-B5Uw_M2RP6eFoyS08DCxUxuhkOm1O_DIxhzjDSJVCRpfzHMqW1RKm0cyUB8DsMiwZQI19zaG2b33x8Q2Nm7odeo8USjv01qJSgxz9F7-zC5aPiSGX-g6t7t-Nx1LN_JWAQnmlwTn3msvW1jh3KPYA70BCPK-L"/>
 </div>
 </div>
 </section>
@@ -176,10 +180,9 @@
 <h2 class="font-h1 text-h1 text-on-background">İmza Lezzetler</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Card 1 -->
 <div class="group border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-500 bg-surface-container-lowest">
 <div class="aspect-square overflow-hidden relative">
-<img alt="Miso Black Cod" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic, top-down shot of a beautifully plated Miso Black Cod on a dark ceramic dish. The lighting is extremely focused, creating high contrast between the glossy, caramelized surface of the fish and the deep black background. Gold accents from the lighting emphasize the luxurious, minimalist presentation typical of an elite Asian fusion restaurant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6PErlLmK2FEJZK1lY2ns2oZByE4hf_qm20UZwdENoJHGkqjYpEFU13kDs_DNArYagNeOqKRaN0fmEHQwy__sxDv8ZI8cy16CU_T4vF_RVefGHyJlz_CLs7HCxhACMmPTcRo9lagD5EkJa0DqMCiQC12U0p8nxfubRGrDRXTu2YL9gTIXF2qLa5nDmYV35Uqm9FA2-bNeA0cvex3dErYGrwbu0gzlKX9I85e-oDC0jGcdNJhzuUhU48dZGyVvPw1k3CXKvLKTnM-v7"/>
+<img alt="Miso Black Cod" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6PErlLmK2FEJZK1lY2ns2oZByE4hf_qm20UZwdENoJHGkqjYpEFU13kDs_DNArYagNeOqKRaN0fmEHQwy__sxDv8ZI8cy16CU_T4vF_RVefGHyJlz_CLs7HCxhACMmPTcRo9lagD5EkJa0DqMCiQC12U0p8nxfubRGrDRXTu2YL9gTIXF2qLa5nDmYV35Uqm9FA2-bNeA0cvex3dErYGrwbu0gzlKX9I85e-oDC0jGcdNJhzuUhU48dZGyVvPw1k3CXKvLKTnM-v7"/>
 <div class="absolute top-4 right-4 bg-background/80 backdrop-blur px-3 py-1 border border-surface-container-highest">
 <span class="font-label-caps text-label-caps text-on-surface">DENİZ MAHSULÜ</span>
 </div>
@@ -189,10 +192,9 @@
 <p class="font-body-md text-body-md text-on-surface-variant">Zuma'nın ikonik, karamelize siyah kod balığı.</p>
 </div>
 </div>
-<!-- Card 2 -->
 <div class="group border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-500 bg-surface-container-lowest">
 <div class="aspect-square overflow-hidden relative">
-<img alt="Spicy Beef Tenderloin" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="A close-up, dramatic shot of perfectly seared Spicy Beef Tenderloin slices arranged elegantly on a textured dark plate. Vivid red accents from chili sauces contrast sharply against the moody, dark background. The lighting is sharp and cinematic, highlighting the rich texture of the meat in a highly sophisticated, luxurious aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb1dr5x7qPa6CTUHIlE-LGyMz49koV35s-STFGJnoo4bPlsyNw6zHunILm6FzdaY5bPn-jVmSepG3ErGJysOXoHB8XKhZ9k9mzDRc0DPXkDIZ_GcxDUdiZ80Td4jN5tUv-cQLLjRUSg4hpgJbu8AiUpV9R8bDeXahvy2VNmYGkpwbn3SaAJzr1gdSu079ttV__6mgIkiYjNXB-DT7rjSKsasoQ-MSQ0tvEFWgCPotHhbDDpgtritK6_hwHp1VE0Mn_g5Yinwc_oAaV"/>
+<img alt="Spicy Beef Tenderloin" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb1dr5x7qPa6CTUHIlE-LGyMz49koV35s-STFGJnoo4bPlsyNw6zHunILm6FzdaY5bPn-jVmSepG3ErGJysOXoHB8XKhZ9k9mzDRc0DPXkDIZ_GcxDUdiZ80Td4jN5tUv-cQLLjRUSg4hpgJbu8AiUpV9R8bDeXahvy2VNmYGkpwbn3SaAJzr1gdSu079ttV__6mgIkiYjNXB-DT7rjSKsasoQ-MSQ0tvEFWgCPotHhbDDpgtritK6_hwHp1VE0Mn_g5Yinwc_oAaV"/>
 <div class="absolute top-4 right-4 bg-background/80 backdrop-blur px-3 py-1 border border-surface-container-highest">
 <span class="font-label-caps text-label-caps text-on-surface">ET</span>
 </div>
@@ -202,10 +204,9 @@
 <p class="font-body-md text-body-md text-on-surface-variant">Acı soslu, ince dilimlenmiş bonfile dilimleri.</p>
 </div>
 </div>
-<!-- Card 3 -->
 <div class="group border border-surface-container-highest hover:border-primary-container/50 transition-colors duration-500 bg-surface-container-lowest">
 <div class="aspect-square overflow-hidden relative">
-<img alt="Premium Sashimi" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="An exquisite, minimalist presentation of Premium Sashimi on a bed of crushed ice within a heavy, dark stone bowl. The incredibly fresh, vibrant cuts of fish stand out against the vast negative space of the dark zinc table setting. High-key spotlights create a gleaming, expensive look that screams 'Old Money' culinary luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPLL4obC9-ks3aeKCP0CIQVBzMSlHc0xsoM96bixFKZpxpmMfOgSnHg8KyzAOTlHn8uu3IVGdXPFHxloT9v0p-UiJtqovRMTBd2kGvhg2yFnJ73rVyrLvY2Zlvo_NONh3QZe0VJFEemsPn_JxUIywX1SSGN3BqMBX1WanN5DSkvGS1rJgHaW44PT067HuTwPD4WQEoH99lB8xEQyPQelzJNjPNwRe81zsm1PMiWnWGK9vr2dPz5_P1VkJOI9kqGPaUuVGiWCI8Qjn7"/>
+<img alt="Premium Sashimi" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPLL4obC9-ks3aeKCP0CIQVBzMSlHc0xsoM96bixFKZpxpmMfOgSnHg8KyzAOTlHn8uu3IVGdXPFHxloT9v0p-UiJtqovRMTBd2kGvhg2yFnJ73rVyrLvY2Zlvo_NONh3QZe0VJFEemsPn_JxUIywX1SSGN3BqMBX1WanN5DSkvGS1rJgHaW44PT067HuTwPD4WQEoH99lB8xEQyPQelzJNjPNwRe81zsm1PMiWnWGK9vr2dPz5_P1VkJOI9kqGPaUuVGiWCI8Qjn7"/>
 <div class="absolute top-4 right-4 bg-background/80 backdrop-blur px-3 py-1 border border-surface-container-highest">
 <span class="font-label-caps text-label-caps text-on-surface">ÇİĞ</span>
 </div>
@@ -217,11 +218,11 @@
 </div>
 </div>
 </section>
-<!-- CTA Section -->
+<!-- CTA Section (Rezervasyon Butonu Düzeltildi) -->
 <section class="max-w-container-max mx-auto px-margin-page pb-32 flex justify-center">
-<button class="border border-primary-container text-primary-container font-label-caps text-label-caps uppercase px-12 py-6 tracking-[0.2em] hover:bg-primary-container hover:text-on-primary transition-all duration-500 shadow-[0_0_15px_rgba(212,175,55,0.1)] hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+<a href="https://zumarestaurant.com/locations/istanbul/" target="_blank" class="inline-block border border-primary-container text-primary-container font-label-caps text-label-caps uppercase px-12 py-6 tracking-[0.2em] hover:bg-primary-container hover:text-on-primary transition-all duration-500 shadow-[0_0_15px_rgba(212,175,55,0.1)] hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] text-center cursor-pointer">
                 Rezervasyon Yap
-            </button>
+            </a>
 </section>
 </main>
 </body></html>
