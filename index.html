@@ -2,44 +2,83 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Red Flag - Kaçış Oyunu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Red Flag - Premium Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;800&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; overflow: hidden; background-color: #09090b; font-family: 'Inter', sans-serif; touch-action: none; user-select: none; -webkit-user-select: none; }
-        #gameCanvas { display: block; width: 100vw; height: 100vh; }
-        .ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .btn { pointer-events: auto; background: linear-gradient(135deg, #f43f5e, #be123c); color: white; padding: 16px 40px; border-radius: 50px; font-weight: 900; font-size: 1.2rem; cursor: pointer; border: none; box-shadow: 0 10px 30px rgba(225, 29, 72, 0.4); transition: all 0.2s; text-transform: uppercase; letter-spacing: 2px; }
-        .btn:active { transform: scale(0.95); }
+        :root {
+            --bg-color: #05050a;
+            --brand-color: #ff2a5f;
+        }
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: var(--bg-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none;
+        }
+        #gameCanvas {
+            display: block; width: 100vw; height: 100vh;
+        }
+        .ui-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center; z-index: 10;
+        }
+        .glass-panel {
+            background: rgba(20, 20, 25, 0.65);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 40px; padding: 50px 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .btn-premium {
+            pointer-events: auto;
+            background: linear-gradient(135deg, #ff2a5f, #c0123c);
+            color: white; padding: 18px 45px; border-radius: 100px;
+            font-weight: 800; font-size: 1.2rem; cursor: pointer; border: none;
+            box-shadow: 0 10px 25px rgba(255, 42, 95, 0.4);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-transform: uppercase; letter-spacing: 2px; position: relative; overflow: hidden;
+        }
+        .btn-premium:active { transform: scale(0.92); }
         .hidden { display: none !important; }
-        #scoreDisplay { position: absolute; top: 12%; width: 100%; text-align: center; font-size: 6rem; font-weight: 900; color: rgba(255, 255, 255, 0.05); pointer-events: none; z-index: 0; }
-        .glass-panel { background: rgba(24, 24, 27, 0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 30px; padding: 40px; }
+        
+        #scoreDisplay {
+            position: absolute; top: 8%; width: 100%; text-align: center;
+            font-size: 5rem; font-weight: 900; color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5); pointer-events: none; z-index: 5;
+            font-family: -apple-system, sans-serif;
+        }
     </style>
 </head>
 <body>
+
     <div id="scoreDisplay">0</div>
     <canvas id="gameCanvas"></canvas>
     
     <!-- Başlangıç Ekranı -->
     <div id="startScreen" class="ui-layer">
-        <div class="glass-panel flex flex-col items-center pointer-events-auto shadow-2xl shadow-rose-900/10">
-            <h1 class="text-6xl font-black text-white mb-2 tracking-tighter">RED<span class="text-rose-500">FLAG</span></h1>
-            <p class="text-zinc-400 mb-10 text-sm max-w-[250px]">Zehirli mesajlardan kaç, kalbini koru! Uçmak için ekrana dokun.</p>
-            <button class="btn" onclick="startGame()">OYNA</button>
+        <div class="glass-panel flex flex-col items-center pointer-events-auto w-[90%] max-w-sm">
+            <div class="w-20 h-20 bg-gradient-to-br from-rose-400 to-rose-600 rounded-3xl mb-6 shadow-2xl flex items-center justify-center text-4xl shadow-rose-500/30">
+                💔
+            </div>
+            <h1 class="text-4xl font-black text-white mb-2 tracking-tight">RED<span class="text-[#ff2a5f]">FLAG</span></h1>
+            <p class="text-zinc-400 mb-8 text-sm leading-relaxed">Lüks bir gece, toksik mesajlar... Ekrana dokun ve kalbini koru.</p>
+            <button class="btn-premium w-full" onclick="startGame()">OYUNA BAŞLA</button>
         </div>
     </div>
 
     <!-- Game Over Ekranı -->
-    <div id="gameOverScreen" class="ui-layer bg-zinc-950/90 backdrop-blur-xl hidden">
-        <div class="glass-panel flex flex-col items-center pointer-events-auto shadow-2xl shadow-rose-900/20">
-            <h2 class="text-5xl font-black text-rose-500 mb-2">GAME OVER</h2>
-            <div class="bg-zinc-900/50 rounded-2xl p-4 mb-6 w-full border border-zinc-800">
-                <p class="text-zinc-500 text-xs uppercase tracking-widest font-bold mb-1">Skorun</p>
-                <p id="finalScore" class="text-4xl text-white font-black">0</p>
+    <div id="gameOverScreen" class="ui-layer bg-black/60 backdrop-blur-md hidden transition-opacity duration-500">
+        <div class="glass-panel flex flex-col items-center pointer-events-auto w-[90%] max-w-sm border-rose-500/30">
+            <h2 class="text-3xl font-black text-[#ff2a5f] mb-6">GAME OVER</h2>
+            <div class="bg-black/40 rounded-3xl p-6 mb-6 w-full border border-white/5 flex flex-col items-center">
+                <p class="text-zinc-500 text-xs uppercase tracking-widest font-bold mb-2">Toplam Skor</p>
+                <p id="finalScore" class="text-6xl text-white font-black drop-shadow-lg">0</p>
             </div>
-            <p id="gameOverMsg" class="text-zinc-300 mb-8 max-w-[280px] text-sm italic">Mesaj</p>
-            <button class="btn" onclick="resetGame()">TEKRAR DENE</button>
+            <p id="gameOverMsg" class="text-zinc-300 mb-8 text-sm italic font-medium leading-relaxed px-4">Mesaj</p>
+            <button class="btn-premium w-full" onclick="resetGame()">YENİDEN DENE</button>
         </div>
     </div>
 
@@ -48,47 +87,67 @@
         const ctx = canvas.getContext('2d');
         
         let width, height;
+        let dpr = window.devicePixelRatio || 1;
+
         function resize() {
             width = window.innerWidth;
             height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.scale(dpr, dpr);
         }
         window.addEventListener('resize', resize);
         resize();
 
-        // Emojili ve daha vurucu metinler
+        // Zehirli Mesajlar
         const redFlags = [
-            "🚩 Şu an ciddi düşünmüyorum",
-            "🐍 Eski sevgilimle kankayız",
-            "👻 Çok yoğundum görmemişim",
-            "🤷‍♂️ Ben böyleyim işine gelirse",
-            "🎭 Sen çok kuruntu yapıyorsun",
-            "🚧 Hazır hissetmiyorum",
-            "🤡 Sorun sende değil bende",
-            "🛡️ Sadece seni korumak istedim"
+            "Şu an ciddi düşünmüyorum",
+            "Eski sevgilimle kankayız",
+            "Görmemişim, çok yoğundum",
+            "Ben böyleyim işine gelirse",
+            "Aşırı tepki veriyorsun",
+            "Hazır hissetmiyorum",
+            "Sorun sende değil bende",
+            "Kıskanmıyorum koruyorum",
+            "Bakarız ya, söz vermeyeyim"
         ];
 
         let frames = 0;
         let score = 0;
         let isPlaying = false;
-        let bird, pipes;
-        let particleSystem = [];
+        let bird, pipes, particles, bokehLights;
+
+        // Gece Işıkları (Zuma/Sunset Vibes)
+        function initBokeh() {
+            bokehLights = [];
+            for(let i=0; i<20; i++) {
+                bokehLights.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 40 + 10,
+                    speed: Math.random() * 0.5 + 0.1,
+                    alpha: Math.random() * 0.5 + 0.1,
+                    color: Math.random() > 0.5 ? '139, 92, 246' : '225, 29, 72' // Mor ve Bordo
+                });
+            }
+        }
 
         function initGame() {
             bird = {
                 x: width * 0.25,
                 y: height / 2,
                 velocity: 0,
-                gravity: 0.35,
-                jump: -7.5,
-                radius: 18
+                gravity: 0.4,
+                jump: -8.5,
+                radius: 16,
+                rotation: 0
             };
             pipes = [];
-            particleSystem = [];
+            particles = [];
             score = 0;
             frames = 0;
             document.getElementById('scoreDisplay').innerText = score;
+            initBokeh();
         }
 
         function startGame() {
@@ -103,104 +162,153 @@
             startGame();
         }
 
-        function createParticles(x, y) {
-            for(let i=0; i<5; i++) {
-                particleSystem.push({
-                    x: x,
-                    y: y,
-                    vx: (Math.random() - 0.5) * 4,
-                    vy: (Math.random() - 0.5) * 4,
+        // Parçacık Patlama Efekti
+        function explodeHeart() {
+            for(let i=0; i<30; i++) {
+                particles.push({
+                    x: bird.x,
+                    y: bird.y,
+                    vx: (Math.random() - 0.5) * 15,
+                    vy: (Math.random() - 0.5) * 15,
                     life: 1,
-                    size: Math.random() * 4 + 2
+                    size: Math.random() * 6 + 2,
+                    color: '#ff2a5f'
                 });
             }
         }
 
-        function drawHeart(x, y) {
+        function createTrail() {
+            particles.push({
+                x: bird.x - 10,
+                y: bird.y + (Math.random() - 0.5) * 10,
+                vx: -2,
+                vy: (Math.random() - 0.5) * 2,
+                life: 1,
+                size: Math.random() * 4 + 1,
+                color: 'rgba(255, 150, 180, 0.8)'
+            });
+        }
+
+        // Lüks Kalp Çizimi (Canvas Paths)
+        function drawHeart(x, y, scale, rotation) {
             ctx.save();
             ctx.translate(x, y);
-            
-            let scale = 1 + Math.sin(frames * 0.15) * 0.05;
-            if(bird.velocity < 0) scale = 1.1; 
-            
+            ctx.rotate(rotation);
             ctx.scale(scale, scale);
             
-            ctx.shadowColor = '#f43f5e';
-            ctx.shadowBlur = 20;
+            ctx.shadowColor = '#ff2a5f';
+            ctx.shadowBlur = 25;
             
-            ctx.font = "35px Arial";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText("💖", 0, 0);
+            ctx.fillStyle = '#ff2a5f';
+            ctx.beginPath();
+            ctx.moveTo(0, 5);
+            ctx.bezierCurveTo(0, -10, -20, -10, -20, 5);
+            ctx.bezierCurveTo(-20, 20, 0, 30, 0, 40);
+            ctx.bezierCurveTo(0, 30, 20, 20, 20, 5);
+            ctx.bezierCurveTo(20, -10, 0, -10, 0, 5);
+            ctx.fill();
+
+            // Kalp Parlaması
+            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            ctx.beginPath();
+            ctx.ellipse(-8, -2, 4, 8, Math.PI / 4, 0, Math.PI * 2);
+            ctx.fill();
+
             ctx.restore();
         }
 
-        // YENİ: Neon Chat Baloncuğu Tasarımı
-        function drawNeonLabel(text, x, y) {
+        // Akıllı Metin Bölücü
+        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+            let words = text.split(' ');
+            let line = '';
+            let lines = [];
+            for(let n = 0; n < words.length; n++) {
+                let testLine = line + words[n] + ' ';
+                let metrics = context.measureText(testLine);
+                if (metrics.width > maxWidth && n > 0) {
+                    lines.push(line);
+                    line = words[n] + ' ';
+                } else {
+                    line = testLine;
+                }
+            }
+            lines.push(line);
+            
+            lines.forEach((l, i) => {
+                context.fillText(l.trim(), x, y + (i * lineHeight));
+            });
+            return lines.length;
+        }
+
+        // iMessage Tarzı Chat Baloncuğu
+        function drawChatBubble(x, y, w, h, text, isTop) {
             ctx.save();
-            ctx.font = "900 13px Inter";
-            let textWidth = ctx.measureText(text).width;
-            let paddingX = 20;
-            let paddingY = 12;
-            let boxWidth = textWidth + paddingX * 2;
-            let boxHeight = 36;
-            let boxX = x - boxWidth / 2;
-            let boxY = y - boxHeight / 2;
-
-            // Parlayan Gölge Efekti
-            ctx.shadowColor = 'rgba(244, 63, 94, 0.7)';
+            
+            // Gölge
+            ctx.shadowColor = 'rgba(0,0,0,0.5)';
             ctx.shadowBlur = 20;
-            ctx.shadowOffsetY = 4;
+            ctx.shadowOffsetY = 10;
 
-            // Baloncuk Arka Planı (Lüks Bordo Degrade)
-            let grad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxHeight);
-            grad.addColorStop(0, '#881337'); // Açık bordo
-            grad.addColorStop(1, '#4c0519'); // Çok koyu bordo
-            ctx.fillStyle = grad;
+            // Baloncuk Arka Planı
+            ctx.fillStyle = '#1c1c1e'; // Apple Dark Mode Gray
             
+            // Yuvarlak Hatlar
+            let r = 24;
             ctx.beginPath();
-            ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 18);
+            ctx.moveTo(x + r, y);
+            ctx.lineTo(x + w - r, y);
+            ctx.arcTo(x + w, y, x + w, y + r, r);
+            ctx.lineTo(x + w, y + h - r);
+            ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+            ctx.lineTo(x + r, y + h);
+            ctx.arcTo(x, y + h, x, y + h - r, r);
+            ctx.lineTo(x, y + r);
+            ctx.arcTo(x, y, x + r, y, r);
             ctx.fill();
 
-            // Neon Pembe Çerçeve
-            ctx.shadowBlur = 0; // Yazı ve çerçeve net kalsın diye gölgeyi sıfırlıyoruz
-            ctx.strokeStyle = '#f43f5e';
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
+            // Chat Kuyruğu (iMessage stili)
+            ctx.beginPath();
+            if(isTop) {
+                // Üstteki baloncuk için kuyruk aşağıda
+                ctx.moveTo(x + w - 20, y + h - 5);
+                ctx.quadraticCurveTo(x + w - 5, y + h + 15, x + w + 10, y + h + 15);
+                ctx.quadraticCurveTo(x + w, y + h + 5, x + w - 10, y + h - 15);
+            } else {
+                // Alttaki baloncuk için kuyruk yukarıda
+                ctx.moveTo(x + w - 20, y + 5);
+                ctx.quadraticCurveTo(x + w - 5, y - 15, x + w + 10, y - 15);
+                ctx.quadraticCurveTo(x + w, y - 5, x + w - 10, y + 15);
+            }
+            ctx.fill();
 
-            // Beyaz Net Metin
+            // Metin
+            ctx.shadowBlur = 0; // Yazı net kalsın
             ctx.fillStyle = '#ffffff';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(text, x, y + 1); // Optik hizalama için +1
-            ctx.restore();
-        }
-
-        function drawPipe(pipe) {
-            // Ana Sütunlar
-            ctx.fillStyle = '#18181b'; 
-            ctx.strokeStyle = '#e11d48'; 
-            ctx.lineWidth = 2;
+            ctx.font = '600 16px -apple-system, SF Pro Display, Inter';
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'top';
             
-            // Üst Sütun
-            ctx.beginPath();
-            ctx.roundRect(pipe.x, 0, pipe.width, pipe.top, 15);
-            ctx.fill();
-            ctx.stroke();
+            // Metni merkeze oturtma
+            let padding = 20;
+            let textY = y + padding;
+            // Eğer uzunsa iki satıra böler
+            wrapText(ctx, text, x + padding, textY, w - (padding*2), 24);
 
-            // Alt Sütun
-            ctx.beginPath();
-            ctx.roundRect(pipe.x, height - pipe.bottom, pipe.width, pipe.bottom, 15);
-            ctx.fill();
-            ctx.stroke();
+            // Gönderici İsmi (Detay)
+            ctx.fillStyle = '#636366';
+            ctx.font = '500 12px -apple-system';
+            if(isTop) {
+                ctx.fillText('Toksik Ex', x + padding, y + h - 25);
+            } else {
+                ctx.fillText('Flört', x + padding, y + padding - 20); // Alttaki baloncuk için üstte
+            }
 
-            // Neon Chat Baloncuklarını Çizme
-            drawNeonLabel(pipe.text, pipe.x + pipe.width/2, pipe.top - 40);
-            drawNeonLabel(pipe.text, pipe.x + pipe.width/2, height - pipe.bottom + 40);
+            ctx.restore();
         }
 
         function gameOver() {
             isPlaying = false;
+            explodeHeart();
             document.getElementById('gameOverScreen').classList.remove('hidden');
             
             let currentScore = 0;
@@ -212,13 +320,13 @@
                     clearInterval(scoreInterval);
                     document.getElementById('finalScore').innerText = score;
                 }
-            }, 50);
+            }, 40);
             
             let msg = "";
-            if(score < 5) msg = '"İlk red flag\'de vuruldun... Lovebombing\'e çok çabuk kanıyorsun!"';
-            else if(score < 15) msg = '"Fena değil ama hala toksik ilişki çekiyorsun, biraz daha kaçman lazım."';
-            else if(score < 30) msg = '"Kusursuz bir analizcisin! Kimse seni kandıramaz."';
-            else msg = '"Sen artık Nirvana\'ya ulaşmış, tamamen Green Flag bir insansın!"';
+            if(score < 5) msg = "Lovebombing kurbanı oldun... İlk güzel söze kanma!";
+            else if(score < 15) msg = "Hala toksik ilişkileri çekiyorsun, standartlarını yükselt!";
+            else if(score < 30) msg = "İyi kaçtın! Kusursuz bir stalker ve analizcisin.";
+            else msg = "Kraliçe! Sen artık tamamen 'Green Flag' bir insansın.";
             
             document.getElementById('gameOverMsg').innerText = msg;
         }
@@ -226,36 +334,44 @@
         function update() {
             bird.velocity += bird.gravity;
             bird.y += bird.velocity;
+            
+            // Kalp dönüş animasyonu (düşerken burun aşağı, zıplarken yukarı)
+            bird.rotation = Math.min(Math.PI / 4, Math.max(-Math.PI / 4, (bird.velocity * 0.1)));
 
-            if(frames % 5 === 0) createParticles(bird.x - 10, bird.y);
+            if(frames % 3 === 0) createTrail();
 
             if (bird.y + bird.radius >= height || bird.y - bird.radius <= 0) {
                 gameOver();
             }
 
-            if (frames % 100 === 0) {
-                let gap = 200 - Math.min(score * 2.5, 70); 
-                let minHeight = 100; // Baloncukların sığması için biraz artırdım
-                let maxPos = height - minHeight - gap;
-                let topHeight = Math.random() * (maxPos - minHeight) + minHeight;
+            // Engeller (Baloncuklar)
+            if (frames % 110 === 0) {
+                let gap = 240 - Math.min(score * 3, 80); // Dinamik boşluk
+                let minBubbleH = 120;
+                let maxPos = height - minBubbleH - gap;
+                let topHeight = Math.random() * (maxPos - minBubbleH) + minBubbleH;
+                
+                let pipeWidth = Math.min(width * 0.6, 280); // Mobilde uyumlu genişlik
+                let text = redFlags[Math.floor(Math.random() * redFlags.length)];
                 
                 pipes.push({
-                    x: width,
-                    width: 180,
+                    x: width + 50,
+                    width: pipeWidth,
                     top: topHeight,
                     bottom: height - topHeight - gap,
                     passed: false,
-                    text: redFlags[Math.floor(Math.random() * redFlags.length)]
+                    text: text
                 });
             }
 
             for (let i = 0; i < pipes.length; i++) {
                 let p = pipes[i];
-                p.x -= 4 + Math.min(score * 0.15, 4); 
+                p.x -= 4.5 + Math.min(score * 0.2, 5); 
 
-                // Çarpışma Testi
-                if (bird.x + bird.radius - 5 > p.x && bird.x - bird.radius + 5 < p.x + p.width) {
-                    if (bird.y - bird.radius + 5 < p.top || bird.y + bird.radius - 5 > height - p.bottom) {
+                // Hassas Çarpışma (Hitbox küçültüldü ki haksızlık olmasın)
+                let hitMargin = 10;
+                if (bird.x + bird.radius - hitMargin > p.x && bird.x - bird.radius + hitMargin < p.x + p.width) {
+                    if (bird.y - bird.radius + hitMargin < p.top || bird.y + bird.radius - hitMargin > height - p.bottom) {
                         gameOver();
                     }
                 }
@@ -266,55 +382,111 @@
                     document.getElementById('scoreDisplay').innerText = score;
                 }
 
-                if (p.x + p.width < 0) {
+                if (p.x + p.width < -100) {
                     pipes.shift();
                     i--;
                 }
             }
 
-            for(let i = 0; i < particleSystem.length; i++) {
-                let p = particleSystem[i];
+            // Partikül Güncellemesi
+            for(let i = 0; i < particles.length; i++) {
+                let p = particles[i];
                 p.x += p.vx;
                 p.y += p.vy;
-                p.life -= 0.05;
-                if(p.life <= 0) { particleSystem.splice(i, 1); i--; }
+                p.life -= 0.03;
+                if(p.life <= 0) { particles.splice(i, 1); i--; }
             }
+
+            // Bokeh Güncellemesi
+            bokehLights.forEach(b => {
+                b.y -= b.speed;
+                if(b.y < -50) {
+                    b.y = height + 50;
+                    b.x = Math.random() * width;
+                }
+            });
         }
 
         function draw() {
+            // Gece Mavisi Lüks Degrade Arka Plan
             let grad = ctx.createLinearGradient(0, 0, 0, height);
-            grad.addColorStop(0, "#09090b"); 
-            grad.addColorStop(1, "#18181b"); 
+            grad.addColorStop(0, "#05050a"); // Gece yarısı siyahı
+            grad.addColorStop(0.5, "#0a0a14"); // Koyu lacivert
+            grad.addColorStop(1, "#110b1a"); // Hafif mor yansıma
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, width, height);
 
-            particleSystem.forEach(p => {
-                ctx.fillStyle = `rgba(244, 63, 94, ${p.life})`;
+            // Bokeh Işıkları Çizimi
+            bokehLights.forEach(b => {
+                ctx.beginPath();
+                let bGrad = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.radius);
+                bGrad.addColorStop(0, `rgba(${b.color}, ${b.alpha})`);
+                bGrad.addColorStop(1, `rgba(${b.color}, 0)`);
+                ctx.fillStyle = bGrad;
+                ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Chat Baloncukları Çizimi
+            pipes.forEach(p => {
+                // Üst Baloncuk
+                drawChatBubble(p.x, p.top - 150, p.width, 150, p.text, true);
+                
+                // Alt Baloncuk (Ekranın altından çıkar)
+                drawChatBubble(p.x, height - p.bottom, p.width, 150, "Bakarız...", false); 
+            });
+
+            // Partiküller (Ölüm veya İz)
+            particles.forEach(p => {
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.life;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fill();
             });
+            ctx.globalAlpha = 1.0;
 
-            pipes.forEach(drawPipe);
-            drawHeart(bird.x, bird.y);
+            if(isPlaying) drawHeart(bird.x, bird.y, 1, bird.rotation);
         }
 
         function animate() {
-            if (!isPlaying) return;
-            frames++;
-            update();
+            if (isPlaying) {
+                frames++;
+                update();
+            }
             draw();
-            requestAnimationFrame(animate);
+            if (isPlaying || particles.length > 0) {
+                requestAnimationFrame(animate);
+            }
         }
 
+        // KUSURSUZ MOBİL DOKUNMATİK MOTORU
         function jump(e) {
-            if(e) e.preventDefault();
-            if(isPlaying) bird.velocity = bird.jump;
+            // Butonlara tıklanmasını engellememek için kontrol
+            if(e.target.tagName === 'BUTTON') return; 
+            
+            e.preventDefault(); 
+            if(isPlaying) {
+                bird.velocity = bird.jump;
+                // Minik zıplama efekti
+                for(let i=0; i<5; i++) {
+                    particles.push({
+                        x: bird.x, y: bird.y + 10,
+                        vx: (Math.random()-0.5)*2, vy: Math.random()*3,
+                        life: 1, size: 2, color: 'white'
+                    });
+                }
+            }
         }
 
-        window.addEventListener('touchstart', jump, {passive: false});
-        window.addEventListener('mousedown', jump);
-        window.addEventListener('keydown', (e) => { if(e.code === 'Space') jump(); });
+        // Event listener'ları hem canvas'a hem window'a ekliyoruz ki kesin çalışsın
+        canvas.addEventListener('touchstart', jump, {passive: false});
+        canvas.addEventListener('mousedown', jump);
+        window.addEventListener('keydown', (e) => { if(e.code === 'Space') jump(e); });
+
+        // Başlangıç çizimi için
+        initBokeh();
+        draw();
 
     </script>
 </body>
