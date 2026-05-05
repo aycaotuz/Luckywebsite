@@ -23,7 +23,7 @@
     
     <!-- Başlangıç Ekranı -->
     <div id="startScreen" class="ui-layer">
-        <div class="glass-panel flex flex-col items-center pointer-events-auto">
+        <div class="glass-panel flex flex-col items-center pointer-events-auto shadow-2xl shadow-rose-900/10">
             <h1 class="text-6xl font-black text-white mb-2 tracking-tighter">RED<span class="text-rose-500">FLAG</span></h1>
             <p class="text-zinc-400 mb-10 text-sm max-w-[250px]">Zehirli mesajlardan kaç, kalbini koru! Uçmak için ekrana dokun.</p>
             <button class="btn" onclick="startGame()">OYNA</button>
@@ -57,15 +57,16 @@
         window.addEventListener('resize', resize);
         resize();
 
+        // Emojili ve daha vurucu metinler
         const redFlags = [
-            "Şu an ciddi düşünmüyorum",
-            "Eski sevgilimle kankayız",
-            "Çok yoğundum görmemişim",
-            "Ben böyleyim işine gelirse",
-            "Sen çok kuruntu yapıyorsun",
-            "Hazır hissetmiyorum",
-            "Sorun sende değil bende",
-            "Sadece seni korumak istedim"
+            "🚩 Şu an ciddi düşünmüyorum",
+            "🐍 Eski sevgilimle kankayız",
+            "👻 Çok yoğundum görmemişim",
+            "🤷‍♂️ Ben böyleyim işine gelirse",
+            "🎭 Sen çok kuruntu yapıyorsun",
+            "🚧 Hazır hissetmiyorum",
+            "🤡 Sorun sende değil bende",
+            "🛡️ Sadece seni korumak istedim"
         ];
 
         let frames = 0;
@@ -119,13 +120,11 @@
             ctx.save();
             ctx.translate(x, y);
             
-            // Nefes alma / Zıplama efekti
             let scale = 1 + Math.sin(frames * 0.15) * 0.05;
-            if(bird.velocity < 0) scale = 1.1; // Zıplarken büyür
+            if(bird.velocity < 0) scale = 1.1; 
             
             ctx.scale(scale, scale);
             
-            // Gölge ve Parlama
             ctx.shadowColor = '#f43f5e';
             ctx.shadowBlur = 20;
             
@@ -136,44 +135,74 @@
             ctx.restore();
         }
 
+        // YENİ: Neon Chat Baloncuğu Tasarımı
+        function drawNeonLabel(text, x, y) {
+            ctx.save();
+            ctx.font = "900 13px Inter";
+            let textWidth = ctx.measureText(text).width;
+            let paddingX = 20;
+            let paddingY = 12;
+            let boxWidth = textWidth + paddingX * 2;
+            let boxHeight = 36;
+            let boxX = x - boxWidth / 2;
+            let boxY = y - boxHeight / 2;
+
+            // Parlayan Gölge Efekti
+            ctx.shadowColor = 'rgba(244, 63, 94, 0.7)';
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetY = 4;
+
+            // Baloncuk Arka Planı (Lüks Bordo Degrade)
+            let grad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxHeight);
+            grad.addColorStop(0, '#881337'); // Açık bordo
+            grad.addColorStop(1, '#4c0519'); // Çok koyu bordo
+            ctx.fillStyle = grad;
+            
+            ctx.beginPath();
+            ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 18);
+            ctx.fill();
+
+            // Neon Pembe Çerçeve
+            ctx.shadowBlur = 0; // Yazı ve çerçeve net kalsın diye gölgeyi sıfırlıyoruz
+            ctx.strokeStyle = '#f43f5e';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            // Beyaz Net Metin
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(text, x, y + 1); // Optik hizalama için +1
+            ctx.restore();
+        }
+
         function drawPipe(pipe) {
-            ctx.fillStyle = '#18181b'; // Lüks Koyu Gri
-            ctx.strokeStyle = '#e11d48'; // Bordo/Kırmızı Çizgi
+            // Ana Sütunlar
+            ctx.fillStyle = '#18181b'; 
+            ctx.strokeStyle = '#e11d48'; 
             ctx.lineWidth = 2;
             
-            // Üst Baloncuk
+            // Üst Sütun
             ctx.beginPath();
             ctx.roundRect(pipe.x, 0, pipe.width, pipe.top, 15);
             ctx.fill();
             ctx.stroke();
 
-            // Alt Baloncuk
+            // Alt Sütun
             ctx.beginPath();
             ctx.roundRect(pipe.x, height - pipe.bottom, pipe.width, pipe.bottom, 15);
             ctx.fill();
             ctx.stroke();
 
-            // Kırmızı Bayrak Metinleri
-            ctx.fillStyle = '#f43f5e';
-            ctx.font = "bold 13px Inter";
-            ctx.textAlign = "center";
-            
-            ctx.save();
-            ctx.clip(new Path2D(`M${pipe.x},0 h${pipe.width} v${pipe.top} h-${pipe.width} Z`));
-            ctx.fillText(pipe.text, pipe.x + pipe.width/2, pipe.top - 30);
-            ctx.restore();
-            
-            ctx.save();
-            ctx.clip(new Path2D(`M${pipe.x},${height - pipe.bottom} h${pipe.width} v${pipe.bottom} h-${pipe.width} Z`));
-            ctx.fillText(pipe.text, pipe.x + pipe.width/2, height - pipe.bottom + 40);
-            ctx.restore();
+            // Neon Chat Baloncuklarını Çizme
+            drawNeonLabel(pipe.text, pipe.x + pipe.width/2, pipe.top - 40);
+            drawNeonLabel(pipe.text, pipe.x + pipe.width/2, height - pipe.bottom + 40);
         }
 
         function gameOver() {
             isPlaying = false;
             document.getElementById('gameOverScreen').classList.remove('hidden');
             
-            // Sayaç animasyonu
             let currentScore = 0;
             let scoreInterval = setInterval(() => {
                 if(currentScore < score) {
@@ -198,18 +227,15 @@
             bird.velocity += bird.gravity;
             bird.y += bird.velocity;
 
-            // Zıpladıkça arkada partikül bırakır
             if(frames % 5 === 0) createParticles(bird.x - 10, bird.y);
 
-            // Tavan ve Taban çarpışması
             if (bird.y + bird.radius >= height || bird.y - bird.radius <= 0) {
                 gameOver();
             }
 
-            // Engel (Red Flag) Üretimi
             if (frames % 100 === 0) {
-                let gap = 200 - Math.min(score * 2.5, 70); // Giderek daralır
-                let minHeight = 80;
+                let gap = 200 - Math.min(score * 2.5, 70); 
+                let minHeight = 100; // Baloncukların sığması için biraz artırdım
                 let maxPos = height - minHeight - gap;
                 let topHeight = Math.random() * (maxPos - minHeight) + minHeight;
                 
@@ -225,16 +251,15 @@
 
             for (let i = 0; i < pipes.length; i++) {
                 let p = pipes[i];
-                p.x -= 4 + Math.min(score * 0.15, 4); // Giderek hızlanır
+                p.x -= 4 + Math.min(score * 0.15, 4); 
 
-                // Hassas Çarpışma Testi
+                // Çarpışma Testi
                 if (bird.x + bird.radius - 5 > p.x && bird.x - bird.radius + 5 < p.x + p.width) {
                     if (bird.y - bird.radius + 5 < p.top || bird.y + bird.radius - 5 > height - p.bottom) {
                         gameOver();
                     }
                 }
 
-                // Skor kazanımı
                 if (p.x + p.width < bird.x && !p.passed) {
                     score++;
                     p.passed = true;
@@ -247,7 +272,6 @@
                 }
             }
 
-            // Partikül Güncellemesi
             for(let i = 0; i < particleSystem.length; i++) {
                 let p = particleSystem[i];
                 p.x += p.vx;
@@ -258,14 +282,12 @@
         }
 
         function draw() {
-            // Arka Plan Lüks Degradesi
             let grad = ctx.createLinearGradient(0, 0, 0, height);
-            grad.addColorStop(0, "#09090b"); // Çok Koyu Antrasit
-            grad.addColorStop(1, "#18181b"); // Koyu Gri
+            grad.addColorStop(0, "#09090b"); 
+            grad.addColorStop(1, "#18181b"); 
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, width, height);
 
-            // Yıldız/Şehir ışıkları efekti (Partiküller)
             particleSystem.forEach(p => {
                 ctx.fillStyle = `rgba(244, 63, 94, ${p.life})`;
                 ctx.beginPath();
@@ -285,7 +307,6 @@
             requestAnimationFrame(animate);
         }
 
-        // Dokunmatik ve Klavye Kontrolleri
         function jump(e) {
             if(e) e.preventDefault();
             if(isPlaying) bird.velocity = bird.jump;
